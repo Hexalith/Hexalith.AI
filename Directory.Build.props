@@ -1,0 +1,3 @@
+<Project>
+	<Import Project="./src/Build/Hexalith.AI.Build/Configuration/Hexalith.AI.Common.props" />
+</Project>
