@@ -8,7 +8,7 @@ environmentFolderPath: ./env
 provision:
   - uses: botAadApp/create # Creates a new AAD app for Bot Registration.
     with:
-      name: Hexalith.AI.Teams.Bot
+      name: Fority
     # Output: following environment variable will be persisted in current environment's .env file.
     # BOT_ID: the AAD app client id created for Bot Registration.
     # SECRET_BOT_PASSWORD: the AAD app client secret created for Bot Registration.
@@ -40,7 +40,7 @@ deploy:
 registerApp:
   - uses: teamsApp/create # Creates a Teams app
     with:
-      name: Hexalith.AI.Teams.Bot-${{TEAMSFX_ENV}} # Teams app name
+      name: Fority-${{TEAMSFX_ENV}} # Teams app name
     # Output: following environment variable will be persisted in current environment's .env file.
     # TEAMS_APP_ID: the id of Teams app
 
@@ -59,4 +59,4 @@ configureApp:
       appPackagePath: ./build/appPackage/appPackage.${{TEAMSFX_ENV}}.zip # Relative path to this file. This is the path for built zip file.
     # Output: following environment variable will be persisted in current environment's .env file.
     # TEAMS_APP_ID: the id of Teams app
-projectId: b0526501-2293-4fb2-b444-519f55b1a342
+projectId: ca268064-4c6e-42da-b735-7495683a7d60

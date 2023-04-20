@@ -1,24 +1,21 @@
-using Hexalith.AI.Teams.Bot.Application.Configuration;
-
 using HexalithAITeamsBot;
 using HexalithAITeamsBot.Commands;
-
-using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Integration.AspNet.Core;
 using Microsoft.Bot.Connector.Authentication;
 using Microsoft.TeamsFx.Conversation;
+using Microsoft.Bot.Builder;
 
-WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddHttpClient("WebClient", client => client.Timeout = TimeSpan.FromSeconds(600));
 builder.Services.AddHttpContextAccessor();
 
 // Prepare Configuration for ConfigurationBotFrameworkAuthentication
-BotSettings? config = builder.Configuration.GetSection(BotSettings.ConfigurationName()).Get<BotSettings>();
+var config = builder.Configuration.Get<ConfigOptions>();
 builder.Configuration["MicrosoftAppType"] = "MultiTenant";
-builder.Configuration["MicrosoftAppId"] = config?.Id ?? throw new InvalidOperationException("Bot id not set.");
-builder.Configuration["MicrosoftAppPassword"] = config?.Password ?? throw new InvalidOperationException("Bot password not set.");
+builder.Configuration["MicrosoftAppId"] = config.BOT_ID;
+builder.Configuration["MicrosoftAppPassword"] = config.BOT_PASSWORD;
 
 // Create the Bot Framework Authentication to be used with the Bot Adapter.
 builder.Services.AddSingleton<BotFrameworkAuthentication, ConfigurationBotFrameworkAuthentication>();
@@ -34,13 +31,13 @@ builder.Services.AddSingleton<BotAdapter>(sp => sp.GetService<CloudAdapter>());
 builder.Services.AddSingleton<HelloWorldCommandHandler>();
 builder.Services.AddSingleton(sp =>
 {
-    ConversationOptions options = new()
+    var options = new ConversationOptions()
     {
         Adapter = sp.GetService<CloudAdapter>(),
         Command = new CommandOptions()
         {
-            Commands = new List<ITeamsCommandHandler> { sp.GetService<HelloWorldCommandHandler>() },
-        },
+            Commands = new List<ITeamsCommandHandler> { sp.GetService<HelloWorldCommandHandler>() }
+        }
     };
 
     return new ConversationBot(options);
@@ -49,18 +46,18 @@ builder.Services.AddSingleton(sp =>
 // Create the bot as a transient. In this case the ASP Controller is expecting an IBot.
 builder.Services.AddTransient<IBot, TeamsBot>();
 
-WebApplication app = builder.Build();
+var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    _ = app.UseDeveloperExceptionPage();
+    app.UseDeveloperExceptionPage();
 }
 
 app.UseStaticFiles();
 app.UseRouting();
 app.UseEndpoints(endpoints =>
 {
-    _ = endpoints.MapControllers();
+    endpoints.MapControllers();
 });
 
 app.Run();

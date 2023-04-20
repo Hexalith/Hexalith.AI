@@ -1,4 +1,4 @@
-namespace HexalithAITeamsMessage
+namespace HexalithAITeamsBot
 {
     public class ConfigOptions
     {

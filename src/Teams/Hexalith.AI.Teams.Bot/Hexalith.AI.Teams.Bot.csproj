@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-	  <TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+    <TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>

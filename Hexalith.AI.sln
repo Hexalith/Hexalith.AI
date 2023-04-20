@@ -13,17 +13,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Teams", "Teams", "{3849A464
 		src\Teams\Directory.Build.props = src\Teams\Directory.Build.props
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.AI.Teams.Bot", "src\Teams\Hexalith.AI.Teams.Bot\Hexalith.AI.Teams.Bot.csproj", "{396339C0-9114-439D-A3B8-CAD0C156D844}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.AI.Teams.Message", "src\Teams\Hexalith.AI.Teams.Message\Hexalith.AI.Teams.Message.csproj", "{4B30E50C-4B1F-4A4E-A680-FF7204C46856}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deploy", "Deploy", "{BFCE8507-9620-4745-9C6E-89848F5F9235}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.AI.Deploy.AzureCloud", "src\Deploy\Hexalith.AI.Deploy.AzureCloud\Hexalith.AI.Deploy.AzureCloud.csproj", "{415B4323-B566-4025-95C5-92BD71D2B5D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.AI.Deploy.AzureCloud", "src\Deploy\Hexalith.AI.Deploy.AzureCloud\Hexalith.AI.Deploy.AzureCloud.csproj", "{415B4323-B566-4025-95C5-92BD71D2B5D5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{5CE8A75F-47EF-4A80-B878-38B596367ADE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.AI.Build", "src\Build\Hexalith.AI.Build\Hexalith.AI.Build.csproj", "{1B359FEA-ACAA-462E-8260-0CF387B98707}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.AI.Build", "src\Build\Hexalith.AI.Build\Hexalith.AI.Build.csproj", "{1B359FEA-ACAA-462E-8260-0CF387B98707}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{83C18C37-B300-467C-8344-7A9395811855}"
 	ProjectSection(SolutionItems) = preProject
@@ -33,24 +29,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{83C18C
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.AI.Teams.Bot", "src\Teams\Hexalith.AI.Teams.Bot\Hexalith.AI.Teams.Bot.csproj", "{6041A5AA-9E25-4D23-8022-CFCA741EFC86}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{396339C0-9114-439D-A3B8-CAD0C156D844}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{396339C0-9114-439D-A3B8-CAD0C156D844}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{396339C0-9114-439D-A3B8-CAD0C156D844}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{396339C0-9114-439D-A3B8-CAD0C156D844}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{396339C0-9114-439D-A3B8-CAD0C156D844}.Release|Any CPU.Build.0 = Release|Any CPU
-		{396339C0-9114-439D-A3B8-CAD0C156D844}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{4B30E50C-4B1F-4A4E-A680-FF7204C46856}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4B30E50C-4B1F-4A4E-A680-FF7204C46856}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4B30E50C-4B1F-4A4E-A680-FF7204C46856}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{4B30E50C-4B1F-4A4E-A680-FF7204C46856}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4B30E50C-4B1F-4A4E-A680-FF7204C46856}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4B30E50C-4B1F-4A4E-A680-FF7204C46856}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{415B4323-B566-4025-95C5-92BD71D2B5D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{415B4323-B566-4025-95C5-92BD71D2B5D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{415B4323-B566-4025-95C5-92BD71D2B5D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -59,18 +45,23 @@ Global
 		{1B359FEA-ACAA-462E-8260-0CF387B98707}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B359FEA-ACAA-462E-8260-0CF387B98707}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B359FEA-ACAA-462E-8260-0CF387B98707}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6041A5AA-9E25-4D23-8022-CFCA741EFC86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6041A5AA-9E25-4D23-8022-CFCA741EFC86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6041A5AA-9E25-4D23-8022-CFCA741EFC86}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{6041A5AA-9E25-4D23-8022-CFCA741EFC86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6041A5AA-9E25-4D23-8022-CFCA741EFC86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6041A5AA-9E25-4D23-8022-CFCA741EFC86}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{3849A464-DA83-4B75-9B1B-5942FF4DC723} = {261308D1-001E-468F-8236-5314023A5963}
-		{396339C0-9114-439D-A3B8-CAD0C156D844} = {3849A464-DA83-4B75-9B1B-5942FF4DC723}
-		{4B30E50C-4B1F-4A4E-A680-FF7204C46856} = {3849A464-DA83-4B75-9B1B-5942FF4DC723}
 		{BFCE8507-9620-4745-9C6E-89848F5F9235} = {261308D1-001E-468F-8236-5314023A5963}
 		{415B4323-B566-4025-95C5-92BD71D2B5D5} = {BFCE8507-9620-4745-9C6E-89848F5F9235}
 		{5CE8A75F-47EF-4A80-B878-38B596367ADE} = {261308D1-001E-468F-8236-5314023A5963}
 		{1B359FEA-ACAA-462E-8260-0CF387B98707} = {5CE8A75F-47EF-4A80-B878-38B596367ADE}
+		{6041A5AA-9E25-4D23-8022-CFCA741EFC86} = {3849A464-DA83-4B75-9B1B-5942FF4DC723}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {ABEA410D-B847-42F5-8A50-BF9F5E609B60}
