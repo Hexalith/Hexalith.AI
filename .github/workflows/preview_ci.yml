@@ -28,14 +28,15 @@ jobs:
         echo "MINVERVERSIONOVERRIDE=$version" >> $GITHUB_ENV
         echo "VERSION=$version" >> $GITHUB_ENV
         echo "VERSION=$version"
-    - name: Build Hexalith.AI.AzureBot Container
+    - name: Login to container registry
       uses: Azure/docker-login@v1
       with:
         login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
         username: ${{ secrets.AZURE_CLIENTID }}
         password: ${{ secrets.AZURE_CLIENTSECRET }}
-        run: |
-            dotnet publish src/Servers/Hexalith.AI.AzureBot/Hexalith.AI.AzureBot.csproj --configuration Debug -p:Version=${{ env.VERSION }} --os linux --arch x64 /t:PublishContainer
+    - name: Build Hexalith.AI.AzureBot Container
+      run: |
+        dotnet publish src/Servers/Hexalith.AI.AzureBot/Hexalith.AI.AzureBot.csproj --configuration Debug -p:Version=${{ env.VERSION }} --os linux --arch x64 /t:PublishContainer
     - name: 'Deploy Hexalith.AI.AzureBot to Azure Container Instances'
       uses: 'azure/aci-deploy@v1'
       with:
