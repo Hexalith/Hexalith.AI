@@ -7,5 +7,6 @@
 	<ItemGroup>
 		<PackageReference Include="AdaptiveCards.Templating" Version="$(AdaptiveCardsTemplatingVersion)" />
 		<PackageReference Include="Microsoft.Bot.Builder.Integration.AspNet.Core" Version="$(MicrosoftBotBuilderVersion)" />
+		<PackageReference Include="Microsoft.TeamsFx" Version="$(MicrosoftTeamsFxVersion)" />
 	</ItemGroup>
 </Project>
