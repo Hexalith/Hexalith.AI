@@ -2,7 +2,7 @@
 	"$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.14/MicrosoftTeams.schema.json",
 	"manifestVersion": "1.14",
 	"version": "1.0.0",
-	"id": "${{TEAMS_APP_ID}}",
+	"id": "a92abd74-e3c4-403d-8416-e1a12c6b261b",
 	"packageName": "com.microsoft.teams.extension",
 	"developer": {
 		"name": "Fiveforty Inc.",
@@ -11,12 +11,12 @@
 		"termsOfUseUrl": "https://www.fiveforty.fr"
 	},
 	"icons": {
-		"color": "color.png",
-		"outline": "outline.png"
+		"color": "logo.png",
+		"outline": "logo-outline.png"
 	},
 	"name": {
 		"short": "Fority",
-		"full": "Fority-AI-${{TEAMSFX_ENV}}"
+		"full": "Fority-AI"
 	},
 	"description": {
 		"short": "Fority, the Fiveforty AI assistant",
@@ -25,7 +25,7 @@
 	"accentColor": "#FFFFFF",
 	"bots": [
 		{
-			"botId": "${{BOT_ID}}",
+			"botId": "a92abd74-e3c4-403d-8416-e1a12c6b261b",
 			"scopes": [
 				"personal",
 				"team",
