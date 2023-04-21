@@ -24,6 +24,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{83C18C37-B300-467C-8344-7A9395811855}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		CODE-OF-CONDUCT.md = CODE-OF-CONDUCT.md
 		Directory.Build.props = Directory.Build.props
 		LICENSE = LICENSE
 		README.md = README.md
