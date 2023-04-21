@@ -36,7 +36,11 @@ jobs:
         password: ${{ secrets.AZURE_CLIENTSECRET }}
     - name: Build Hexalith.AI.AzureBot Container
       run: |
-        dotnet publish src/Servers/Hexalith.AI.AzureBot/Hexalith.AI.AzureBot.csproj --configuration Debug -p:Version=${{ env.VERSION }} --os linux --arch x64 /t:PublishContainer
+        dotnet publish src/Servers/Hexalith.AI.AzureBot/Hexalith.AI.AzureBot.csproj --configuration Debug -p:Version=${{ env.VERSION }} --os linux --arch x64 /t:PublishContainer    
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: 'Deploy Hexalith.AI.AzureBot to Azure Container Instances'
       uses: 'azure/aci-deploy@v1'
       with:
