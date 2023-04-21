@@ -12,7 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.AI.Teams.Bot.Controllers;
+namespace Hexalith.AI.AzureBot.Controllers;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Bot.Builder;

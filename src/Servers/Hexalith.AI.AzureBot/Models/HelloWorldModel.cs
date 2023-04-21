@@ -1,4 +1,4 @@
-﻿namespace HexalithAITeamsBot.Models
+﻿namespace Hexalith.AI.AzureBot.Models
 {
     public class HelloWorldModel
     {

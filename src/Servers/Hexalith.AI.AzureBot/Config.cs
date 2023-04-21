@@ -1,4 +1,4 @@
-namespace HexalithAITeamsBot
+namespace Hexalith.AI.AzureBot
 {
     public class ConfigOptions
     {

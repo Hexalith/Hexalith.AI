@@ -5,7 +5,7 @@ using Microsoft.Bot.Schema;
 using Microsoft.TeamsFx.Conversation;
 using Newtonsoft.Json;
 
-namespace HexalithAITeamsBot.Commands
+namespace Hexalith.AI.AzureBot.Commands
 {
     /// <summary>
     /// The <see cref="HelloWorldCommandHandler"/> registers a pattern with the <see cref="ITeamsCommandHandler"/> and

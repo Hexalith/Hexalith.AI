@@ -5,8 +5,8 @@
     <TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Configuration\" />
-  </ItemGroup>
-
+ 
+	<ItemGroup>
+		<PackageReference Include="ADotNet" Version="$(ADotNetVersion)" />
+	</ItemGroup>
 </Project>

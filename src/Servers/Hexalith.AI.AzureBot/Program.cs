@@ -1,9 +1,9 @@
-using HexalithAITeamsBot;
-using HexalithAITeamsBot.Commands;
 using Microsoft.Bot.Builder.Integration.AspNet.Core;
 using Microsoft.Bot.Connector.Authentication;
 using Microsoft.TeamsFx.Conversation;
 using Microsoft.Bot.Builder;
+using Hexalith.AI.AzureBot;
+using Hexalith.AI.AzureBot.Commands;
 
 var builder = WebApplication.CreateBuilder(args);
 

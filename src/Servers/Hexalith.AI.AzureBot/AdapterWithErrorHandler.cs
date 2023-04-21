@@ -2,7 +2,7 @@
 using Microsoft.Bot.Builder.TraceExtensions;
 using Microsoft.Bot.Connector.Authentication;
 
-namespace HexalithAITeamsBot
+namespace Hexalith.AI.AzureBot
 {
     public class AdapterWithErrorHandler : CloudAdapter
     {
