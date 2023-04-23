@@ -36,6 +36,7 @@
 		<MicrosoftTeamsFxVersion>1.2.*</MicrosoftTeamsFxVersion>
 		<ADotNetVersion>2.1.2</ADotNetVersion>
 		<ManDaprSidekickVersion>1.2.1</ManDaprSidekickVersion>
+		<MicrosoftSemanticKernelVersion>0.12.207.1-preview</MicrosoftSemanticKernelVersion>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(BuildingInsideVisualStudio)' == 'true' or '$(BuildingByReSharper)' == 'true'">
 		<HexalithVersion>1.0.0-local</HexalithVersion>

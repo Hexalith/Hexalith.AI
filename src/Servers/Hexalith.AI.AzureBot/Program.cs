@@ -1,5 +1,8 @@
 using Hexalith.AI.AzureBot;
 using Hexalith.AI.AzureBot.Commands;
+using Hexalith.AI.AzureBot.Infrastructure.SemanticKernel.Configurations;
+using Hexalith.AI.AzureBot.Infrastructure.SemanticKernel.Services;
+using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.WebApis.Helpers;
 
 using Microsoft.Bot.Builder;
@@ -57,6 +60,8 @@ builder.Services.AddSingleton(sp =>
 // Create the bot as a transient. In this case the ASP Controller is expecting an IBot.
 builder.Services.AddTransient<IBot, TeamsBot>();
 
+builder.Services.AddSingleton<ArtificialIntelligenceService>();
+builder.Services.ConfigureSettings<ArtificialIntelligenceServiceSettings>(builder.Configuration);
 WebApplication app = builder.Build();
 
 app.UseHexalith();

@@ -10,5 +10,11 @@
 		<PackageReference Include="AdaptiveCards.Templating" Version="$(AdaptiveCardsTemplatingVersion)" />
 		<PackageReference Include="Microsoft.Bot.Builder.Integration.AspNet.Core" Version="$(MicrosoftBotBuilderVersion)" />
 		<PackageReference Include="Microsoft.TeamsFx" Version="$(MicrosoftTeamsFxVersion)" />
+		<PackageReference Include="Microsoft.SemanticKernel" Version="$(MicrosoftSemanticKernelVersion)" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Infrastructure\AI\Configuration\" />
+	  <Folder Include="Infrastructure\SemanticKernel\Helpers\" />
+	  <Folder Include="Skills\Fority\" />
 	</ItemGroup>
 </Project>

@@ -1,0 +1,220 @@
+{
+	"$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.16/MicrosoftTeams.schema.json",
+	"manifestVersion": "1.16",
+	"version": "1.0.4",
+	"id": "e9a7629f-a728-4dbf-8f19-6bc70abe635b",
+	"packageName": "com.microsoft.teams.extension",
+	"developer": {
+		"name": "Fiveforty Inc.",
+		"mpnId": "5222048",
+		"websiteUrl": "https://www.fiveforty.fr",
+		"privacyUrl": "https://www.fiveforty.fr",
+		"termsOfUseUrl": "https://www.fiveforty.fr"
+	},
+	"icons": {
+		"color": "logo.png",
+		"outline": "logo-outline.png"
+	},
+	"name": {
+		"short": "DevFority",
+		"full": "DevFority-AI"
+	},
+	"description": {
+		"short": "Fority, the Fiveforty AI assistant",
+		"full": "Fiveforty AI assistant that will help you in your daily tasks."
+	},
+	"accentColor": "#FFFFFF",
+	"bots": [
+		{
+			"botId": "a40fe8ec-7866-43bd-acf7-4801ddac0323",
+			"scopes": [
+				"personal",
+				"team",
+				"groupchat"
+			],
+			"supportsFiles": false,
+			"isNotificationOnly": false,
+			"commandLists": [
+				{
+					"scopes": [
+						"personal",
+						"team",
+						"groupchat"
+					],
+					"commands": [
+						{
+							"title": "Fority",
+							"description": "Talk to Fiveforty AI Assistant"
+						},
+						{
+							"title": "Echo",
+							"description": "A echo test command"
+						}
+					]
+				}
+			]
+		}
+	],
+	"composeExtensions": [
+		{
+			"botId": "e9a7629f-a728-4dbf-8f19-6bc70abe635b",
+			"commands": [
+				{
+					"id": "createCard",
+					"type": "action",
+					"context": [ "compose" ],
+					"description": "Command to run action to create a Card from Compose Box",
+					"title": "Create Card",
+					"parameters": [
+						{
+							"name": "title",
+							"title": "Card title",
+							"description": "Title for the card",
+							"inputType": "text"
+						},
+						{
+							"name": "subTitle",
+							"title": "Subtitle",
+							"description": "Subtitle for the card",
+							"inputType": "text"
+						},
+						{
+							"name": "text",
+							"title": "Text",
+							"description": "Text for the card",
+							"inputType": "textarea"
+						}
+					]
+				},
+				{
+					"id": "shareMessage",
+					"type": "action",
+					"context": [ "message" ],
+					"description": "Test command to run action on message context (message sharing)",
+					"title": "Share Message",
+					"parameters": [
+						{
+							"name": "includeImage",
+							"title": "Include Image",
+							"description": "Include image in Hero Card",
+							"inputType": "toggle"
+						}
+					]
+				},
+				{
+					"id": "FetchRoster",
+					"description": "Fetch the conversation roster",
+					"title": "FetchRoster",
+					"type": "action",
+					"fetchTask": true,
+					"context": [ "compose" ]
+				},
+				{
+					"id": "createAdaptiveCard",
+					"type": "action",
+					"context": [ "compose" ],
+					"description": "Command to run action to create a Card from Compose Box",
+					"title": "Adaptive Card",
+					"parameters": [
+						{
+							"name": "title",
+							"title": "Name",
+							"description": "Name of the User",
+							"inputType": "text"
+						},
+						{
+							"name": "subTitle",
+							"title": "Designation",
+							"description": "Designation of the User",
+							"inputType": "text"
+						},
+						{
+							"name": "text",
+							"title": "Description",
+							"description": "Description",
+							"inputType": "textarea"
+						}
+					]
+				},
+				{
+					"id": "webView",
+					"description": "Fetch the Web View",
+					"title": "Web View",
+					"type": "action",
+					"fetchTask": true,
+					"context": [ "compose" ]
+				},
+				{
+					"id": "HTML",
+					"description": "Fetch the HTML",
+					"title": "HTML",
+					"type": "action",
+					"fetchTask": true,
+					"context": [ "compose" ]
+				},
+				{
+					"id": "razorView",
+					"description": "Fetch the Razor View",
+					"title": "Razor View",
+					"type": "action",
+					"fetchTask": true,
+					"context": [ "compose" ]
+				},
+				{
+					"id": "create-reminder",
+					"description": "Fetch create-reminder task module",
+					"title": "Create-reminder",
+					"type": "action",
+					"fetchTask": true,
+					"context": [ "message" ]
+				},
+				{
+					"id": "searchQuery",
+					"context": [
+						"compose",
+						"commandBox"
+					],
+					"description": "Test command to run query",
+					"title": "Search",
+					"type": "query",
+					"initialRun": true,
+					"parameters": [
+						{
+							"name": "searchQuery",
+							"title": "Search Query",
+							"description": "Your search query",
+							"inputType": "text"
+						}
+					]
+				},
+				{
+					"id": "createWithPreview",
+					"type": "action",
+					"title": "Create Card",
+					"description": "Example of creating a Card",
+					"initialRun": false,
+					"fetchTask": true,
+					"context": [
+						"commandBox",
+						"compose",
+						"message"
+					],
+					"parameters": [
+						{
+							"name": "param",
+							"title": "param",
+							"description": ""
+						}
+					]
+				}
+			]
+		}
+	],
+	"configurableTabs": [],
+	"staticTabs": [],
+	"permissions": [
+		"identity",
+		"messageTeamMembers"
+	],
+	"validDomains": []
+}
