@@ -11,25 +11,25 @@ using Microsoft.TeamsFx.Conversation;
 using Newtonsoft.Json;
 
 /// <summary>
-/// The <see cref="HelloWorldCommandHandler"/> registers a pattern with the <see cref="ITeamsCommandHandler"/> and
+/// The <see cref="EchoCommandHandler"/> registers a pattern with the <see cref="ITeamsCommandHandler"/> and
 /// responds with an Adaptive Card if the user types the <see cref="TriggerPatterns"/>.
 /// </summary>
-public class HelloWorldCommandHandler : ITeamsCommandHandler
+public class EchoCommandHandler : ITeamsCommandHandler
 {
-    private readonly string _adaptiveCardFilePath = Path.Combine(".", "Resources", "HelloWorldCard.json");
-    private readonly ILogger<HelloWorldCommandHandler> _logger;
+    private readonly string _adaptiveCardFilePath = Path.Combine(".", "Resources", "EchoCard.json");
+    private readonly ILogger<EchoCommandHandler> _logger;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="HelloWorldCommandHandler"/> class.
+    /// Initializes a new instance of the <see cref="EchoCommandHandler"/> class.
     /// </summary>
     /// <param name="logger"></param>
-    public HelloWorldCommandHandler(ILogger<HelloWorldCommandHandler> logger) => _logger = logger;
+    public EchoCommandHandler(ILogger<EchoCommandHandler> logger) => _logger = logger;
 
     /// <inheritdoc/>
     public IEnumerable<ITriggerPattern> TriggerPatterns => new List<ITriggerPattern>
     {
-        // Used to trigger the command handler if the command text contains 'helloWorld'
-        new RegExpTrigger("helloWorld"),
+        // Used to trigger the command handler if the command text contains 'Echo'
+        new RegExpTrigger("Echo"),
     };
 
     /// <inheritdoc/>
@@ -42,10 +42,10 @@ public class HelloWorldCommandHandler : ITeamsCommandHandler
 
         // Render adaptive card content
         string cardContent = new AdaptiveCardTemplate(cardTemplate).Expand(
-            new HelloWorldModel
+            new EchoModel
             {
-                Title = "Your Hello World App is Running",
-                Body = "Congratulations! Your Hello World App is running. Open the documentation below to learn more about how to build applications with the Teams Toolkit.",
+                Title = "Echo, the Fiveforty AI Assistant",
+                Body = $"Hello.\n{message.Text}",
             });
 
         // Build attachment

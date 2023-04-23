@@ -11,9 +11,11 @@
 		<ContainerEnvironmentVariable Include="DaprEventBus__Name" Value="event-bus" />
 		<ContainerEnvironmentVariable Include="DaprNotificationBus__Name" Value="notification-bus" />
 		<ContainerEnvironmentVariable Include="DaprRequestBus__Name" Value="request-bus" />
+		<ContainerEnvironmentVariable Include="DOTNET_URLS" Value="http://+:80" />
+		<ContainerEnvironmentVariable Include="ASPNETCORE_URLS" Value="http://+:80" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Man.Dapr.Sidekick.AspNetCore" Version="1.2.1" />
+		<PackageReference Include="Man.Dapr.Sidekick.AspNetCore" Version="$(ManDaprSidekickVersion)" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Hexalith.Extensions" Version="$(HexalithVersion)" />

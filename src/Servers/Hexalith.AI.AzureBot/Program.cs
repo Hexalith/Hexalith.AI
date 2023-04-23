@@ -1,21 +1,31 @@
+using Hexalith.AI.AzureBot;
+using Hexalith.AI.AzureBot.Commands;
+using Hexalith.Infrastructure.WebApis.Helpers;
+
+using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Integration.AspNet.Core;
 using Microsoft.Bot.Connector.Authentication;
 using Microsoft.TeamsFx.Conversation;
-using Microsoft.Bot.Builder;
-using Hexalith.AI.AzureBot;
-using Hexalith.AI.AzureBot.Commands;
 
-var builder = WebApplication.CreateBuilder(args);
+using Serilog;
 
-builder.Services.AddControllers();
+const string appName = "Hexalith AI Azure Bot";
+
+#if DEBUG
+bool debugInVisualStudio = true;
+#else
+bool debugInVisualStudio = false;
+#endif
+
+WebApplicationBuilder builder = HexalithWebApi.CreateApplication(
+    appName,
+    "v1",
+    debugInVisualStudio,
+    (actors) => { },
+    args);
+
 builder.Services.AddHttpClient("WebClient", client => client.Timeout = TimeSpan.FromSeconds(600));
 builder.Services.AddHttpContextAccessor();
-
-// Prepare Configuration for ConfigurationBotFrameworkAuthentication
-var config = builder.Configuration.Get<ConfigOptions>();
-builder.Configuration["MicrosoftAppType"] = "MultiTenant";
-builder.Configuration["MicrosoftAppId"] = config.BOT_ID;
-builder.Configuration["MicrosoftAppPassword"] = config.BOT_PASSWORD;
 
 // Create the Bot Framework Authentication to be used with the Bot Adapter.
 builder.Services.AddSingleton<BotFrameworkAuthentication, ConfigurationBotFrameworkAuthentication>();
@@ -28,16 +38,17 @@ builder.Services.AddSingleton<IBotFrameworkHttpAdapter>(sp => sp.GetService<Clou
 builder.Services.AddSingleton<BotAdapter>(sp => sp.GetService<CloudAdapter>());
 
 // Create command handlers and the Conversation with command-response feature enabled.
-builder.Services.AddSingleton<HelloWorldCommandHandler>();
+builder.Services.AddSingleton<EchoCommandHandler>();
+builder.Services.AddSingleton<ForityCommandHandler>();
 builder.Services.AddSingleton(sp =>
 {
-    var options = new ConversationOptions()
+    ConversationOptions options = new()
     {
         Adapter = sp.GetService<CloudAdapter>(),
         Command = new CommandOptions()
         {
-            Commands = new List<ITeamsCommandHandler> { sp.GetService<HelloWorldCommandHandler>() }
-        }
+            Commands = new List<ITeamsCommandHandler> { sp.GetService<EchoCommandHandler>(), sp.GetService<ForityCommandHandler>() },
+        },
     };
 
     return new ConversationBot(options);
@@ -46,18 +57,23 @@ builder.Services.AddSingleton(sp =>
 // Create the bot as a transient. In this case the ASP Controller is expecting an IBot.
 builder.Services.AddTransient<IBot, TeamsBot>();
 
-var app = builder.Build();
+WebApplication app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseDeveloperExceptionPage();
-}
-
+app.UseHexalith();
 app.UseStaticFiles();
-app.UseRouting();
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllers();
-});
 
-app.Run();
+Log.Logger.Information("Starting {AppName}.", appName);
+
+try
+{
+    await app.RunAsync().ConfigureAwait(false);
+}
+catch (Exception ex)
+{
+    Log.Logger.Fatal(ex, "Error starting {AppName}.", appName);
+    throw;
+}
+finally
+{
+    Log.Logger.Information("{AppName}, is stopped.", appName);
+}

@@ -1,11 +1,12 @@
 {
-	"$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.14/MicrosoftTeams.schema.json",
-	"manifestVersion": "1.14",
-	"version": "1.0.0",
-	"id": "a92abd74-e3c4-403d-8416-e1a12c6b261b",
+	"$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.16/MicrosoftTeams.schema.json",
+	"manifestVersion": "1.16",
+	"version": "1.0.3",
+	"id": "e9a7629f-a728-4dbf-8f19-6bc70abe635b",
 	"packageName": "com.microsoft.teams.extension",
 	"developer": {
 		"name": "Fiveforty Inc.",
+		"mpnId": "5222048",
 		"websiteUrl": "https://www.fiveforty.fr",
 		"privacyUrl": "https://www.fiveforty.fr",
 		"termsOfUseUrl": "https://www.fiveforty.fr"
@@ -15,17 +16,17 @@
 		"outline": "logo-outline.png"
 	},
 	"name": {
-		"short": "Fority",
-		"full": "Fority-AI"
+		"short": "DevFority",
+		"full": "DevFority-AI"
 	},
 	"description": {
 		"short": "Fority, the Fiveforty AI assistant",
-		"full": "Fority, the Fiveforty AI assistant that will help you in your daily tasks"
+		"full": "Fiveforty AI assistant that will help you in your daily tasks."
 	},
 	"accentColor": "#FFFFFF",
 	"bots": [
 		{
-			"botId": "a92abd74-e3c4-403d-8416-e1a12c6b261b",
+			"botId": "a40fe8ec-7866-43bd-acf7-4801ddac0323",
 			"scopes": [
 				"personal",
 				"team",
@@ -42,8 +43,12 @@
 					],
 					"commands": [
 						{
-							"title": "helloWorld",
-							"description": "A helloworld command to send a welcome message"
+							"title": "Fority",
+							"description": "Talk to Fiveforty AI Assistant"
+						},
+						{
+							"title": "Echo",
+							"description": "A echo test command"
 						}
 					]
 				}

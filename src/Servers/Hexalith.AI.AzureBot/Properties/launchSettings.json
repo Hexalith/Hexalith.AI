@@ -5,14 +5,17 @@
 			"commandName": "Project",
 			"dotnetRunMessages": true,
 			"launchBrowser": true,
-			"launchUrl": "https://teams.microsoft.com/l/app/f39b0401-6f33-42c8-b2e6-44fd3be5edc7?installAppPackage=true&webjoin=true&appTenantId=ee7b4ccb-8e30-435c-9368-1fce958df645&login_hint=jpiquot@fiveforty.fr",
+			"launchUrl": "https://teams.microsoft.com/l/app/e9a7629f-a728-4dbf-8f19-6bc70abe635b?installAppPackage=true&webjoin=true&appTenantId=ee7b4ccb-8e30-435c-9368-1fce958df645&login_hint=jpiquot@fiveforty.fr",
 			"applicationUrl": "http://localhost:5130",
 			"environmentVariables": {
-				"ASPNETCORE_ENVIRONMENT": "Development"
+				"ASPNETCORE_ENVIRONMENT": "Development",
+				"DOTNET_URLS": "http://+:80",
+				"ASPNETCORE_URLS": "http://+:80"
 			},
 			"hotReloadProfile": "aspnetcore"
-		},
-		"Start Project (not in Teams)": {
+		}
+		/*
+		,"Start Project (not in Teams)": {
 			"commandName": "Project",
 			"dotnetRunMessages": true,
 			"applicationUrl": "https://localhost:7130;http://localhost:5130",
@@ -21,5 +24,6 @@
 			},
 			"hotReloadProfile": "aspnetcore"
 		}
+	*/
 	}
 }

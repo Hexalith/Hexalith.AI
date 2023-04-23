@@ -31,9 +31,11 @@
 		<MicrosoftVisualStudioThreadingAnalyzersVersion>17.5.*</MicrosoftVisualStudioThreadingAnalyzersVersion>
 		<StyleCopAnalyzersVersion>1.2.0-beta.435</StyleCopAnalyzersVersion>
 		<MicrosoftBotBuilderVersion>4.19.*</MicrosoftBotBuilderVersion>
-		<AdaptiveCardsTemplatingVersion>1.3.1</AdaptiveCardsTemplatingVersion>
+		<AdaptiveCardsVersion>3.0.0</AdaptiveCardsVersion>
+		<AdaptiveCardsTemplatingVersion>1.4.0</AdaptiveCardsTemplatingVersion>
 		<MicrosoftTeamsFxVersion>1.2.*</MicrosoftTeamsFxVersion>
 		<ADotNetVersion>2.1.2</ADotNetVersion>
+		<ManDaprSidekickVersion>1.2.1</ManDaprSidekickVersion>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(BuildingInsideVisualStudio)' == 'true' or '$(BuildingByReSharper)' == 'true'">
 		<HexalithVersion>1.0.0-local</HexalithVersion>

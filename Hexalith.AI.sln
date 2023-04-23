@@ -10,7 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{261308D1-001
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Servers", "Servers", "{3849A464-DA83-4B75-9B1B-5942FF4DC723}"
 	ProjectSection(SolutionItems) = preProject
-		src\Teams\Directory.Build.props = src\Teams\Directory.Build.props
+		src\Servers\Directory.Build.props = src\Servers\Directory.Build.props
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deploy", "Deploy", "{BFCE8507-9620-4745-9C6E-89848F5F9235}"

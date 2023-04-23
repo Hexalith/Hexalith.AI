@@ -3,8 +3,10 @@
 		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
 		<ContainerImageName>hexalith-ai-azure-bot</ContainerImageName>
 		<EnableSdkContainerSupport>true</EnableSdkContainerSupport>
-	</PropertyGroup>
+	  <UserSecretsId>c147cbe5-9277-4c00-a412-08aee3eb0879</UserSecretsId>
+  </PropertyGroup>
 	<ItemGroup>
+		<PackageReference Include="AdaptiveCards" Version="$(AdaptiveCardsVersion)" />
 		<PackageReference Include="AdaptiveCards.Templating" Version="$(AdaptiveCardsTemplatingVersion)" />
 		<PackageReference Include="Microsoft.Bot.Builder.Integration.AspNet.Core" Version="$(MicrosoftBotBuilderVersion)" />
 		<PackageReference Include="Microsoft.TeamsFx" Version="$(MicrosoftTeamsFxVersion)" />
