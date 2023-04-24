@@ -1,8 +1,8 @@
 {
 	"$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.16/MicrosoftTeams.schema.json",
 	"manifestVersion": "1.16",
-	"version": "1.0.4",
-	"id": "e9a7629f-a728-4dbf-8f19-6bc70abe635b",
+	"version": "1.0.1",
+	"id": "403ab9b1-63dd-4818-8856-e2baeb605904",
 	"packageName": "com.microsoft.teams.extension",
 	"developer": {
 		"name": "Fiveforty Inc.",
@@ -13,11 +13,11 @@
 	},
 	"icons": {
 		"color": "logo.png",
-		"outline": "logo-outline.png"
+		"outline": "outline.png"
 	},
 	"name": {
-		"short": "DevFority",
-		"full": "DevFority-AI"
+		"short": "Fority",
+		"full": "Fority-AI"
 	},
 	"description": {
 		"short": "Fority, the Fiveforty AI assistant",
@@ -26,7 +26,7 @@
 	"accentColor": "#FFFFFF",
 	"bots": [
 		{
-			"botId": "a40fe8ec-7866-43bd-acf7-4801ddac0323",
+			"botId": "a92abd74-e3c4-403d-8416-e1a12c6b261b",
 			"scopes": [
 				"personal",
 				"team",
@@ -57,7 +57,7 @@
 	],
 	"composeExtensions": [
 		{
-			"botId": "e9a7629f-a728-4dbf-8f19-6bc70abe635b",
+			"botId": "a92abd74-e3c4-403d-8416-e1a12c6b261b",
 			"commands": [
 				{
 					"id": "createCard",
