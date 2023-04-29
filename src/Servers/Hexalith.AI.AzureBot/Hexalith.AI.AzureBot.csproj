@@ -6,14 +6,29 @@
 	  <UserSecretsId>c147cbe5-9277-4c00-a412-08aee3eb0879</UserSecretsId>
   </PropertyGroup>
 	<ItemGroup>
+	  <Compile Remove="GlobalAdministrations\NewFolder\**" />
+	  <Content Remove="GlobalAdministrations\NewFolder\**" />
+	  <EmbeddedResource Remove="GlobalAdministrations\NewFolder\**" />
+	  <None Remove="GlobalAdministrations\NewFolder\**" />
+	</ItemGroup>
+	<ItemGroup>
 		<PackageReference Include="AdaptiveCards" Version="$(AdaptiveCardsVersion)" />
 		<PackageReference Include="AdaptiveCards.Templating" Version="$(AdaptiveCardsTemplatingVersion)" />
+		<PackageReference Include="Dapr.Actors" Version="$(DaprVersion)" />
 		<PackageReference Include="Microsoft.Bot.Builder.Integration.AspNet.Core" Version="$(MicrosoftBotBuilderVersion)" />
 		<PackageReference Include="Microsoft.TeamsFx" Version="$(MicrosoftTeamsFxVersion)" />
 		<PackageReference Include="Microsoft.SemanticKernel" Version="$(MicrosoftSemanticKernelVersion)" />
 	</ItemGroup>
 	<ItemGroup>
+	  <Folder Include="Application\Accounts\Commands\" />
+	  <Folder Include="Application\Administration\Commands\" />
+	  <Folder Include="Domain\DevOps\" />
+	  <Folder Include="Domain\Users\" />
+	  <Folder Include="Domain\Tenants\" />
+	  <Folder Include="GlobalAdministrations\Application\Commands\" />
+	  <Folder Include="GlobalAdministrations\Infrastructure\Services\" />
 	  <Folder Include="Infrastructure\AI\Configuration\" />
+	  <Folder Include="Infrastructure\Security\" />
 	  <Folder Include="Infrastructure\SemanticKernel\Helpers\" />
 	  <Folder Include="Skills\Fority\" />
 	</ItemGroup>

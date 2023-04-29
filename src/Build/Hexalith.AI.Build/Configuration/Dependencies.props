@@ -33,7 +33,7 @@
 		<MicrosoftBotBuilderVersion>4.19.*</MicrosoftBotBuilderVersion>
 		<AdaptiveCardsVersion>3.0.0</AdaptiveCardsVersion>
 		<AdaptiveCardsTemplatingVersion>1.4.0</AdaptiveCardsTemplatingVersion>
-		<MicrosoftTeamsFxVersion>1.2.*</MicrosoftTeamsFxVersion>
+		<MicrosoftTeamsFxVersion>2.0.*</MicrosoftTeamsFxVersion>
 		<ADotNetVersion>2.1.2</ADotNetVersion>
 		<ManDaprSidekickVersion>1.2.1</ManDaprSidekickVersion>
 		<MicrosoftSemanticKernelVersion>0.12.207.1-preview</MicrosoftSemanticKernelVersion>
@@ -42,7 +42,7 @@
 		<HexalithVersion>1.0.0-local</HexalithVersion>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(BuildingInsideVisualStudio)' != 'true' and '$(BuildingByReSharper)' != 'true'">
-		<HexalithVersion>0.4.*</HexalithVersion>
+		<HexalithVersion>0.5.*</HexalithVersion>
 		<DaprVersion>1.10.*</DaprVersion>
 	</PropertyGroup>
 </Project>
