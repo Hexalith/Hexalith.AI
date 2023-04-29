@@ -37,12 +37,12 @@
 		<ADotNetVersion>2.1.2</ADotNetVersion>
 		<ManDaprSidekickVersion>1.2.1</ManDaprSidekickVersion>
 		<MicrosoftSemanticKernelVersion>0.12.207.1-preview</MicrosoftSemanticKernelVersion>
+		<DaprVersion>1.10.*</DaprVersion>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(BuildingInsideVisualStudio)' == 'true' or '$(BuildingByReSharper)' == 'true'">
 		<HexalithVersion>1.0.0-local</HexalithVersion>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(BuildingInsideVisualStudio)' != 'true' and '$(BuildingByReSharper)' != 'true'">
 		<HexalithVersion>0.5.*</HexalithVersion>
-		<DaprVersion>1.10.*</DaprVersion>
 	</PropertyGroup>
 </Project>
