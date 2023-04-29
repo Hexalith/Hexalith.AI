@@ -20,16 +20,8 @@
 		<PackageReference Include="Microsoft.SemanticKernel" Version="$(MicrosoftSemanticKernelVersion)" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Application\Accounts\Commands\" />
-	  <Folder Include="Application\Administration\Commands\" />
-	  <Folder Include="Domain\DevOps\" />
-	  <Folder Include="Domain\Users\" />
-	  <Folder Include="Domain\Tenants\" />
 	  <Folder Include="GlobalAdministrations\Application\Commands\" />
 	  <Folder Include="GlobalAdministrations\Infrastructure\Services\" />
-	  <Folder Include="Infrastructure\AI\Configuration\" />
-	  <Folder Include="Infrastructure\Security\" />
-	  <Folder Include="Infrastructure\SemanticKernel\Helpers\" />
-	  <Folder Include="Skills\Fority\" />
+	  <Folder Include="SemanticKernel\Helpers\" />
 	</ItemGroup>
 </Project>

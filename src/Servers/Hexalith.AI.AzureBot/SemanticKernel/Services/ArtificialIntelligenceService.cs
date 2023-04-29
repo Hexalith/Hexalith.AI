@@ -1,6 +1,7 @@
-﻿namespace Hexalith.AI.AzureBot.Infrastructure.SemanticKernel.Services;
+﻿namespace Hexalith.AI.AzureBot.SemanticKernel.Services;
 
-using Hexalith.AI.AzureBot.Infrastructure.SemanticKernel.Configurations;
+using Hexalith.AI.AzureBot.SemanticKernel;
+using Hexalith.AI.AzureBot.SemanticKernel.Configurations;
 
 using Microsoft.Extensions.Options;
 using Microsoft.SemanticKernel;

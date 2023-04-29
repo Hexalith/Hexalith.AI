@@ -11,7 +11,8 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Hexalith.AI.AzureBot.Infrastructure.Accounts;
+
+namespace Hexalith.AI.AzureBot.Accounts.Infrastructure;
 
 using Dapr.Actors;
 

@@ -11,7 +11,7 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Hexalith.AI.AzureBot.Domain.Accounts.Events;
+namespace Hexalith.AI.AzureBot.Accounts.Domain.Events;
 
 using System.Collections.Generic;
 using System.Diagnostics;

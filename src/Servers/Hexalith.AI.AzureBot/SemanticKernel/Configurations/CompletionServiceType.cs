@@ -12,7 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.AI.AzureBot.Infrastructure.SemanticKernel.Configurations;
+namespace Hexalith.AI.AzureBot.SemanticKernel.Configurations;
 
 /// <summary>
 /// Enum CompletionServiceType.

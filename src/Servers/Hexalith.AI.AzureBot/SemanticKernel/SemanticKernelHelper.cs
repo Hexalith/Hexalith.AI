@@ -11,11 +11,11 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Hexalith.AI.AzureBot.Infrastructure.SemanticKernel;
+
+namespace Hexalith.AI.AzureBot.SemanticKernel;
 
 using System.Diagnostics.CodeAnalysis;
-
-using Hexalith.AI.AzureBot.Infrastructure.SemanticKernel.Configurations;
+using Hexalith.AI.AzureBot.SemanticKernel.Configurations;
 using Hexalith.Extensions.Configuration;
 
 using Microsoft.SemanticKernel;

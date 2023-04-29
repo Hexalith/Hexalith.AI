@@ -12,7 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.AI.AzureBot.Controllers;
+namespace Hexalith.AI.AzureBot.Bot.Infrastructure;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Bot.Builder;
@@ -31,12 +31,12 @@ public class BotController : ControllerBase
     /// <summary>
     /// The bot.
     /// </summary>
-    private readonly IBot bot;
+    private readonly IBot _bot;
 
     /// <summary>
     /// The conversation.
     /// </summary>
-    private readonly ConversationBot conversation;
+    private readonly ConversationBot _conversation;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="BotController"/> class.
@@ -45,8 +45,8 @@ public class BotController : ControllerBase
     /// <param name="bot">The bot.</param>
     public BotController(ConversationBot conversation, IBot bot)
     {
-        this.conversation = conversation;
-        this.bot = bot;
+        _conversation = conversation;
+        _bot = bot;
     }
 
     /// <summary>
@@ -57,11 +57,14 @@ public class BotController : ControllerBase
     [HttpPost]
     public async Task PostAsync(CancellationToken cancellationToken = default)
     {
-        await (conversation.Adapter as CloudAdapter)
+        CloudAdapter adapter = _conversation.Adapter as CloudAdapter
+            ?? throw new InvalidOperationException("The adapter is not a CloudAdapter");
+
+        await adapter
             .ProcessAsync(
                 Request,
                 Response,
-                bot,
+                _bot,
                 cancellationToken)
             .ConfigureAwait(false);
     }

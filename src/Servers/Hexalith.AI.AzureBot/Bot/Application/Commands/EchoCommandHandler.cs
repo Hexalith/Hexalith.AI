@@ -1,8 +1,8 @@
-﻿namespace Hexalith.AI.AzureBot.Commands;
+﻿namespace Hexalith.AI.AzureBot.Bot.Application.Commands;
 
 using AdaptiveCards.Templating;
 
-using Hexalith.AI.AzureBot.Models;
+using Hexalith.AI.AzureBot.Bot.Application.Models;
 
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Schema;

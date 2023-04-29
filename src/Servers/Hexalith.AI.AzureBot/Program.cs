@@ -1,8 +1,8 @@
-using Hexalith.AI.AzureBot;
-using Hexalith.AI.AzureBot.Commands;
+using Hexalith.AI.AzureBot.Bot.Application.Commands;
+using Hexalith.AI.AzureBot.Bot.Infrastructure;
 using Hexalith.AI.AzureBot.GlobalAdministrations.Infrastructure.Helpers;
-using Hexalith.AI.AzureBot.Infrastructure.SemanticKernel.Configurations;
-using Hexalith.AI.AzureBot.Infrastructure.SemanticKernel.Services;
+using Hexalith.AI.AzureBot.SemanticKernel.Configurations;
+using Hexalith.AI.AzureBot.SemanticKernel.Services;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.WebApis.Helpers;
 

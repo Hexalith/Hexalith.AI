@@ -1,4 +1,4 @@
-﻿namespace Hexalith.AI.AzureBot;
+﻿namespace Hexalith.AI.AzureBot.Bot.Infrastructure;
 
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Teams;

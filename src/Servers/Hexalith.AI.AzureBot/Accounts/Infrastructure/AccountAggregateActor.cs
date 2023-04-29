@@ -11,17 +11,17 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Hexalith.AI.AzureBot.Infrastructure.Accounts;
+namespace Hexalith.AI.AzureBot.Accounts.Infrastructure;
 
 using Dapr.Actors.Runtime;
 
 /// <summary>
 /// Class AccountAggregateActor.
 /// Implements the <see cref="Actor" />
-/// Implements the <see cref="Hexalith.AI.AzureBot.Infrastructure.Accounts.IAccountAggregateActor" />.
+/// Implements the <see cref="IAccountAggregateActor" />.
 /// </summary>
 /// <seealso cref="Actor" />
-/// <seealso cref="Hexalith.AI.AzureBot.Infrastructure.Accounts.IAccountAggregateActor" />
+/// <seealso cref="IAccountAggregateActor" />
 public class AccountAggregateActor : Actor, IAccountAggregateActor
 {
     /// <summary>

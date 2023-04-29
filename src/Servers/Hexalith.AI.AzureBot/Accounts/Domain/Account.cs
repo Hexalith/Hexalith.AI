@@ -11,24 +11,24 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Hexalith.AI.AzureBot.Domain.Accounts;
+namespace Hexalith.AI.AzureBot.Accounts.Domain;
 
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-using Hexalith.AI.AzureBot.Domain.Accounts.Events;
+using Hexalith.AI.AzureBot.Accounts.Domain.Events;
 using Hexalith.Domain.Abstractions.Aggregates;
 using Hexalith.Domain.Abstractions.Events;
 
 /// <summary>
 /// Class Account.
 /// Implements the <see cref="IAggregate" />
-/// Implements the <see cref="System.IEquatable{Hexalith.AI.AzureBot.Domain.Accounts.Account}" />.
+/// Implements the <see cref="IEquatable{Account}" />.
 /// </summary>
 /// <seealso cref="IAggregate" />
-/// <seealso cref="System.IEquatable{Hexalith.AI.AzureBot.Domain.Accounts.Account}" />
+/// <seealso cref="IEquatable{Account}" />
 [DebuggerDisplay("{Name} ({Domain})")]
 [DataContract]
 public record Account(string AggregateId, string Domain, string Name, IEnumerable<string> Administrators) : IAggregate
@@ -51,7 +51,7 @@ public record Account(string AggregateId, string Domain, string Name, IEnumerabl
     /// </summary>
     /// <param name="registered">The registered.</param>
     /// <returns>AccountRegistered.</returns>
-    /// <exception cref="System.ArgumentNullException"></exception>
+    /// <exception cref="ArgumentNullException"></exception>
     private static AccountRegistered Validate(AccountRegistered? registered)
     {
         ArgumentNullException.ThrowIfNull(registered);
@@ -63,7 +63,7 @@ public record Account(string AggregateId, string Domain, string Name, IEnumerabl
     /// </summary>
     /// <param name="domainEvent">The domain event.</param>
     /// <returns>Account.</returns>
-    /// <exception cref="System.ArgumentNullException"></exception>
+    /// <exception cref="ArgumentNullException"></exception>
     public IAggregate Apply([NotNull] BaseEvent domainEvent)
     {
         ArgumentNullException.ThrowIfNull(domainEvent);
