@@ -12,7 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.AI.AzureBot.Accounts.Application.Accounts.Commands;
+namespace Hexalith.AI.AzureBot.Accounts.Application.Commands;
 
 using System.Collections.Generic;
 using System.Text.Json.Serialization;

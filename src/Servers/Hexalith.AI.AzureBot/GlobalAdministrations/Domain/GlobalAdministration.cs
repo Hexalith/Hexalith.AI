@@ -21,6 +21,7 @@ using Hexalith.AI.AzureBot.GlobalAdministrations.Domain.Entities;
 using Hexalith.AI.AzureBot.GlobalAdministrations.Domain.Events;
 using Hexalith.Domain.Abstractions.Aggregates;
 using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Domain.Abstractions.Exceptions;
 
 /// <summary>
 /// Class GlobalAdministration.
@@ -60,11 +61,11 @@ public record GlobalAdministration(string AggregateName, string AggregateId, IEn
     public IAggregate Apply([NotNull] BaseEvent domainEvent)
     {
         ArgumentNullException.ThrowIfNull(domainEvent);
-        GlobalAdministration globalAdministration = new();
+        _ = new GlobalAdministration();
         return domainEvent switch
         {
             GlobalAdministratorRegistered e => Apply(e),
-            _ => throw new InvalidOperationException($"The event {domainEvent.TypeName} is not supported by aggregate {nameof(GlobalAdministration)}."),
+            _ => throw new InvalidAggregateEventException(this, domainEvent, false),
         };
     }
 

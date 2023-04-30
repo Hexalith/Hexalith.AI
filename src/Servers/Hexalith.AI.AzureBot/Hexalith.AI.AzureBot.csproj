@@ -20,8 +20,12 @@
 		<PackageReference Include="Microsoft.SemanticKernel" Version="$(MicrosoftSemanticKernelVersion)" />
 	</ItemGroup>
 	<ItemGroup>
+	  <Folder Include="Bot\Domain\" />
 	  <Folder Include="GlobalAdministrations\Application\Commands\" />
 	  <Folder Include="GlobalAdministrations\Infrastructure\Services\" />
 	  <Folder Include="SemanticKernel\Helpers\" />
+	  <Folder Include="UnitOfWork\Domain\UnitsOfWork\" />
+	  <Folder Include="UnitOfWork\Infrastructure\" />
+	  <Folder Include="UnitOfWork\Skills\Connectors\" />
 	</ItemGroup>
 </Project>

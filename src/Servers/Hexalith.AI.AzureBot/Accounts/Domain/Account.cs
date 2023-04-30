@@ -16,11 +16,12 @@ namespace Hexalith.AI.AzureBot.Accounts.Domain;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
 
 using Hexalith.AI.AzureBot.Accounts.Domain.Events;
 using Hexalith.Domain.Abstractions.Aggregates;
 using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Domain.Abstractions.Exceptions;
+using Hexalith.Extensions.Helpers;
 
 /// <summary>
 /// Class Account.
@@ -31,7 +32,13 @@ using Hexalith.Domain.Abstractions.Events;
 /// <seealso cref="IEquatable{Account}" />
 [DebuggerDisplay("{Name} ({Domain})")]
 [DataContract]
-public record Account(string AggregateId, string Domain, string Name, IEnumerable<string> Administrators) : IAggregate
+public record Account(
+    string AggregateId,
+    string AggregateName,
+    string Name,
+    IEnumerable<Domain> Domains,
+    IEnumerable<Tenant> Tenants,
+    IEnumerable<string> Administrators) : IAggregate
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="Account" /> class.
@@ -39,23 +46,13 @@ public record Account(string AggregateId, string Domain, string Name, IEnumerabl
     /// <param name="registered">The registered.</param>
     public Account(AccountRegistered registered)
         : this(
+              nameof(Account),
               (registered ?? throw new ArgumentNullException(nameof(registered))).AggregateId,
-              registered.Domain,
               registered.Name,
-              registered.Administrators)
+              new Domain(registered.Domain).IntoArray(),
+              Array.Empty<Tenant>(),
+              Array.Empty<string>())
     {
-    }
-
-    /// <summary>
-    /// Validates the specified registered.
-    /// </summary>
-    /// <param name="registered">The registered.</param>
-    /// <returns>AccountRegistered.</returns>
-    /// <exception cref="ArgumentNullException"></exception>
-    private static AccountRegistered Validate(AccountRegistered? registered)
-    {
-        ArgumentNullException.ThrowIfNull(registered);
-        return registered;
     }
 
     /// <summary>
@@ -69,13 +66,8 @@ public record Account(string AggregateId, string Domain, string Name, IEnumerabl
         ArgumentNullException.ThrowIfNull(domainEvent);
         return domainEvent switch
         {
-            AccountRegistered e => Apply(e),
-            _ => throw new InvalidOperationException($"The event {domainEvent.TypeName} is not supported by aggregate {nameof(Account)}."),
+            AccountRegistered => throw new InvalidAggregateEventException(this, domainEvent, true),
+            _ => throw new InvalidAggregateEventException(this, domainEvent, false),
         };
     }
-
-    /// <inheritdoc/>
-    [IgnoreDataMember]
-    [JsonIgnore]
-    public string AggregateName => nameof(Account);
 }
