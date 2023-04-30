@@ -5,5 +5,9 @@
 		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
 	</PropertyGroup>
 
+	<ItemGroup>
+	  <Folder Include="Scripts\" />
+	</ItemGroup>
+
 
 </Project>

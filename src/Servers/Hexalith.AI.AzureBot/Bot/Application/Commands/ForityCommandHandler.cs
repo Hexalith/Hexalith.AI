@@ -4,7 +4,7 @@
 // Created          : 04-22-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 04-23-2023
+// Last Modified On : 04-29-2023
 // ***********************************************************************
 // <copyright file="ForityCommandHandler.cs" company="Fiveforty">
 //     Copyright (c) Fiveforty S.A.S.. All rights reserved.
@@ -35,7 +35,7 @@ public class ForityCommandHandler : ITeamsCommandHandler
     /// <summary>
     /// The adaptive card file path.
     /// </summary>
-    private readonly string _adaptiveCardFilePath = Path.Combine(".", "Resources", "ForityCard.json");
+    private readonly string _adaptiveCardFilePath = Path.Combine(".", "Bot", "Application", "Resources", "ForityCard.json");
 
     /// <summary>
     /// The ai service.

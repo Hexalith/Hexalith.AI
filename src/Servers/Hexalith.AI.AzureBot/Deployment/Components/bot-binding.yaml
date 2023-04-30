@@ -1,0 +1,16 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: bot-binding
+spec:
+  type: bindings.azure.servicebusqueues
+  version: v1
+  metadata:
+    - name: connectionString # Required when not using Azure Authentication.
+      secretKeyRef:
+        name: "AzureBot:AzureServiceBus:ConnectionString"
+        key: "AzureBot:AzureServiceBus:ConnectionString"
+    - name: queueName # Required when not using Azure Authentication.
+      value: bot
+auth:
+  secretStore: secretstore

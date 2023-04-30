@@ -51,7 +51,11 @@ builder.Services.AddSingleton(sp =>
         Adapter = sp.GetService<CloudAdapter>(),
         Command = new CommandOptions()
         {
-            Commands = new List<ITeamsCommandHandler> { sp.GetService<EchoCommandHandler>(), sp.GetService<ForityCommandHandler>() },
+            Commands = new List<ITeamsCommandHandler>
+            {
+                sp.GetService<EchoCommandHandler>(),
+                sp.GetService<ForityCommandHandler>()
+            },
         },
     };
 

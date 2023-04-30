@@ -32,7 +32,7 @@
 				"team",
 				"groupchat"
 			],
-			"supportsFiles": false,
+			"supportsFiles": true,
 			"isNotificationOnly": false,
 			"commandLists": [
 				{
@@ -43,8 +43,12 @@
 					],
 					"commands": [
 						{
-							"title": "Fority",
-							"description": "Talk to Fiveforty AI Assistant"
+							"title": "Work",
+							"description": "Manage your work in Azure DevOps"
+						},
+						{
+							"title": "Time",
+							"description": "Manage your work time and leave"
 						},
 						{
 							"title": "Echo",

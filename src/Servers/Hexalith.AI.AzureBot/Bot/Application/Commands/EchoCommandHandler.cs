@@ -1,4 +1,17 @@
-﻿namespace Hexalith.AI.AzureBot.Bot.Application.Commands;
+﻿// ***********************************************************************
+// Assembly         : Hexalith.AI.AzureBot
+// Author           : Jérôme Piquot
+// Created          : 04-29-2023
+//
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 04-29-2023
+// ***********************************************************************
+// <copyright file="EchoCommandHandler.cs" company="Fiveforty">
+//     Copyright (c) Fiveforty S.A.S.. All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+namespace Hexalith.AI.AzureBot.Bot.Application.Commands;
 
 using AdaptiveCards.Templating;
 
@@ -11,18 +24,25 @@ using Microsoft.TeamsFx.Conversation;
 using Newtonsoft.Json;
 
 /// <summary>
-/// The <see cref="EchoCommandHandler"/> registers a pattern with the <see cref="ITeamsCommandHandler"/> and
-/// responds with an Adaptive Card if the user types the <see cref="TriggerPatterns"/>.
+/// The <see cref="EchoCommandHandler" /> registers a pattern with the <see cref="ITeamsCommandHandler" /> and
+/// responds with an Adaptive Card if the user types the <see cref="TriggerPatterns" />.
 /// </summary>
 public class EchoCommandHandler : ITeamsCommandHandler
 {
-    private readonly string _adaptiveCardFilePath = Path.Combine(".", "Resources", "EchoCard.json");
+    /// <summary>
+    /// The adaptive card file path.
+    /// </summary>
+    private readonly string _adaptiveCardFilePath = Path.Combine(".", "Bot", "Application", "Resources", "EchoCard.json");
+
+    /// <summary>
+    /// The logger.
+    /// </summary>
     private readonly ILogger<EchoCommandHandler> _logger;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="EchoCommandHandler"/> class.
+    /// Initializes a new instance of the <see cref="EchoCommandHandler" /> class.
     /// </summary>
-    /// <param name="logger"></param>
+    /// <param name="logger">The logger.</param>
     public EchoCommandHandler(ILogger<EchoCommandHandler> logger) => _logger = logger;
 
     /// <inheritdoc/>
