@@ -4,9 +4,9 @@
 // Created          : 04-24-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 04-25-2023
+// Last Modified On : 05-02-2023
 // ***********************************************************************
-// <copyright file="RegisterAccount.cs" company="Fiveforty">
+// <copyright file="RegisterAccountDomain - Copy.cs" company="Fiveforty">
 //     Copyright (c) Fiveforty S.A.S.. All rights reserved.
 // </copyright>
 // <summary></summary>
@@ -16,24 +16,31 @@ namespace Hexalith.AI.AzureBot.Accounts.Application.Commands;
 
 using System.Text.Json.Serialization;
 
-using Hexalith.Domain.Abstractions.Events;
-
 /// <summary>
 /// Class AccountRegistered.
 /// Implements the <see cref="BaseEvent" />.
 /// </summary>
 /// <seealso cref="BaseEvent" />
-public class RegisterAccount : AccountCommand
+public class RegisterAccountUser : AccountCommand
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="RegisterAccount"/> class.
+    /// Initializes a new instance of the <see cref="RegisterAccountUser" /> class.
     /// </summary>
-    /// <param name="domain">The domain.</param>
     /// <param name="name">The name.</param>
-    /// <param name="administrators">The administrators.</param>
+    /// <param name="email">The email.</param>
     [JsonConstructor]
-    public RegisterAccount(string name)
-        : base(name)
-    {
-    }
+    public RegisterAccountUser(string name, string email)
+        : base(name) => Email = email;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="RegisterAccountUser" /> class.
+    /// </summary>
+    [Obsolete("For serialization only", true)]
+    public RegisterAccountUser() => Email = string.Empty;
+
+    /// <summary>
+    /// Gets the email.
+    /// </summary>
+    /// <value>The email.</value>
+    public string Email { get; }
 }

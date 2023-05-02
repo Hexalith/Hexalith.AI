@@ -76,6 +76,10 @@ public class TeamsBot : TeamsActivityHandler
             return;
         }
 
+        if (await _userService.IsRegisteredAsync(string.Empty, cancellationToken).ConfigureAwait(false))
+        {
+        }
+
         // Read adaptive card template
         IChatCompletion chat = _artificialIntelligenceService.Kernel.GetService<IChatCompletion>("GPT");
         OpenAIChatHistory conversation = (OpenAIChatHistory)chat.CreateNewChat("The following is a conversation with Fority, the Fiveforty company AI assistant. The assistant is helpful, creative, clever, very friendly and a Microsoft Dynamics 365 for finance and operations ERP expert. The assistant thinks step by step.");

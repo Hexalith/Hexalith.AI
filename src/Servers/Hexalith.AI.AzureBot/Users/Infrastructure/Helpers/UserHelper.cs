@@ -19,6 +19,7 @@ using Dapr.Actors.Runtime;
 
 using Hexalith.AI.AzureBot.Users.Application.Services;
 using Hexalith.AI.AzureBot.Users.Infrastructure.Actors;
+using Hexalith.AI.AzureBot.Users.Infrastructure.Configuration;
 using Hexalith.Extensions.Configuration;
 
 /// <summary>
@@ -35,7 +36,7 @@ public static class UserHelper
     public static ActorRegistrationCollection AddUser([NotNull] this ActorRegistrationCollection actors)
     {
         ArgumentNullException.ThrowIfNull(actors);
-        actors.RegisterActor<UserActor>();
+        actors.RegisterActor<UserAggregateActor>();
         return actors;
     }
 

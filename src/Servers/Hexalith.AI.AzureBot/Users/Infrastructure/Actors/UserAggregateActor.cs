@@ -17,6 +17,7 @@ using Dapr.Actors.Runtime;
 
 using Hexalith.AI.AzureBot.Users.Domain;
 using Hexalith.AI.AzureBot.Users.Domain.Events;
+using Hexalith.AI.AzureBot.Users.Infrastructure.Configuration;
 using Hexalith.Application.Abstractions.Aggregates;
 using Hexalith.Application.Abstractions.Tasks;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
@@ -27,15 +28,15 @@ using Microsoft.Extensions.Options;
 /// <summary>
 /// Class UserActor.
 /// Implements the <see cref="Actor" />
-/// Implements the <see cref="IUserActor" />
+/// Implements the <see cref="IUserAggretageActor" />
 /// Implements the <see cref="ICommandProcessorActor" />
 /// Implements the <see cref="IRemindable" />.
 /// </summary>
 /// <seealso cref="Actor" />
-/// <seealso cref="IUserActor" />
+/// <seealso cref="IUserAggretageActor" />
 /// <seealso cref="ICommandProcessorActor" />
 /// <seealso cref="IRemindable" />
-public class UserActor : Actor, IUserActor, ICommandProcessorActor, IRemindable
+public class UserAggregateActor : Actor, IUserAggretageActor, ICommandProcessorActor, IRemindable
 {
     /// <summary>
     /// The settings.
@@ -58,13 +59,13 @@ public class UserActor : Actor, IUserActor, ICommandProcessorActor, IRemindable
     private User? _aggregate;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="UserActor" /> class.
+    /// Initializes a new instance of the <see cref="UserAggregateActor" /> class.
     /// </summary>
     /// <param name="host">The host.</param>
     /// <param name="settings">The settings.</param>
     /// <param name="stateManager">The state manager.</param>
     /// <exception cref="System.ArgumentNullException"></exception>
-    public UserActor(
+    public UserAggregateActor(
      ActorHost host,
      IOptions<UserSettings> settings,
      IAggregateStateManager stateManager)

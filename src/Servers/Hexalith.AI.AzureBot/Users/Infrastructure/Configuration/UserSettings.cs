@@ -11,7 +11,8 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Hexalith.AI.AzureBot.Users.Infrastructure.Actors;
+
+namespace Hexalith.AI.AzureBot.Users.Infrastructure.Configuration;
 
 using Hexalith.AI.AzureBot.Users.Domain;
 using Hexalith.Application.Abstractions.Tasks;

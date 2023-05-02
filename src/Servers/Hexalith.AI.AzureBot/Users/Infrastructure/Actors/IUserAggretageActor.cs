@@ -22,7 +22,7 @@ using Dapr.Actors;
 /// Extends the <see cref="IActor" />.
 /// </summary>
 /// <seealso cref="IActor" />
-public interface IUserActor : IActor
+public interface IUserAggretageActor : IActor
 {
     /// <summary>
     /// Gets the roles asynchronous.

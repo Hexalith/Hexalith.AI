@@ -13,6 +13,8 @@
 // ***********************************************************************
 namespace Hexalith.AI.AzureBot.Accounts.Infrastructure;
 
+using System.Threading.Tasks;
+
 using Dapr.Actors.Runtime;
 
 /// <summary>
@@ -32,4 +34,7 @@ public class AccountAggregateActor : Actor, IAccountAggregateActor
         : base(host)
     {
     }
+
+    /// <inheritdoc/>
+    public Task<bool> IsAccountUserAsync() => throw new NotImplementedException();
 }

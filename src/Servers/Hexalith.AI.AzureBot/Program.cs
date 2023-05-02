@@ -1,8 +1,11 @@
+using Hexalith.AI.AzureBot.Accounts.Infrastructure.Helpers;
 using Hexalith.AI.AzureBot.Bot.Application.Commands;
 using Hexalith.AI.AzureBot.Bot.Infrastructure;
+using Hexalith.AI.AzureBot.Conversations.Infrastructure.Helpers;
 using Hexalith.AI.AzureBot.GlobalAdministrations.Infrastructure.Helpers;
 using Hexalith.AI.AzureBot.SemanticKernel.Configurations;
 using Hexalith.AI.AzureBot.SemanticKernel.Services;
+using Hexalith.AI.AzureBot.Users.Infrastructure.Helpers;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.WebApis.Helpers;
 
@@ -25,7 +28,12 @@ WebApplicationBuilder builder = HexalithWebApi.CreateApplication(
     appName,
     "v1",
     debugInVisualStudio,
-    (actors) => actors.AddGlobalAdministration(),
+    (actors)
+        => actors
+            .AddGlobalAdministration()
+            .AddConversation()
+            .AddUser()
+            .AddAccount(),
     args);
 
 builder.Services.AddHttpClient("WebClient", client => client.Timeout = TimeSpan.FromSeconds(600));
@@ -69,6 +77,9 @@ builder.Services.AddSingleton<ArtificialIntelligenceService>();
 builder.Services.ConfigureSettings<ArtificialIntelligenceServiceSettings>(builder.Configuration);
 
 builder.Services.AddGlobalAdministration(builder.Configuration);
+builder.Services.AddAccount(builder.Configuration);
+builder.Services.AddUser(builder.Configuration);
+builder.Services.AddConversation(builder.Configuration);
 
 WebApplication app = builder.Build();
 

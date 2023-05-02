@@ -17,6 +17,7 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 
+using Hexalith.AI.AzureBot.Accounts.Application.Events;
 using Hexalith.AI.AzureBot.Accounts.Domain.Events;
 using Hexalith.Domain.Abstractions.Aggregates;
 using Hexalith.Domain.Abstractions.Events;
@@ -38,7 +39,7 @@ public record Account(
     string Name,
     IEnumerable<Domain> Domains,
     IEnumerable<Tenant> Tenants,
-    IEnumerable<string> Administrators) : IAggregate
+    IEnumerable<AccountUser> Users) : IAggregate
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="Account" /> class.
@@ -51,7 +52,7 @@ public record Account(
               registered.Name,
               new Domain(registered.Domain).IntoArray(),
               Array.Empty<Tenant>(),
-              Array.Empty<string>())
+              Array.Empty<AccountUser>())
     {
     }
 
@@ -66,8 +67,27 @@ public record Account(
         ArgumentNullException.ThrowIfNull(domainEvent);
         return domainEvent switch
         {
+            AccountDomainRegistered domain => this with
+            {
+                Domains = Domains.Append(new Domain(domain.Domain)),
+            },
+            AccountUserRegistered user => this with
+            {
+                Users = Users.Append(new AccountUser(user.Email, Array.Empty<string>())),
+            },
+            AccountUserRoleGranted role => this with
+            {
+                Users = AddRole(role.Email, role.Role),
+            },
             AccountRegistered => throw new InvalidAggregateEventException(this, domainEvent, true),
             _ => throw new InvalidAggregateEventException(this, domainEvent, false),
         };
+    }
+
+    private IEnumerable<AccountUser> AddRole(string email, string role)
+    {
+        AccountUser user = Users.Single(u => u.Email == email);
+        AccountUser newUser = user with { Roles = user.Roles.Append(role) };
+        return Users.Where(u => u.Email != email).Append(newUser);
     }
 }

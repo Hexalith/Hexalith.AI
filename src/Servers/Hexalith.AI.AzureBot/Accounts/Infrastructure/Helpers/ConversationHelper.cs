@@ -11,21 +11,22 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Hexalith.AI.AzureBot.Conversations.Infrastructure.Helpers;
+namespace Hexalith.AI.AzureBot.Accounts.Infrastructure.Helpers;
 
 using System.Diagnostics.CodeAnalysis;
 
 using Dapr.Actors.Runtime;
 
-using Hexalith.AI.AzureBot.Conversations.Application.Services;
-using Hexalith.AI.AzureBot.Conversations.Infrastructure.Actors;
-using Hexalith.AI.AzureBot.Conversations.Infrastructure.Services;
+using Hexalith.AI.AzureBot.Accounts.Application.Services;
+using Hexalith.AI.AzureBot.Accounts.Infrastructure;
+using Hexalith.AI.AzureBot.Accounts.Infrastructure.Actors;
+using Hexalith.AI.AzureBot.Accounts.Infrastructure.Services;
 using Hexalith.Extensions.Configuration;
 
 /// <summary>
-/// Class ConversationHelper.
+/// Class AccountHelper.
 /// </summary>
-public static class ConversationHelper
+public static class AccountHelper
 {
     /// <summary>
     /// Adds the global administration.
@@ -33,10 +34,10 @@ public static class ConversationHelper
     /// <param name="actors">The actors.</param>
     /// <returns>ActorRegistrationCollection.</returns>
     /// <exception cref="System.ArgumentNullException"></exception>
-    public static ActorRegistrationCollection AddConversation([NotNull] this ActorRegistrationCollection actors)
+    public static ActorRegistrationCollection AddAccount([NotNull] this ActorRegistrationCollection actors)
     {
         ArgumentNullException.ThrowIfNull(actors);
-        actors.RegisterActor<ConversationActor>();
+        actors.RegisterActor<AccountAggregateActor>();
         return actors;
     }
 
@@ -47,13 +48,13 @@ public static class ConversationHelper
     /// <param name="configuration">The configuration.</param>
     /// <returns>IServiceCollection.</returns>
     /// <exception cref="System.ArgumentNullException"></exception>
-    public static IServiceCollection AddConversation([NotNull] this IServiceCollection services, [NotNull] IConfiguration configuration)
+    public static IServiceCollection AddAccount([NotNull] this IServiceCollection services, [NotNull] IConfiguration configuration)
     {
         ArgumentNullException.ThrowIfNull(services);
         ArgumentNullException.ThrowIfNull(configuration);
         return services
-            .AddScoped<IConversationQueryService, ConversationQueryService>()
-            .AddScoped<IConversationCommandService, ConversationCommandService>()
-            .ConfigureSettings<ConversationSettings>(configuration);
+            .AddScoped<IAccountQueryService, AccountQueryService>()
+            .AddScoped<IAccountCommandService, AccountCommandService>()
+            .ConfigureSettings<AccountSettings>(configuration);
     }
 }

@@ -1,29 +1,23 @@
 ﻿// ***********************************************************************
 // Assembly         : Hexalith.AI.AzureBot
 // Author           : Jérôme Piquot
-// Created          : 04-25-2023
+// Created          : 05-02-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 04-25-2023
+// Last Modified On : 05-02-2023
 // ***********************************************************************
-// <copyright file="IAccountAggregateActor.cs" company="Fiveforty">
+// <copyright file="AccountUser.cs" company="Fiveforty">
 //     Copyright (c) Fiveforty S.A.S.. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-
-namespace Hexalith.AI.AzureBot.Accounts.Infrastructure;
-
-using System.Threading.Tasks;
-
-using Dapr.Actors;
+namespace Hexalith.AI.AzureBot.Accounts.Domain;
 
 /// <summary>
-/// Interface IAccountAggregateActor
-/// Extends the <see cref="IActor" />.
+/// Class AccountUser.
+/// Implements the <see cref="System.IEquatable{Hexalith.AI.AzureBot.Accounts.Domain.AccountUser}" />.
 /// </summary>
-/// <seealso cref="IActor" />
-public interface IAccountAggregateActor : IActor
+/// <seealso cref="System.IEquatable{Hexalith.AI.AzureBot.Accounts.Domain.AccountUser}" />
+public record AccountUser(string Email, IEnumerable<string> Roles)
 {
-    Task<bool> IsAccountUserAsync();
 }

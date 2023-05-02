@@ -41,5 +41,5 @@ public class UserQueryService : IUserQueryService
     /// </summary>
     /// <param name="email">The email.</param>
     /// <returns>IUserActor.</returns>
-    private IUserActor GetUserActor(string email) => ActorProxy.Create<IUserActor>(new ActorId(email), nameof(UserActor));
+    private IUserAggretageActor GetUserActor(string email) => ActorProxy.Create<IUserAggretageActor>(new ActorId(email), nameof(UserAggregateActor));
 }
