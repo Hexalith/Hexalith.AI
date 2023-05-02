@@ -27,7 +27,7 @@ public class GlobalAdministratorRegistered : BaseEvent
     /// </summary>
     /// <param name="email">The email.</param>
     /// <param name="name">The name.</param>
-    public GlobalAdministratorRegistered(string email, string name)
+    public GlobalAdministratorRegistered(string email)
     {
         if (string.IsNullOrWhiteSpace(email))
         {
@@ -35,7 +35,6 @@ public class GlobalAdministratorRegistered : BaseEvent
         }
 
         Email = email.ToUpperInvariant();
-        Name = name;
     }
 
     /// <summary>
@@ -43,10 +42,4 @@ public class GlobalAdministratorRegistered : BaseEvent
     /// </summary>
     /// <value>The email.</value>
     public string Email { get; set; }
-
-    /// <summary>
-    /// Gets or sets the name.
-    /// </summary>
-    /// <value>The name.</value>
-    public string Name { get; set; }
 }

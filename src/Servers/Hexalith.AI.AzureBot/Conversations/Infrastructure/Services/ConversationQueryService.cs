@@ -1,4 +1,6 @@
-﻿namespace Hexalith.AI.AzureBot.Conversations.Application.Services;
+﻿using Hexalith.AI.AzureBot.Conversations.Application.Services;
+
+namespace Hexalith.AI.AzureBot.Conversations.Infrastructure.Services;
 
 using System.Threading.Tasks;
 

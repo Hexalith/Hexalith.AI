@@ -4,9 +4,9 @@
 // Created          : 04-24-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 05-01-2023
+// Last Modified On : 05-02-2023
 // ***********************************************************************
-// <copyright file="ConversationCommand.cs" company="Fiveforty">
+// <copyright file="EndConversation.cs" company="Fiveforty">
 //     Copyright (c) Fiveforty S.A.S.. All rights reserved.
 // </copyright>
 // <summary></summary>
@@ -15,39 +15,35 @@ namespace Hexalith.AI.AzureBot.Conversations.Application.Commands;
 
 using System.Text.Json.Serialization;
 
-using Hexalith.AI.AzureBot.Conversations.Domain;
-
-using Hexalith.Application.Abstractions.Commands;
-
 /// <summary>
-/// Class ConversationCommand.
+/// Class ConversationRegistered.
 /// Implements the <see cref="BaseCommand" />.
 /// </summary>
 /// <seealso cref="BaseCommand" />
-public class ConversationCommand : BaseCommand
+public class EndConversation : ConversationCommand
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="ConversationCommand" /> class.
+    /// Initializes a new instance of the <see cref="EndConversation" /> class.
     /// </summary>
-    /// <param name="id">The id.</param>
+    /// <param name="id">The identifier.</param>
+    /// <param name="account">The account.</param>
+    /// <param name="email">The email.</param>
+    /// <param name="text">The text.</param>
+    /// <param name="date">The date.</param>
     [JsonConstructor]
-    protected ConversationCommand(string id) => Id = id;
+    public EndConversation(string id, DateTimeOffset date)
+        : base(id) => Date = date;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ConversationCommand" /> class.
+    /// Initializes a new instance of the <see cref="EndConversation" /> class.
     /// </summary>
     [Obsolete("For serialization only", true)]
-    protected ConversationCommand() => Id = string.Empty;
+    public EndConversation()
+    { }
 
     /// <summary>
-    /// Gets or sets the id.
+    /// Gets the date.
     /// </summary>
-    /// <value>The id.</value>
-    public string Id { get; set; }
-
-    /// <inheritdoc/>
-    protected override string DefaultAggregateId() => Id;
-
-    /// <inheritdoc/>
-    protected override string DefaultAggregateName() => nameof(Conversation);
+    /// <value>The date.</value>
+    public DateTimeOffset Date { get; }
 }

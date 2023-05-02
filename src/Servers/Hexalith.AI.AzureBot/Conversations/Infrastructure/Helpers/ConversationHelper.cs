@@ -19,6 +19,7 @@ using Dapr.Actors.Runtime;
 
 using Hexalith.AI.AzureBot.Conversations.Application.Services;
 using Hexalith.AI.AzureBot.Conversations.Infrastructure.Actors;
+using Hexalith.AI.AzureBot.Conversations.Infrastructure.Services;
 using Hexalith.Extensions.Configuration;
 
 /// <summary>

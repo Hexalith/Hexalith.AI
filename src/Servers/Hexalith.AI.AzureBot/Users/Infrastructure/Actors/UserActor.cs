@@ -4,7 +4,7 @@
 // Created          : 04-25-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 04-25-2023
+// Last Modified On : 05-02-2023
 // ***********************************************************************
 // <copyright file="UserActor.cs" company="Fiveforty">
 //     Copyright (c) Fiveforty S.A.S.. All rights reserved.
@@ -52,15 +52,18 @@ public class UserActor : Actor, IUserActor, ICommandProcessorActor, IRemindable
     /// </summary>
     private readonly ActorStateStoreProvider _stateProvider;
 
+    /// <summary>
+    /// The aggregate.
+    /// </summary>
     private User? _aggregate;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="UserActor"/> class.
+    /// Initializes a new instance of the <see cref="UserActor" /> class.
     /// </summary>
     /// <param name="host">The host.</param>
     /// <param name="settings">The settings.</param>
     /// <param name="stateManager">The state manager.</param>
-    /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="System.ArgumentNullException"></exception>
     public UserActor(
      ActorHost host,
      IOptions<UserSettings> settings,
@@ -75,6 +78,11 @@ public class UserActor : Actor, IUserActor, ICommandProcessorActor, IRemindable
         _settings = settings.Value;
     }
 
+    /// <summary>
+    /// Administrators the count asynchronous.
+    /// </summary>
+    /// <returns>Task&lt;System.Int32&gt;.</returns>
+    /// <exception cref="System.NotImplementedException"></exception>
     public Task<int> AdministratorCountAsync() => throw new NotImplementedException();
 
     /// <inheritdoc/>
@@ -92,13 +100,14 @@ public class UserActor : Actor, IUserActor, ICommandProcessorActor, IRemindable
     }
 
     /// <inheritdoc/>
-    public async Task<IEnumerable<string>> GetAccountRoles(string account)
+    public async Task<IEnumerable<string>> GetAccountRolesAsync(string account)
     {
         User? user = await GetAggregateAsync(CancellationToken.None).ConfigureAwait(false);
         if (user is null)
         {
             return Array.Empty<string>();
         }
+
         UserAccount? userAccount = user.Accounts.Where(p => p.Name == account).SingleOrDefault();
         return userAccount is null ? Array.Empty<string>() : userAccount.Roles;
     }
@@ -111,14 +120,8 @@ public class UserActor : Actor, IUserActor, ICommandProcessorActor, IRemindable
             .ConfigureAwait(false) > 0L;
     }
 
-    public Task<bool> IsAdministratorAsync(string email) => throw new NotImplementedException();
-
     /// <inheritdoc/>
-    public async Task<bool> IsGlobalAdministratorAsync()
-        => (await GetAggregateAsync(CancellationToken.None)
-            .ConfigureAwait(false))?.IsGlobalAdministrator == true;
-
-    public Task<bool> IsRegisteredAsync(string email) => throw new NotImplementedException();
+    public Task<bool> IsRegisteredAsync() => throw new NotImplementedException();
 
     /// <inheritdoc/>
     public async Task ReceiveReminderAsync(string reminderName, byte[] state, TimeSpan dueTime, TimeSpan period)
@@ -135,6 +138,11 @@ public class UserActor : Actor, IUserActor, ICommandProcessorActor, IRemindable
             .ConfigureAwait(false);
     }
 
+    /// <summary>
+    /// Get aggregate as an asynchronous operation.
+    /// </summary>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>A Task&lt;User&gt; representing the asynchronous operation.</returns>
     private async Task<User?> GetAggregateAsync(CancellationToken cancellationToken)
     {
         return _aggregate

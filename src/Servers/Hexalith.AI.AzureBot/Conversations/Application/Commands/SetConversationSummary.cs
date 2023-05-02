@@ -4,9 +4,9 @@
 // Created          : 04-24-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 05-01-2023
+// Last Modified On : 05-02-2023
 // ***********************************************************************
-// <copyright file="ConversationCommand.cs" company="Fiveforty">
+// <copyright file="SetConversationTitle - Copy.cs" company="Fiveforty">
 //     Copyright (c) Fiveforty S.A.S.. All rights reserved.
 // </copyright>
 // <summary></summary>
@@ -15,39 +15,35 @@ namespace Hexalith.AI.AzureBot.Conversations.Application.Commands;
 
 using System.Text.Json.Serialization;
 
-using Hexalith.AI.AzureBot.Conversations.Domain;
-
-using Hexalith.Application.Abstractions.Commands;
-
 /// <summary>
-/// Class ConversationCommand.
+/// Class ConversationRegistered.
 /// Implements the <see cref="BaseCommand" />.
 /// </summary>
 /// <seealso cref="BaseCommand" />
-public class ConversationCommand : BaseCommand
+public class SetConversationSummary : ConversationCommand
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="ConversationCommand" /> class.
+    /// Initializes a new instance of the <see cref="SetConversationSummary" /> class.
     /// </summary>
-    /// <param name="id">The id.</param>
+    /// <param name="id">The identifier.</param>
+    /// <param name="summary">The summary.</param>
     [JsonConstructor]
-    protected ConversationCommand(string id) => Id = id;
+    public SetConversationSummary(string id, string summary)
+        : base(id)
+    {
+        ArgumentException.ThrowIfNullOrEmpty(summary);
+        Summary = summary;
+    }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ConversationCommand" /> class.
+    /// Initializes a new instance of the <see cref="SetConversationSummary" /> class.
     /// </summary>
     [Obsolete("For serialization only", true)]
-    protected ConversationCommand() => Id = string.Empty;
+    public SetConversationSummary() => Summary = string.Empty;
 
     /// <summary>
-    /// Gets or sets the id.
+    /// Gets the Summary.
     /// </summary>
-    /// <value>The id.</value>
-    public string Id { get; set; }
-
-    /// <inheritdoc/>
-    protected override string DefaultAggregateId() => Id;
-
-    /// <inheritdoc/>
-    protected override string DefaultAggregateName() => nameof(Conversation);
+    /// <value>The Summary.</value>
+    public string Summary { get; }
 }

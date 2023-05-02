@@ -103,6 +103,8 @@ public class ConversationActor : Actor, IConversationActor, ICommandProcessorAct
         return userAccount is null ? Array.Empty<string>() : userAccount.Roles;
     }
 
+    public Task<IEnumerable<string>> GetRolesAsync(string account) => throw new NotImplementedException();
+
     /// <inheritdoc/>
     public async Task<bool> HasCommandsAsync()
     {
@@ -120,6 +122,8 @@ public class ConversationActor : Actor, IConversationActor, ICommandProcessorAct
 
     public Task<bool> IsRegisteredAsync(string email) => throw new NotImplementedException();
 
+    public Task<bool> IsRegisteredAsync() => throw new NotImplementedException();
+
     /// <inheritdoc/>
     public async Task ReceiveReminderAsync(string reminderName, byte[] state, TimeSpan dueTime, TimeSpan period)
     {
@@ -128,7 +132,7 @@ public class ConversationActor : Actor, IConversationActor, ICommandProcessorAct
                 _stateProvider,
                 _settings.ExecuteCommandResiliencyPolicy ?? ResiliencyPolicy.CreateEternalExponentialRetry(),
                 _aggregate,
-                (e) => new Conversation((ConversationRegistered)e),
+                (e) => new Conversation((ConversationStarted)e),
                 RegisterReminderAsync,
                 UnregisterReminderAsync,
                 CancellationToken.None)
@@ -141,7 +145,7 @@ public class ConversationActor : Actor, IConversationActor, ICommandProcessorAct
             ??= (Conversation?)await _stateManager
             .GetAggregateAsync(
                 _stateProvider,
-                (e) => new Conversation((ConversationRegistered)e),
+                (e) => new Conversation((ConversationStarted)e),
                 cancellationToken)
             .ConfigureAwait(false);
     }

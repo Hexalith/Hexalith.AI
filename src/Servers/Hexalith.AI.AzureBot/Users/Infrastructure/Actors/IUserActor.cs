@@ -29,13 +29,7 @@ public interface IUserActor : IActor
     /// </summary>
     /// <param name="account">The account.</param>
     /// <returns>Task&lt;IEnumerable&lt;System.String&gt;&gt;.</returns>
-    Task<IEnumerable<string>> GetRolesAsync(string account);
-
-    /// <summary>
-    /// Determines whether [is global administrator asynchronous].
-    /// </summary>
-    /// <returns>Task&lt;System.Boolean&gt;.</returns>
-    Task<bool> IsGlobalAdministratorAsync();
+    Task<IEnumerable<string>> GetAccountRolesAsync(string account);
 
     /// <summary>
     /// Determines whether [is registered asynchronous] [the specified email].

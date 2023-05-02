@@ -1,8 +1,9 @@
-﻿namespace Hexalith.AI.AzureBot.Conversations.Application.Services;
+﻿namespace Hexalith.AI.AzureBot.Conversations.Infrastructure.Services;
 
 using System.Threading.Tasks;
 
 using Hexalith.AI.AzureBot.Conversations.Application.Commands;
+using Hexalith.AI.AzureBot.Conversations.Application.Services;
 using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Extensions.Common;
@@ -27,7 +28,7 @@ public class ConversationCommandService : IConversationCommandService
         string sessionId,
         CancellationToken cancellationToken)
     {
-        RegisterConversation message = new(email);
+        StartConversation message = new(email);
         await _commandBus
             .PublishAsync(
                 message,
@@ -51,7 +52,7 @@ public class ConversationCommandService : IConversationCommandService
         string sessionId,
         CancellationToken cancellationToken)
     {
-        RegisterConversation message = new(email);
+        StartConversation message = new(email);
         await _commandBus
             .PublishAsync(
                 message,

@@ -17,7 +17,7 @@ using System.Diagnostics.CodeAnalysis;
 
 using Dapr.Actors.Runtime;
 
-using Hexalith.AI.AzureBot.GlobalAdministrations.Application;
+using Hexalith.AI.AzureBot.GlobalAdministrations.Application.Services;
 using Hexalith.AI.AzureBot.GlobalAdministrations.Infrastructure.Actors;
 using Hexalith.AI.AzureBot.GlobalAdministrations.Infrastructure.Services;
 using Hexalith.Extensions.Configuration;
@@ -52,7 +52,8 @@ public static class GlobalAdministrationHelper
         ArgumentNullException.ThrowIfNull(services);
         ArgumentNullException.ThrowIfNull(configuration);
         return services
-            .AddScoped<IGlobalAdministrationService, GlobalAdministrationService>()
+            .AddScoped<IGlobalAdministrationQueryService, GlobalAdministrationQueryService>()
+            .AddScoped<IGlobalAdministrationCommandService, GlobalAdministrationCommandService>()
             .ConfigureSettings<GlobalAdministrationSettings>(configuration);
     }
 }

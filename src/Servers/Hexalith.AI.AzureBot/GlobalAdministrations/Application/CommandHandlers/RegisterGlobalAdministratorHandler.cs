@@ -20,6 +20,7 @@ using System.Threading.Tasks;
 
 using Hexalith.AI.AzureBot.GlobalAdministrations.Application.Commands;
 using Hexalith.AI.AzureBot.GlobalAdministrations.Application.Notifications;
+using Hexalith.AI.AzureBot.GlobalAdministrations.Application.Services;
 using Hexalith.AI.AzureBot.GlobalAdministrations.Domain.Events;
 using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Domain.Abstractions.Messages;
@@ -35,14 +36,14 @@ public class RegisterGlobalAdministratorHandler : CommandHandler<RegisterGlobalA
     /// <summary>
     /// The global administration service.
     /// </summary>
-    private readonly IGlobalAdministrationService _globalAdministrationService;
+    private readonly IGlobalAdministrationQueryService _globalAdministrationService;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="RegisterGlobalAdministratorHandler" /> class.
     /// </summary>
     /// <param name="globalAdministrationService">The global administration service.</param>
     /// <exception cref="System.ArgumentNullException"></exception>
-    public RegisterGlobalAdministratorHandler([NotNull] IGlobalAdministrationService globalAdministrationService)
+    public RegisterGlobalAdministratorHandler([NotNull] IGlobalAdministrationQueryService globalAdministrationService)
     {
         ArgumentNullException.ThrowIfNull(globalAdministrationService);
         _globalAdministrationService = globalAdministrationService;
@@ -53,9 +54,9 @@ public class RegisterGlobalAdministratorHandler : CommandHandler<RegisterGlobalA
     {
         ArgumentNullException.ThrowIfNull(command);
         ArgumentException.ThrowIfNullOrEmpty(command.Email);
-        return await _globalAdministrationService.IsRegisteredAsync(command.Email, cancellationToken).ConfigureAwait(false)
-            ? new GlobalAdministratorAlreadyRegistered(command.Email, command.Name).IntoArray()
-            : new GlobalAdministratorRegistered(command.Email, command.Name).IntoArray();
+        return await _globalAdministrationService.IsAdministratorAsync(command.Email, cancellationToken).ConfigureAwait(false)
+            ? new GlobalAdministratorAlreadyRegistered(command.Email).IntoArray()
+            : new GlobalAdministratorRegistered(command.Email).IntoArray();
     }
 
     /// <inheritdoc/>

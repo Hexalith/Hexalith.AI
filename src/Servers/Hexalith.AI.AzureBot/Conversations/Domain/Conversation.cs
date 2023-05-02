@@ -4,7 +4,7 @@
 // Created          : 05-01-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 05-01-2023
+// Last Modified On : 05-02-2023
 // ***********************************************************************
 // <copyright file="Conversation.cs" company="Fiveforty">
 //     Copyright (c) Fiveforty S.A.S.. All rights reserved.
@@ -13,68 +13,42 @@
 // ***********************************************************************
 namespace Hexalith.AI.AzureBot.Conversations.Domain;
 
-using System.Text.Json.Serialization;
-
 using Hexalith.AI.AzureBot.Conversations.Domain.Events;
 using Hexalith.Domain.Abstractions.Aggregates;
 using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Domain.Abstractions.Exceptions;
+using Hexalith.Extensions.Helpers;
 
 /// <summary>
 /// Class ConversationInformation.
 /// </summary>
-public class Conversation : Aggregate
+public record Conversation(
+        string Id,
+        string Email,
+        string Account,
+        string Title,
+        string Summary,
+        DateTimeOffset DateStarted,
+        DateTimeOffset? DateEnded,
+        IEnumerable<ConversationItem> Items)
+     : Aggregate
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="Conversation"/> class.
     /// </summary>
-    /// <param name="email">The email.</param>
-    /// <param name="name">The name.</param>
-    /// <param name="isGlobalAdministrator">if set to <c>true</c> [is global administrator].</param>
-    /// <param name="accounts">The accounts.</param>
-    [JsonConstructor]
-    public Conversation(
-        string email,
-        string name,
-        bool isGlobalAdministrator,
-        IEnumerable<ConversationAccount> accounts)
-    {
-        Email = email;
-        Name = name;
-        IsGlobalAdministrator = isGlobalAdministrator;
-        Accounts = accounts;
-    }
-
-    public Conversation(ConversationRegistered userRegistered)
+    /// <param name="started">The started.</param>
+    public Conversation(ConversationStarted started)
         : this(
-              (userRegistered ?? throw new ArgumentNullException(nameof(userRegistered))).Email,
-              userRegistered.Email, false,
-              Array.Empty<ConversationAccount>())
+              (started ?? throw new ArgumentNullException(nameof(started))).Id,
+              started.Email,
+              started.Account,
+              string.Empty,
+              string.Empty,
+              started.Date,
+              null,
+              new ConversationItem(started.Email, started.Text, started.Date).IntoArray())
     {
     }
-
-    /// <summary>
-    /// Gets the accounts.
-    /// </summary>
-    /// <value>The accounts.</value>
-    public IEnumerable<ConversationAccount> Accounts { get; }
-
-    /// <summary>
-    /// Gets or sets the email.
-    /// </summary>
-    /// <value>The email.</value>
-    public string Email { get; set; }
-
-    /// <summary>
-    /// Gets or sets a value indicating whether this instance is global administrator.
-    /// </summary>
-    /// <value><c>true</c> if this instance is global administrator; otherwise, <c>false</c>.</value>
-    public bool IsGlobalAdministrator { get; set; }
-
-    /// <summary>
-    /// Gets or sets the name.
-    /// </summary>
-    /// <value>The name.</value>
-    public string Name { get; set; }
 
     /// <summary>
     /// Applies the specified domain event.
@@ -82,9 +56,34 @@ public class Conversation : Aggregate
     /// <param name="domainEvent">The domain event.</param>
     /// <returns>IAggregate.</returns>
     /// <exception cref="System.NotImplementedException"></exception>
-    public override IAggregate Apply(BaseEvent domainEvent) => throw new NotImplementedException();
+    public override IAggregate Apply(BaseEvent domainEvent)
+    {
+        return domainEvent switch
+        {
+            ConversationItemAdded item => this with
+            {
+                Items = new List<ConversationItem>(Items)
+                    {
+                        new ConversationItem(item.Email, item.Text, item.Date),
+                    },
+            },
+            ConversationEnded ended => this with { DateEnded = ended.Date },
+            ConversationTitleChanged setTitle => this with { Title = setTitle.Title },
+            ConversationSummaryChanged setSummary => this with { Summary = setSummary.Summary },
+            ConversationStarted => throw new InvalidAggregateEventException(this, domainEvent, true),
+            _ => throw new InvalidAggregateEventException(this, domainEvent, false),
+        };
+    }
 
-    protected override string DefaultAggregateId() => Email;
+    /// <summary>
+    /// Defaults the aggregate identifier.
+    /// </summary>
+    /// <returns>System.String.</returns>
+    protected override string DefaultAggregateId() => Id;
 
+    /// <summary>
+    /// Defaults the name of the aggregate.
+    /// </summary>
+    /// <returns>System.String.</returns>
     protected override string DefaultAggregateName() => nameof(Conversation);
 }

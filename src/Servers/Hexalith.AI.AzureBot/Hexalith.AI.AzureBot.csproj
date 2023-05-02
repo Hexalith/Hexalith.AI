@@ -21,7 +21,6 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Bot\Domain\" />
-	  <Folder Include="GlobalAdministrations\Infrastructure\Services\" />
 	  <Folder Include="SemanticKernel\Helpers\" />
 	  <Folder Include="UnitOfWork\Domain\UnitsOfWork\" />
 	  <Folder Include="UnitOfWork\Infrastructure\" />
