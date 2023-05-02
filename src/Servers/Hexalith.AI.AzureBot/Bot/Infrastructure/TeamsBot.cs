@@ -4,7 +4,7 @@
 // Created          : 04-29-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 04-30-2023
+// Last Modified On : 05-02-2023
 // ***********************************************************************
 // <copyright file="TeamsBot.cs" company="Fiveforty">
 //     Copyright (c) Fiveforty S.A.S.. All rights reserved.
@@ -13,7 +13,9 @@
 // ***********************************************************************
 namespace Hexalith.AI.AzureBot.Bot.Infrastructure;
 
+using Hexalith.AI.AzureBot.GlobalAdministrations.Application.Services;
 using Hexalith.AI.AzureBot.SemanticKernel.Services;
+using Hexalith.AI.AzureBot.Users.Application.Services;
 
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Teams;
@@ -28,19 +30,36 @@ using Microsoft.SemanticKernel.Connectors.AI.OpenAI.ChatCompletion;
 public class TeamsBot : TeamsActivityHandler
 {
     /// <summary>
+    /// The administration service.
+    /// </summary>
+    private readonly IGlobalAdministrationQueryService _administrationService;
+
+    /// <summary>
     /// The artificial intelligence service.
     /// </summary>
     private readonly ArtificialIntelligenceService _artificialIntelligenceService;
 
     /// <summary>
+    /// The user service.
+    /// </summary>
+    private readonly IUserQueryService _userService;
+
+    /// <summary>
     /// Initializes a new instance of the <see cref="TeamsBot" /> class.
     /// </summary>
     /// <param name="artificialIntelligenceService">The artificial intelligence service.</param>
+    /// <param name="administrationService">The administration service.</param>
+    /// <param name="userService">The user service.</param>
     /// <exception cref="System.ArgumentNullException"></exception>
-    public TeamsBot(ArtificialIntelligenceService artificialIntelligenceService)
+    public TeamsBot(
+        ArtificialIntelligenceService artificialIntelligenceService,
+        IGlobalAdministrationQueryService administrationService,
+        IUserQueryService userService)
     {
         ArgumentNullException.ThrowIfNull(artificialIntelligenceService);
         _artificialIntelligenceService = artificialIntelligenceService;
+        _administrationService = administrationService;
+        _userService = userService;
     }
 
     /// <inheritdoc/>

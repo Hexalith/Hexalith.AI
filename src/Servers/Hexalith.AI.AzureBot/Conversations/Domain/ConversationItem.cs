@@ -19,6 +19,6 @@ using System.Runtime.Serialization;
 /// Class ConversationAuthentication.
 /// </summary>
 [DataContract]
-public record ConversationItem(string Email, string Text, DateTimeOffset Date)
+public record ConversationItem(string Email, string Text, string UserName, DateTimeOffset Date)
 {
 }

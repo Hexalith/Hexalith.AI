@@ -18,6 +18,7 @@ using Dapr.Actors;
 using Dapr.Actors.Client;
 
 using Hexalith.AI.AzureBot.GlobalAdministrations.Application.Services;
+using Hexalith.AI.AzureBot.GlobalAdministrations.Domain;
 using Hexalith.AI.AzureBot.GlobalAdministrations.Infrastructure.Actors;
 
 /// <summary>
@@ -30,7 +31,7 @@ public class GlobalAdministrationQueryService : IGlobalAdministrationQueryServic
     /// <summary>
     /// The global administration actor.
     /// </summary>
-    private readonly IGlobalAdministrationActor? _globalAdministrationActor;
+    private IGlobalAdministrationActor? _globalAdministrationActor;
 
     /// <summary>
     /// Gets the global administration actor.
@@ -38,7 +39,7 @@ public class GlobalAdministrationQueryService : IGlobalAdministrationQueryServic
     /// <value>The global administration actor.</value>
     private IGlobalAdministrationActor GlobalAdministrationActor
                 => _globalAdministrationActor
-            ?? ActorProxy.Create<IGlobalAdministrationActor>(
+            ??= ActorProxy.Create<IGlobalAdministrationActor>(
                 new ActorId(nameof(GlobalAdministration)),
                 nameof(GlobalAdministrationActor));
 

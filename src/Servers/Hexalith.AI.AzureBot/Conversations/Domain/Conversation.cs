@@ -46,7 +46,7 @@ public record Conversation(
               string.Empty,
               started.Date,
               null,
-              new ConversationItem(started.Email, started.Text, started.Date).IntoArray())
+              new ConversationItem(started.Email, started.Text, started.UserName, started.Date).IntoArray())
     {
     }
 
@@ -64,7 +64,7 @@ public record Conversation(
             {
                 Items = new List<ConversationItem>(Items)
                     {
-                        new ConversationItem(item.Email, item.Text, item.Date),
+                        new ConversationItem(item.Email, item.Text, item.UserName, item.Date),
                     },
             },
             ConversationEnded ended => this with { DateEnded = ended.Date },

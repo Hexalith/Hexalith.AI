@@ -22,7 +22,7 @@ using Hexalith.AI.AzureBot.GlobalAdministrations.Domain.Events;
 /// Implements the <see cref="IEquatable{GlobalAdministrator}" />.
 /// </summary>
 /// <seealso cref="IEquatable{GlobalAdministrator}" />
-public record GlobalAdministrator(string Email, string Name, bool Enabled)
+public record GlobalAdministrator(string Email, bool Enabled)
 {
     /// <summary>
     /// Applies the specified domain event.
@@ -33,6 +33,6 @@ public record GlobalAdministrator(string Email, string Name, bool Enabled)
     public static GlobalAdministrator Apply([NotNull] GlobalAdministratorRegistered domainEvent)
     {
         ArgumentNullException.ThrowIfNull(domainEvent);
-        return new GlobalAdministrator(domainEvent.Email, domainEvent.Name, true);
+        return new GlobalAdministrator(domainEvent.Email, true);
     }
 }

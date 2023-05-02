@@ -36,11 +36,4 @@ public interface IGlobalAdministrationActor : IActor
     /// <param name="email">The email.</param>
     /// <returns>Task&lt;System.Boolean&gt;.</returns>
     Task<bool> IsAdministratorAsync(string email);
-
-    /// <summary>
-    /// Determines whether [is registered asynchronous] [the specified email].
-    /// </summary>
-    /// <param name="email">The email.</param>
-    /// <returns>Task&lt;System.Boolean&gt;.</returns>
-    Task<bool> IsRegisteredAsync(string email);
 }

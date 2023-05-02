@@ -94,16 +94,6 @@ public record GlobalAdministration(string AggregateName, string AggregateId, IEn
     /// <returns><c>true</c> if the specified email is administrator; otherwise, <c>false</c>.</returns>
     public bool IsAdministrator(string email)
         => Administrators
-            .Where(p => p.Name == email.ToUpperInvariant() && p.Enabled)
-            .Any();
-
-    /// <summary>
-    /// Determines whether the specified email is registered.
-    /// </summary>
-    /// <param name="email">The email.</param>
-    /// <returns><c>true</c> if the specified email is registered; otherwise, <c>false</c>.</returns>
-    public bool IsRegistered(string email)
-        => Administrators
-            .Where(p => p.Name == email.ToUpperInvariant())
+            .Where(p => p.Email == email.ToUpperInvariant() && p.Enabled)
             .Any();
 }

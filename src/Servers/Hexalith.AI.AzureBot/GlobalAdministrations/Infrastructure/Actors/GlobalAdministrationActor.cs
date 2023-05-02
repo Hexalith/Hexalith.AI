@@ -106,10 +106,6 @@ public class GlobalAdministrationActor : Actor, IGlobalAdministrationActor, ICom
         => (await GetAggregateAsync(CancellationToken.None).ConfigureAwait(false))?.IsAdministrator(email) == true;
 
     /// <inheritdoc/>
-    public async Task<bool> IsRegisteredAsync(string email)
-        => (await GetAggregateAsync(CancellationToken.None).ConfigureAwait(false))?.IsRegistered(email) == true;
-
-    /// <inheritdoc/>
     public async Task ReceiveReminderAsync(string reminderName, byte[] state, TimeSpan dueTime, TimeSpan period)
     {
         _ = await _stateManager

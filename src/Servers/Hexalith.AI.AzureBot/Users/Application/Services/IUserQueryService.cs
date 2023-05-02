@@ -2,7 +2,5 @@
 
 public interface IUserQueryService
 {
-    Task<bool> IsGlobalAdministratorAsync(string email);
-
-    Task<bool> IsRegisteredAsync(string email);
+    Task<bool> IsRegisteredAsync(string email, CancellationToken cancellationToken);
 }

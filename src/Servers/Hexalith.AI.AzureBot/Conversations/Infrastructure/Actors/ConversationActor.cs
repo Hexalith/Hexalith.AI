@@ -75,8 +75,6 @@ public class ConversationActor : Actor, IConversationActor, ICommandProcessorAct
         _settings = settings.Value;
     }
 
-    public Task<int> AdministratorCountAsync() => throw new NotImplementedException();
-
     /// <inheritdoc/>
     public async Task DoAsync(ActorCommandEnvelope envelope)
     {
@@ -92,18 +90,13 @@ public class ConversationActor : Actor, IConversationActor, ICommandProcessorAct
     }
 
     /// <inheritdoc/>
-    public async Task<IEnumerable<string>> GetAccountRoles(string account)
+    public async Task<string> GetConversationTextAsync()
     {
-        Conversation? user = await GetAggregateAsync(CancellationToken.None).ConfigureAwait(false);
-        if (user is null)
-        {
-            return Array.Empty<string>();
-        }
-        ConversationAccount? userAccount = user.Accounts.Where(p => p.Name == account).SingleOrDefault();
-        return userAccount is null ? Array.Empty<string>() : userAccount.Roles;
+        Conversation? aggregate = _aggregate ?? await GetAggregateAsync(CancellationToken.None).ConfigureAwait(false);
+        return aggregate == null
+            ? string.Empty
+            : string.Join('\n', aggregate.Items.Select(i => $"{i.UserName}: {i.Text}"));
     }
-
-    public Task<IEnumerable<string>> GetRolesAsync(string account) => throw new NotImplementedException();
 
     /// <inheritdoc/>
     public async Task<bool> HasCommandsAsync()
@@ -112,17 +105,6 @@ public class ConversationActor : Actor, IConversationActor, ICommandProcessorAct
             .GetCommandCountAsync(_stateProvider, CancellationToken.None)
             .ConfigureAwait(false) > 0L;
     }
-
-    public Task<bool> IsAdministratorAsync(string email) => throw new NotImplementedException();
-
-    /// <inheritdoc/>
-    public async Task<bool> IsGlobalAdministratorAsync()
-        => (await GetAggregateAsync(CancellationToken.None)
-            .ConfigureAwait(false))?.IsGlobalAdministrator == true;
-
-    public Task<bool> IsRegisteredAsync(string email) => throw new NotImplementedException();
-
-    public Task<bool> IsRegisteredAsync() => throw new NotImplementedException();
 
     /// <inheritdoc/>
     public async Task ReceiveReminderAsync(string reminderName, byte[] state, TimeSpan dueTime, TimeSpan period)

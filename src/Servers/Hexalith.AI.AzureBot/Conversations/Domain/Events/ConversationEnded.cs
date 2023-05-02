@@ -26,17 +26,18 @@ public class ConversationEnded : ConversationEvent
     /// Initializes a new instance of the <see cref="ConversationEnded" /> class.
     /// </summary>
     /// <param name="id">The identifier.</param>
-    /// <param name="Date">The date.</param>
+    /// <param name="date">The date.</param>
     [JsonConstructor]
-    public ConversationEnded(string id, DateTimeOffset Date)
-        : base(id) => this.Date = Date;
+    public ConversationEnded(string id, DateTimeOffset date)
+        : base(id) => Date = date;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ConversationEnded" /> class.
     /// </summary>
     [Obsolete("For serialization only", true)]
     public ConversationEnded()
-    { }
+    {
+    }
 
     /// <summary>
     /// Gets the date.

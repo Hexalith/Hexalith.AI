@@ -1,4 +1,17 @@
-﻿namespace Hexalith.AI.AzureBot.Conversations.Infrastructure.Services;
+﻿// ***********************************************************************
+// Assembly         : Hexalith.AI.AzureBot
+// Author           : Jérôme Piquot
+// Created          : 05-02-2023
+//
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 05-02-2023
+// ***********************************************************************
+// <copyright file="ConversationCommandService.cs" company="Fiveforty">
+//     Copyright (c) Fiveforty S.A.S.. All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+namespace Hexalith.AI.AzureBot.Conversations.Infrastructure.Services;
 
 using System.Threading.Tasks;
 
@@ -8,11 +21,29 @@ using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Extensions.Common;
 
+/// <summary>
+/// Class ConversationCommandService.
+/// Implements the <see cref="IConversationCommandService" />.
+/// </summary>
+/// <seealso cref="IConversationCommandService" />
 public class ConversationCommandService : IConversationCommandService
 {
+    /// <summary>
+    /// The command bus.
+    /// </summary>
     private readonly ICommandBus _commandBus;
+
+    /// <summary>
+    /// The date time service.
+    /// </summary>
     private readonly IDateTimeService _dateTimeService;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ConversationCommandService" /> class.
+    /// </summary>
+    /// <param name="commandBus">The command bus.</param>
+    /// <param name="dateTimeService">The date time service.</param>
+    /// <exception cref="System.ArgumentNullException"></exception>
     public ConversationCommandService(ICommandBus commandBus, IDateTimeService dateTimeService)
     {
         ArgumentNullException.ThrowIfNull(commandBus);
@@ -20,15 +51,19 @@ public class ConversationCommandService : IConversationCommandService
         _dateTimeService = dateTimeService;
     }
 
-    public async Task GrantGlobalAdministratorRoleAsync(
+    /// <inheritdoc/>
+    public async Task StartConversationAsync(
+        string id,
         string email,
-        string userId,
+        string account,
+        string text,
+        DateTimeOffset startedDate,
         string messageId,
         string correlationId,
         string sessionId,
         CancellationToken cancellationToken)
     {
-        StartConversation message = new(email);
+        StartConversation message = new(id, account, email, text, startedDate);
         await _commandBus
             .PublishAsync(
                 message,
@@ -36,35 +71,9 @@ public class ConversationCommandService : IConversationCommandService
                     messageId,
                     message,
                     _dateTimeService.Now,
-                    new(correlationId, userId, _dateTimeService.Now, null, sessionId),
+                    new(correlationId, email, _dateTimeService.Now, null, sessionId),
                     null),
                 cancellationToken)
             .ConfigureAwait(false);
     }
-
-    public Task GrantGlobalAdministratorRoleAsync(string email, string correlationId, CancellationToken cancellationToken) => throw new NotImplementedException();
-
-    public async Task RegisterAsync(
-                string email,
-        string userId,
-        string messageId,
-        string correlationId,
-        string sessionId,
-        CancellationToken cancellationToken)
-    {
-        StartConversation message = new(email);
-        await _commandBus
-            .PublishAsync(
-                message,
-                new Metadata(
-                    messageId,
-                    message,
-                    _dateTimeService.Now,
-                    new(correlationId, userId, _dateTimeService.Now, null, sessionId),
-                    null),
-                cancellationToken)
-            .ConfigureAwait(false);
-    }
-
-    public Task RegisterAsync(string email, string correlationId, CancellationToken cancellationToken) => throw new NotImplementedException();
 }

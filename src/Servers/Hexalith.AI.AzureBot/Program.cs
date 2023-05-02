@@ -38,8 +38,8 @@ builder.Services.AddSingleton<BotFrameworkAuthentication, ConfigurationBotFramew
 // Note: some classes expect a BotAdapter and some expect a BotFrameworkHttpAdapter, so
 // register the same adapter instance for both types.
 builder.Services.AddSingleton<CloudAdapter, AdapterWithErrorHandler>();
-builder.Services.AddSingleton<IBotFrameworkHttpAdapter>(sp => sp.GetService<CloudAdapter>());
-builder.Services.AddSingleton<BotAdapter>(sp => sp.GetService<CloudAdapter>());
+builder.Services.AddSingleton<IBotFrameworkHttpAdapter>(sp => sp.GetRequiredService<CloudAdapter>());
+builder.Services.AddSingleton<BotAdapter>(sp => sp.GetRequiredService<CloudAdapter>());
 
 // Create command handlers and the Conversation with command-response feature enabled.
 builder.Services.AddSingleton<EchoCommandHandler>();
@@ -53,8 +53,8 @@ builder.Services.AddSingleton(sp =>
         {
             Commands = new List<ITeamsCommandHandler>
             {
-                sp.GetService<EchoCommandHandler>(),
-                sp.GetService<ForityCommandHandler>()
+                sp.GetRequiredService<EchoCommandHandler>(),
+                sp.GetRequiredService<ForityCommandHandler>(),
             },
         },
     };

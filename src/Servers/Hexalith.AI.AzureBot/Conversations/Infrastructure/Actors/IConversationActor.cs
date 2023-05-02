@@ -4,7 +4,7 @@
 // Created          : 04-25-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 05-01-2023
+// Last Modified On : 05-02-2023
 // ***********************************************************************
 // <copyright file="IConversationActor.cs" company="Fiveforty">
 //     Copyright (c) Fiveforty S.A.S.. All rights reserved.
@@ -25,21 +25,8 @@ using Dapr.Actors;
 public interface IConversationActor : IActor
 {
     /// <summary>
-    /// Gets the roles asynchronous.
+    /// Gets the conversation text asynchronous.
     /// </summary>
-    /// <param name="account">The account.</param>
-    /// <returns>Task&lt;IEnumerable&lt;System.String&gt;&gt;.</returns>
-    Task<IEnumerable<string>> GetRolesAsync(string account);
-
-    /// <summary>
-    /// Determines whether [is global administrator asynchronous].
-    /// </summary>
-    /// <returns>Task&lt;System.Boolean&gt;.</returns>
-    Task<bool> IsGlobalAdministratorAsync();
-
-    /// <summary>
-    /// Determines whether [is registered asynchronous] [the specified email].
-    /// </summary>
-    /// <returns>Task&lt;System.Boolean&gt;.</returns>
-    Task<bool> IsRegisteredAsync();
+    /// <returns>Task&lt;System.String&gt;.</returns>
+    Task<string> GetConversationTextAsync();
 }

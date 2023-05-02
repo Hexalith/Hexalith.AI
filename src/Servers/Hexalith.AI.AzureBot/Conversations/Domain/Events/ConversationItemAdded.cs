@@ -26,17 +26,19 @@ public class ConversationItemAdded : ConversationEvent
     /// Initializes a new instance of the <see cref="ConversationItemAdded" /> class.
     /// </summary>
     /// <param name="id">The identifier.</param>
-    /// <param name="text">The text.</param>
     /// <param name="email">The email.</param>
+    /// <param name="userName">Name of the user.</param>
+    /// <param name="text">The text.</param>
     /// <param name="date">The date.</param>
     [JsonConstructor]
-    public ConversationItemAdded(string id, string email, string text, DateTimeOffset date)
+    public ConversationItemAdded(string id, string email, string userName, string text, DateTimeOffset date)
         : base(id)
     {
         ArgumentException.ThrowIfNullOrEmpty(text);
         ArgumentException.ThrowIfNullOrEmpty(email);
         Text = text;
         Email = email;
+        UserName = userName;
         Date = date;
     }
 
@@ -44,7 +46,7 @@ public class ConversationItemAdded : ConversationEvent
     /// Initializes a new instance of the <see cref="ConversationItemAdded" /> class.
     /// </summary>
     [Obsolete("For serialization only", true)]
-    public ConversationItemAdded() => Email = Text = string.Empty;
+    public ConversationItemAdded() => UserName = Email = Text = string.Empty;
 
     /// <summary>
     /// Gets the date.
@@ -63,4 +65,10 @@ public class ConversationItemAdded : ConversationEvent
     /// </summary>
     /// <value>The text.</value>
     public string Text { get; }
+
+    /// <summary>
+    /// Gets the name of the user.
+    /// </summary>
+    /// <value>The name of the user.</value>
+    public string UserName { get; }
 }
