@@ -1,48 +1,51 @@
 ﻿// ***********************************************************************
-// Assembly         :
+// Assembly         : Hexalith.AI.AzureBot
 // Author           : Jérôme Piquot
-// Created          : 04-25-2023
+// Created          : 04-24-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 04-25-2023
+// Last Modified On : 05-01-2023
 // ***********************************************************************
-// <copyright file="GlobalAdministratorRegistered.cs" company="Fiveforty S.A.S.">
+// <copyright file="UserEvent.cs" company="Fiveforty">
 //     Copyright (c) Fiveforty S.A.S.. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-
-namespace Hexalith.AI.AzureBot.GlobalAdministrations.Application.Commands;
+namespace Hexalith.AI.AzureBot.Users.Domain.Events;
 
 using System.Text.Json.Serialization;
 
 using Hexalith.Domain.Abstractions.Events;
 
 /// <summary>
-/// Class GlobalAdministratorRegistered.
+/// Class UserEvent.
 /// Implements the <see cref="BaseEvent" />.
 /// </summary>
 /// <seealso cref="BaseEvent" />
-public class RegisterGlobalAdministrator : GlobalAdministrationCommand
+public class UserEvent : BaseEvent
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="RegisterGlobalAdministrator"/> class.
+    /// Initializes a new instance of the <see cref="UserEvent" /> class.
     /// </summary>
     /// <param name="email">The email.</param>
     [JsonConstructor]
-    public RegisterGlobalAdministrator(string email)
-    {
-        if (string.IsNullOrWhiteSpace(email))
-        {
-            throw new ArgumentNullException(nameof(email));
-        }
+    protected UserEvent(string email) => Email = email;
 
-        Email = email.ToUpperInvariant();
-    }
+    /// <summary>
+    /// Initializes a new instance of the <see cref="UserEvent" /> class.
+    /// </summary>
+    [Obsolete("For serialization only", true)]
+    protected UserEvent() => Email = string.Empty;
 
     /// <summary>
     /// Gets or sets the email.
     /// </summary>
     /// <value>The email.</value>
     public string Email { get; set; }
+
+    /// <inheritdoc/>
+    protected override string DefaultAggregateId() => Email;
+
+    /// <inheritdoc/>
+    protected override string DefaultAggregateName() => nameof(User);
 }
