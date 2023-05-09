@@ -4,9 +4,9 @@
 // Created          : 04-24-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 04-29-2023
+// Last Modified On : 05-08-2023
 // ***********************************************************************
-// <copyright file="Domain.cs" company="Fiveforty">
+// <copyright file="Tenant.cs" company="Fiveforty">
 //     Copyright (c) Fiveforty S.A.S.. All rights reserved.
 // </copyright>
 // <summary></summary>
@@ -25,4 +25,12 @@ using Hexalith.Domain.Abstractions.Aggregates;
 /// <seealso cref="IEquatable{Domain}" />
 public record Tenant(string Id, string ApplicationId, string ApplicationSecret)
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Tenant"/> class.
+    /// </summary>
+    /// <param name="id">The identifier.</param>
+    public Tenant(string id)
+        : this(id, string.Empty, string.Empty)
+    {
+    }
 }

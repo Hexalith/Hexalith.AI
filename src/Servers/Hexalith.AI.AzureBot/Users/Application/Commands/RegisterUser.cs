@@ -15,8 +15,6 @@ namespace Hexalith.AI.AzureBot.Users.Application.Commands;
 
 using System.Text.Json.Serialization;
 
-using Hexalith.AI.AzureBot.Users.Domain.Commands;
-
 /// <summary>
 /// Class UserRegistered.
 /// Implements the <see cref="BaseCommand" />.

@@ -52,26 +52,39 @@ public class TenantCommandService : ITenantCommandService
     }
 
     /// <inheritdoc/>
-    public async Task AddUserRoleAsync(
-        string account,
-        string email,
-        string role,
+    public async Task RegisterTenantAsync(
+        string name,
+        string domain,
+        string id,
         string messageId,
         string correlationId,
+        string userId,
         string sessionId,
         CancellationToken cancellationToken)
     {
-        GrantTenantUserRole message = new(account, email, role);
-        await _commandBus
+        RegisterTenant message = new(name, domain, id);
+        await RegisterTenantAsync(
+            message,
+            new Metadata(
+                messageId,
+                message,
+                _dateTimeService.Now,
+                new(correlationId, userId, _dateTimeService.Now, null, sessionId),
+                null),
+            cancellationToken)
+            .ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public Task RegisterTenantAsync(
+      RegisterTenant message,
+      Metadata metadata,
+      CancellationToken cancellationToken)
+    {
+        return _commandBus
             .PublishAsync(
                 message,
-                new Metadata(
-                    messageId,
-                    message,
-                    _dateTimeService.Now,
-                    new(correlationId, email, _dateTimeService.Now, null, sessionId),
-                    null),
-                cancellationToken)
-            .ConfigureAwait(false);
+                metadata,
+                cancellationToken);
     }
 }

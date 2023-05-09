@@ -30,21 +30,30 @@ using Hexalith.AI.AzureBot.Tenants.Infrastructure.Actors;
 public class TenantQueryService : ITenantQueryService
 {
     /// <inheritdoc/>
-    public async Task<bool> ExistsAsync(string tenantId, CancellationToken cancellationToken)
-        => await GetTenantActor(tenantId).ExistsAsync().ConfigureAwait(false);
+    public async Task<bool> ExistsAsync(string id, CancellationToken cancellationToken)
+        => await GetTenantActor(id)
+            .ExistsAsync()
+            .ConfigureAwait(false);
 
     /// <inheritdoc/>
-    public async Task<TenantUserInformation> GetTenantUserAsync(string tenantId, string objectId, CancellationToken cancellationToken)
-        => await GetTenantActor(tenantId).GetTenantUserAsync(objectId).ConfigureAwait(false);
+    public async Task<TenantUserInformation> GetTenantUserAsync(string id, string objectId, CancellationToken cancellationToken)
+        => await GetTenantActor(id)
+            .GetTenantUserAsync(objectId)
+            .ConfigureAwait(false);
 
     /// <inheritdoc/>
-    public async Task<bool> UserExistsInTenantAsync(string tenantId, string objectId, CancellationToken cancellationToken)
-        => await GetTenantActor(tenantId).UserExistsInTenantAsync(objectId).ConfigureAwait(false);
+    public async Task<bool> UserExistsInTenantAsync(string id, string objectId, CancellationToken cancellationToken)
+        => await GetTenantActor(id)
+            .UserExistsInTenantAsync(objectId)
+            .ConfigureAwait(false);
 
     /// <summary>
     /// Gets the conversation actor.
     /// </summary>
     /// <param name="email">The email.</param>
     /// <returns>ITenantActor.</returns>
-    private static ITenantAggregateActor GetTenantActor(string email) => ActorProxy.Create<ITenantAggregateActor>(new ActorId(email), nameof(TenantAggregateActor));
+    private static ITenantAggregateActor GetTenantActor(string email)
+        => ActorProxy.Create<ITenantAggregateActor>(
+            new ActorId(email),
+            nameof(TenantAggregateActor));
 }

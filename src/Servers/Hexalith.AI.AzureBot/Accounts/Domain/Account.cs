@@ -13,16 +13,16 @@
 // ***********************************************************************
 namespace Hexalith.AI.AzureBot.Accounts.Domain;
 
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Runtime.Serialization;
 
-using Hexalith.AI.AzureBot.Accounts.Application.Events;
 using Hexalith.AI.AzureBot.Accounts.Domain.Events;
 using Hexalith.Domain.Abstractions.Aggregates;
 using Hexalith.Domain.Abstractions.Events;
 using Hexalith.Domain.Abstractions.Exceptions;
-using Hexalith.Extensions.Helpers;
 
 /// <summary>
 /// Class Account.
@@ -37,7 +37,6 @@ public record Account(
     string AggregateId,
     string AggregateName,
     string Name,
-    IEnumerable<Domain> Domains,
     IEnumerable<Tenant> Tenants,
     IEnumerable<AccountUser> Users) : IAggregate
 {
@@ -50,7 +49,6 @@ public record Account(
               nameof(Account),
               (registered ?? throw new ArgumentNullException(nameof(registered))).AggregateId,
               registered.Name,
-              new Domain(registered.Domain).IntoArray(),
               Array.Empty<Tenant>(),
               Array.Empty<AccountUser>())
     {
@@ -67,9 +65,9 @@ public record Account(
         ArgumentNullException.ThrowIfNull(domainEvent);
         return domainEvent switch
         {
-            AccountDomainRegistered domain => this with
+            AccountTenantRegistered tenant => this with
             {
-                Domains = Domains.Append(new Domain(domain.Domain)),
+                Tenants = AddTenant(tenant),
             },
             AccountUserRegistered user => this with
             {
@@ -82,6 +80,15 @@ public record Account(
             AccountRegistered => throw new InvalidAggregateEventException(this, domainEvent, true),
             _ => throw new InvalidAggregateEventException(this, domainEvent, false),
         };
+    }
+
+    private IEnumerable<Tenant> AddTenant(AccountTenantRegistered tenant)
+    {
+        Dictionary<string, Tenant> dict = Tenants.ToDictionary(k => k.Id, v => v);
+        bool result = dict.TryAdd(tenant.TenantId, new Tenant(tenant.TenantId));
+        return !result
+            ? throw new InvalidOperationException($"Duplicate tenant '{tenant.TenantId}' added to account '{tenant.Name}'.")
+            : (IEnumerable<Tenant>)dict.Values;
     }
 
     private IEnumerable<AccountUser> AddRole(string email, string role)

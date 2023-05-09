@@ -19,7 +19,7 @@ using Dapr.Actors.Runtime;
 
 using Hexalith.AI.AzureBot.Accounts.Application.Services;
 using Hexalith.AI.AzureBot.Accounts.Infrastructure;
-using Hexalith.AI.AzureBot.Accounts.Infrastructure.Actors;
+using Hexalith.AI.AzureBot.Accounts.Infrastructure.Configuration;
 using Hexalith.AI.AzureBot.Accounts.Infrastructure.Services;
 using Hexalith.Extensions.Configuration;
 

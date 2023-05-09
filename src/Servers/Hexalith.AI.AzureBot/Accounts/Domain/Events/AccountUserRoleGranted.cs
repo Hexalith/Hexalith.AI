@@ -12,11 +12,9 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.AI.AzureBot.Accounts.Application.Events;
+namespace Hexalith.AI.AzureBot.Accounts.Domain.Events;
 
 using System.Text.Json.Serialization;
-
-using Hexalith.AI.AzureBot.Accounts.Domain.Events;
 
 /// <summary>
 /// Class AccountGranted.

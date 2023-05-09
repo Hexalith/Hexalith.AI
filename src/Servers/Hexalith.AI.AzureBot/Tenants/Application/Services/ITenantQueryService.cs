@@ -23,26 +23,26 @@ public interface ITenantQueryService
     /// <summary>
     /// Check if tenant exists.
     /// </summary>
-    /// <param name="tenantId">The tenant identifier.</param>
+    /// <param name="id">The tenant identifier.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task&lt;System.Boolean&gt;.</returns>
-    Task<bool> ExistsAsync(string tenantId, CancellationToken cancellationToken);
+    Task<bool> ExistsAsync(string id, CancellationToken cancellationToken);
 
     /// <summary>
     /// Gets the tenant user.
     /// </summary>
-    /// <param name="tenantId">The tenant identifier.</param>
+    /// <param name="id">The tenant identifier.</param>
     /// <param name="objectId">The object identifier.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task&lt;TenantUserInformation&gt;.</returns>
-    Task<TenantUserInformation> GetTenantUserAsync(string tenantId, string objectId, CancellationToken cancellationToken);
+    Task<TenantUserInformation> GetTenantUserAsync(string id, string objectId, CancellationToken cancellationToken);
 
     /// <summary>
     /// Check if user exists in tenant.
     /// </summary>
-    /// <param name="tenantId">The tenant identifier.</param>
+    /// <param name="id">The tenant identifier.</param>
     /// <param name="objectId">The object identifier.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task&lt;System.Boolean&gt;.</returns>
-    Task<bool> UserExistsInTenantAsync(string tenantId, string objectId, CancellationToken cancellationToken);
+    Task<bool> UserExistsInTenantAsync(string id, string objectId, CancellationToken cancellationToken);
 }

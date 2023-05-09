@@ -4,7 +4,7 @@
 // Created          : 04-24-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 04-30-2023
+// Last Modified On : 05-08-2023
 // ***********************************************************************
 // <copyright file="TenantRegistered.cs" company="Fiveforty">
 //     Copyright (c) Fiveforty S.A.S.. All rights reserved.
@@ -27,20 +27,30 @@ public class TenantRegistered : TenantEvent
     /// </summary>
     /// <param name="name">The name.</param>
     /// <param name="domain">The domain.</param>
+    /// <param name="id">The identifier.</param>
     [JsonConstructor]
-    public TenantRegistered(string name, string domain)
-        : base(name) => Domain = domain;
+    public TenantRegistered(string name, string domain, string id)
+        : base(name)
+    {
+        Domain = domain;
+        Id = id;
+    }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="TenantRegistered" /> class.
     /// </summary>
     [Obsolete("For serialization only", true)]
-    public TenantRegistered() => Domain = string.Empty;
+    public TenantRegistered() => Id = Domain = string.Empty;
 
     /// <summary>
     /// Gets or sets the domain.
     /// </summary>
     /// <value>The domain.</value>
     public string Domain { get; set; }
-    public string Id { get; internal set; }
+
+    /// <summary>
+    /// Gets or sets the identifier.
+    /// </summary>
+    /// <value>The identifier.</value>
+    public string Id { get; set; }
 }

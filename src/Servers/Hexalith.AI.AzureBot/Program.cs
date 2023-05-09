@@ -50,7 +50,7 @@ builder.Services.AddSingleton<IBotFrameworkHttpAdapter>(sp => sp.GetRequiredServ
 builder.Services.AddSingleton<BotAdapter>(sp => sp.GetRequiredService<CloudAdapter>());
 
 // Create command handlers and the Conversation with command-response feature enabled.
-builder.Services.AddSingleton<EchoCommandHandler>();
+builder.Services.AddSingleton<RegisterGlobalAdministratorCommandHandler>();
 builder.Services.AddSingleton<ForityCommandHandler>();
 builder.Services.AddSingleton(sp =>
 {
@@ -61,7 +61,7 @@ builder.Services.AddSingleton(sp =>
         {
             Commands = new List<ITeamsCommandHandler>
             {
-                sp.GetRequiredService<EchoCommandHandler>(),
+                sp.GetRequiredService<RegisterGlobalAdministratorCommandHandler>(),
                 sp.GetRequiredService<ForityCommandHandler>(),
             },
         },

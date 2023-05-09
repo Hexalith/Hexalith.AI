@@ -4,7 +4,7 @@
 // Created          : 04-24-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 04-25-2023
+// Last Modified On : 05-02-2023
 // ***********************************************************************
 // <copyright file="RegisterTenant.cs" company="Fiveforty">
 //     Copyright (c) Fiveforty S.A.S.. All rights reserved.
@@ -26,14 +26,28 @@ using Hexalith.Domain.Abstractions.Events;
 public class RegisterTenant : TenantCommand
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="RegisterTenant"/> class.
+    /// Initializes a new instance of the <see cref="RegisterTenant" /> class.
     /// </summary>
-    /// <param name="domain">The domain.</param>
     /// <param name="name">The name.</param>
-    /// <param name="administrators">The administrators.</param>
+    /// <param name="domain">The domain.</param>
+    /// <param name="id">The identifier.</param>
     [JsonConstructor]
-    public RegisterTenant(string name)
+    public RegisterTenant(string name, string domain, string id)
         : base(name)
     {
+        Domain = domain;
+        Id = id;
     }
+
+    /// <summary>
+    /// Gets or sets the domain.
+    /// </summary>
+    /// <value>The domain.</value>
+    public string Domain { get; set; }
+
+    /// <summary>
+    /// Gets or sets the identifier.
+    /// </summary>
+    /// <value>The identifier.</value>
+    public string Id { get; set; }
 }

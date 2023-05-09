@@ -14,6 +14,8 @@
 
 namespace Hexalith.AI.AzureBot.GlobalAdministrations.Application.Commands;
 
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
 using Hexalith.Domain.Abstractions.Events;
@@ -23,6 +25,8 @@ using Hexalith.Domain.Abstractions.Events;
 /// Implements the <see cref="BaseEvent" />.
 /// </summary>
 /// <seealso cref="BaseEvent" />
+[DisplayName("Register global administrator")]
+[Description("Register a user as a global administrator")]
 public class RegisterGlobalAdministrator : GlobalAdministrationCommand
 {
     /// <summary>
@@ -34,15 +38,21 @@ public class RegisterGlobalAdministrator : GlobalAdministrationCommand
     {
         if (string.IsNullOrWhiteSpace(email))
         {
-            throw new ArgumentNullException(nameof(email));
+            throw new ArgumentException("Is null or empty.", nameof(email));
         }
 
-        Email = email.ToUpperInvariant();
+        Email = email;
     }
 
     /// <summary>
     /// Gets or sets the email.
     /// </summary>
     /// <value>The email.</value>
+    [DisplayName("Administrator email")]
+    [Description("The email of the global administrator to register")]
+    [DefaultValue("john.doe@microsoft.com")]
+    [Required]
+    [EmailAddress]
+    [MaxLength(256)]
     public string Email { get; set; }
 }

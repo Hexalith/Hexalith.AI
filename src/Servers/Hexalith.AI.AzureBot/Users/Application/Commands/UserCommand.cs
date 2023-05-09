@@ -11,9 +11,11 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Hexalith.AI.AzureBot.Users.Domain.Commands;
+namespace Hexalith.AI.AzureBot.Users.Application.Commands;
 
 using System.Text.Json.Serialization;
+
+using Hexalith.AI.AzureBot.Users.Domain;
 
 using Hexalith.Application.Abstractions.Commands;
 
