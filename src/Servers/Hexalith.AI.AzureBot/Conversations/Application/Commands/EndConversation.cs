@@ -39,7 +39,8 @@ public class EndConversation : ConversationCommand
     /// </summary>
     [Obsolete("For serialization only", true)]
     public EndConversation()
-    { }
+    {
+    }
 
     /// <summary>
     /// Gets the date.

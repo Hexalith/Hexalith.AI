@@ -18,6 +18,7 @@ using Hexalith.AI.AzureBot.GlobalAdministrations.Application.Services;
 using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Extensions.Common;
+using Hexalith.Extensions.Helpers;
 
 /// <summary>
 /// Class GlobalAdministrationCommandService.
@@ -49,17 +50,19 @@ public class GlobalAdministrationCommandService : IGlobalAdministrationCommandSe
         _dateTimeService = dateTimeService;
     }
 
-    /// <summary>
-    /// Grant global administrator role as an asynchronous operation.
-    /// </summary>
-    /// <param name="email">The email.</param>
-    /// <param name="userId">The user identifier.</param>
-    /// <param name="messageId">The message identifier.</param>
-    /// <param name="correlationId">The correlation identifier.</param>
-    /// <param name="sessionId">The session identifier.</param>
-    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns>A Task representing the asynchronous operation.</returns>
-    public async Task GrantGlobalAdministratorRoleAsync(
+    /// <inheritdoc/>
+    public async Task DoAsync(RegisterGlobalAdministrator command, Metadata metadata, CancellationToken cancellationToken)
+    {
+        await _commandBus
+            .PublishAsync(
+                command,
+                metadata,
+                cancellationToken)
+            .ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public async Task RegisterGlobalAdministratorAsync(
         string email,
         string userId,
         string messageId,
@@ -68,8 +71,7 @@ public class GlobalAdministrationCommandService : IGlobalAdministrationCommandSe
         CancellationToken cancellationToken)
     {
         RegisterGlobalAdministrator message = new(email);
-        await _commandBus
-            .PublishAsync(
+        await DoAsync(
                 message,
                 new Metadata(
                     messageId,
@@ -79,5 +81,12 @@ public class GlobalAdministrationCommandService : IGlobalAdministrationCommandSe
                     null),
                 cancellationToken)
             .ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public async Task RegisterGlobalAdministratorAsync(string email, string userId, CancellationToken cancellationToken)
+    {
+        string id = UniqueIdHelper.GenerateUniqueStringId();
+        await RegisterGlobalAdministratorAsync(email, userId, id, id, id, cancellationToken).ConfigureAwait(false);
     }
 }

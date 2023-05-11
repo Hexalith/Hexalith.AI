@@ -1,18 +1,9 @@
 using Hexalith.AI.AzureBot.Accounts.Infrastructure.Helpers;
-using Hexalith.AI.AzureBot.Bot.Application.Commands;
-using Hexalith.AI.AzureBot.Bot.Infrastructure;
 using Hexalith.AI.AzureBot.Conversations.Infrastructure.Helpers;
 using Hexalith.AI.AzureBot.GlobalAdministrations.Infrastructure.Helpers;
-using Hexalith.AI.AzureBot.SemanticKernel.Configurations;
-using Hexalith.AI.AzureBot.SemanticKernel.Services;
 using Hexalith.AI.AzureBot.Users.Infrastructure.Helpers;
-using Hexalith.Extensions.Configuration;
+using Hexalith.Infrastructure.SemanticBot.Helpers;
 using Hexalith.Infrastructure.WebApis.Helpers;
-
-using Microsoft.Bot.Builder;
-using Microsoft.Bot.Builder.Integration.AspNet.Core;
-using Microsoft.Bot.Connector.Authentication;
-using Microsoft.TeamsFx.Conversation;
 
 using Serilog;
 
@@ -36,45 +27,8 @@ WebApplicationBuilder builder = HexalithWebApi.CreateApplication(
             .AddAccount(),
     args);
 
-builder.Services.AddHttpClient("WebClient", client => client.Timeout = TimeSpan.FromSeconds(600));
-builder.Services.AddHttpContextAccessor();
-
-// Create the Bot Framework Authentication to be used with the Bot Adapter.
-builder.Services.AddSingleton<BotFrameworkAuthentication, ConfigurationBotFrameworkAuthentication>();
-
-// Create the Cloud Adapter with error handling enabled.
-// Note: some classes expect a BotAdapter and some expect a BotFrameworkHttpAdapter, so
-// register the same adapter instance for both types.
-builder.Services.AddSingleton<CloudAdapter, AdapterWithErrorHandler>();
-builder.Services.AddSingleton<IBotFrameworkHttpAdapter>(sp => sp.GetRequiredService<CloudAdapter>());
-builder.Services.AddSingleton<BotAdapter>(sp => sp.GetRequiredService<CloudAdapter>());
-
-// Create command handlers and the Conversation with command-response feature enabled.
-builder.Services.AddSingleton<RegisterGlobalAdministratorCommandHandler>();
-builder.Services.AddSingleton<ForityCommandHandler>();
-builder.Services.AddSingleton(sp =>
-{
-    ConversationOptions options = new()
-    {
-        Adapter = sp.GetService<CloudAdapter>(),
-        Command = new CommandOptions()
-        {
-            Commands = new List<ITeamsCommandHandler>
-            {
-                sp.GetRequiredService<RegisterGlobalAdministratorCommandHandler>(),
-                sp.GetRequiredService<ForityCommandHandler>(),
-            },
-        },
-    };
-
-    return new ConversationBot(options);
-});
-
-// Create the bot as a transient. In this case the ASP Controller is expecting an IBot.
-builder.Services.AddTransient<IBot, TeamsBot>();
-
-builder.Services.AddSingleton<ArtificialIntelligenceService>();
-builder.Services.ConfigureSettings<ArtificialIntelligenceServiceSettings>(builder.Configuration);
+// Add the Hexalith Semantic Bot.
+builder.Services.AddSemanticBot(builder.Configuration);
 
 builder.Services.AddGlobalAdministration(builder.Configuration);
 builder.Services.AddAccount(builder.Configuration);

@@ -12,6 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 namespace Hexalith.AI.AzureBot.UnitOfWork.Domain.Projects;
+
 /// <summary>
 /// Class ProjectSource.
 /// Implements the <see cref="IEquatable{ProjectSource}" />.
