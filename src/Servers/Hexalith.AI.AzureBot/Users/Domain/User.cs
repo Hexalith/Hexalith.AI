@@ -14,8 +14,8 @@
 namespace Hexalith.AI.AzureBot.Users.Domain;
 
 using Hexalith.AI.AzureBot.Users.Domain.Events;
-using Hexalith.Domain.Abstractions.Aggregates;
-using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Domain.Aggregates;
+using Hexalith.Domain.Events;
 
 /// <summary>
 /// Class UserInformation.

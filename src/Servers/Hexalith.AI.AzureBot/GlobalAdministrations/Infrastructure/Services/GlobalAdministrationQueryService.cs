@@ -6,42 +6,42 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 05-01-2023
 // ***********************************************************************
-// <copyright file="GlobalAdministrationQueryService.cs" company="Fiveforty">
+// <copyright file="ApplicationAdministrationQueryService.cs" company="Fiveforty">
 //     Copyright (c) Fiveforty S.A.S.. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.AI.AzureBot.GlobalAdministrations.Infrastructure.Services;
+namespace Hexalith.AI.AzureBot.ApplicationAdministrations.Infrastructure.Services;
 
 using Dapr.Actors;
 using Dapr.Actors.Client;
 
-using Hexalith.AI.AzureBot.GlobalAdministrations.Application.Services;
-using Hexalith.AI.AzureBot.GlobalAdministrations.Domain;
-using Hexalith.AI.AzureBot.GlobalAdministrations.Infrastructure.Actors;
+using Hexalith.AI.AzureBot.ApplicationAdministrations.Application.Services;
+using Hexalith.AI.AzureBot.ApplicationAdministrations.Domain;
+using Hexalith.AI.AzureBot.ApplicationAdministrations.Infrastructure.Actors;
 
 /// <summary>
-/// Class GlobalAdministrationQueryService.
-/// Implements the <see cref="IGlobalAdministrationQueryService" />.
+/// Class ApplicationAdministrationQueryService.
+/// Implements the <see cref="IApplicationAdministrationQueryService" />.
 /// </summary>
-/// <seealso cref="IGlobalAdministrationQueryService" />
-public class GlobalAdministrationQueryService : IGlobalAdministrationQueryService
+/// <seealso cref="IApplicationAdministrationQueryService" />
+public class ApplicationAdministrationQueryService : IApplicationAdministrationQueryService
 {
     /// <summary>
     /// The global administration actor.
     /// </summary>
-    private IGlobalAdministrationActor? _globalAdministrationActor;
+    private IApplicationAdministrationActor? _globalAdministrationActor;
 
     /// <summary>
     /// Gets the global administration actor.
     /// </summary>
     /// <value>The global administration actor.</value>
-    private IGlobalAdministrationActor GlobalAdministrationActor
+    private IApplicationAdministrationActor ApplicationAdministrationActor
                 => _globalAdministrationActor
-            ??= ActorProxy.Create<IGlobalAdministrationActor>(
-                new ActorId(nameof(GlobalAdministration)),
-                nameof(GlobalAdministrationActor));
+            ??= ActorProxy.Create<IApplicationAdministrationActor>(
+                new ActorId(nameof(ApplicationAdministration)),
+                nameof(ApplicationAdministrationActor));
 
     /// <summary>
     /// Is administrator as an asynchronous operation.
@@ -50,7 +50,7 @@ public class GlobalAdministrationQueryService : IGlobalAdministrationQueryServic
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A Task&lt;System.Boolean&gt; representing the asynchronous operation.</returns>
     public async Task<bool> IsAdministratorAsync(string email, CancellationToken cancellationToken)
-                => await GlobalAdministrationActor
+                => await ApplicationAdministrationActor
                 .IsAdministratorAsync(email)
                 .ConfigureAwait(false);
 }

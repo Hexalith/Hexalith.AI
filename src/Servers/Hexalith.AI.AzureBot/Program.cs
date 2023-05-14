@@ -1,6 +1,6 @@
 using Hexalith.AI.AzureBot.Accounts.Infrastructure.Helpers;
 using Hexalith.AI.AzureBot.Conversations.Infrastructure.Helpers;
-using Hexalith.AI.AzureBot.GlobalAdministrations.Infrastructure.Helpers;
+using Hexalith.AI.AzureBot.ApplicationAdministrations.Infrastructure.Helpers;
 using Hexalith.AI.AzureBot.Users.Infrastructure.Helpers;
 using Hexalith.Infrastructure.SemanticBot.Helpers;
 using Hexalith.Infrastructure.WebApis.Helpers;
@@ -21,7 +21,7 @@ WebApplicationBuilder builder = HexalithWebApi.CreateApplication(
     debugInVisualStudio,
     (actors)
         => actors
-            .AddGlobalAdministration()
+            .AddApplicationAdministration()
             .AddConversation()
             .AddUser()
             .AddAccount(),
@@ -30,7 +30,7 @@ WebApplicationBuilder builder = HexalithWebApi.CreateApplication(
 // Add the Hexalith Semantic Bot.
 builder.Services.AddSemanticBot(builder.Configuration);
 
-builder.Services.AddGlobalAdministration(builder.Configuration);
+builder.Services.AddApplicationAdministration(builder.Configuration);
 builder.Services.AddAccount(builder.Configuration);
 builder.Services.AddUser(builder.Configuration);
 builder.Services.AddConversation(builder.Configuration);

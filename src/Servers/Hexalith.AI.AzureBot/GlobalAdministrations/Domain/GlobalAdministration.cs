@@ -6,49 +6,49 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 04-25-2023
 // ***********************************************************************
-// <copyright file="GlobalAdministration.cs" company="Fiveforty">
+// <copyright file="ApplicationAdministration.cs" company="Fiveforty">
 //     Copyright (c) Fiveforty S.A.S.. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Hexalith.AI.AzureBot.GlobalAdministrations.Domain;
+namespace Hexalith.AI.AzureBot.ApplicationAdministrations.Domain;
 
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 
-using Hexalith.AI.AzureBot.GlobalAdministrations.Domain.Entities;
-using Hexalith.AI.AzureBot.GlobalAdministrations.Domain.Events;
-using Hexalith.Domain.Abstractions.Aggregates;
-using Hexalith.Domain.Abstractions.Events;
-using Hexalith.Domain.Abstractions.Exceptions;
+using Hexalith.AI.AzureBot.ApplicationAdministrations.Domain.Entities;
+using Hexalith.AI.AzureBot.ApplicationAdministrations.Domain.Events;
+using Hexalith.Domain.Aggregates;
+using Hexalith.Domain.Events;
+using Hexalith.Domain.Exceptions;
 
 /// <summary>
-/// Class GlobalAdministration.
-/// Implements the <see cref="IEquatable{GlobalAdministration}" />.
+/// Class ApplicationAdministration.
+/// Implements the <see cref="IEquatable{ApplicationAdministration}" />.
 /// </summary>
-/// <seealso cref="IEquatable{GlobalAdministration}" />
+/// <seealso cref="IEquatable{ApplicationAdministration}" />
 ///
 [DebuggerDisplay("{Administrators.Count} administrators")]
 [DataContract]
-public record GlobalAdministration(string AggregateName, string AggregateId, IEnumerable<GlobalAdministrator> Administrators) : IAggregate
+public record ApplicationAdministration(string AggregateName, string AggregateId, IEnumerable<GlobalAdministrator> Administrators) : IAggregate
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="GlobalAdministration"/> class.
+    /// Initializes a new instance of the <see cref="ApplicationAdministration"/> class.
     /// </summary>
     /// <param name="registered">The registered.</param>
-    public GlobalAdministration(GlobalAdministratorRegistered registered)
+    public ApplicationAdministration(GlobalAdministratorRegistered registered)
         : this()
     {
-        GlobalAdministration admin = Apply(registered);
+        ApplicationAdministration admin = Apply(registered);
         Administrators = admin.Administrators;
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="GlobalAdministration"/> class.
+    /// Initializes a new instance of the <see cref="ApplicationAdministration"/> class.
     /// </summary>
-    public GlobalAdministration()
-        : this(nameof(GlobalAdministration), nameof(GlobalAdministration), Array.Empty<GlobalAdministrator>())
+    public ApplicationAdministration()
+        : this(nameof(ApplicationAdministration), nameof(ApplicationAdministration), Array.Empty<GlobalAdministrator>())
     {
     }
 
@@ -56,12 +56,12 @@ public record GlobalAdministration(string AggregateName, string AggregateId, IEn
     /// Applies the specified domain event.
     /// </summary>
     /// <param name="domainEvent">The domain event.</param>
-    /// <returns>GlobalAdministration.</returns>
+    /// <returns>ApplicationAdministration.</returns>
     /// <exception cref="System.ArgumentNullException"></exception>
     public IAggregate Apply([NotNull] BaseEvent domainEvent)
     {
         ArgumentNullException.ThrowIfNull(domainEvent);
-        _ = new GlobalAdministration();
+        _ = new ApplicationAdministration();
         return domainEvent switch
         {
             GlobalAdministratorRegistered e => Apply(e),
@@ -73,9 +73,9 @@ public record GlobalAdministration(string AggregateName, string AggregateId, IEn
     /// Applies the specified domain event.
     /// </summary>
     /// <param name="domainEvent">The domain event.</param>
-    /// <returns>GlobalAdministration.</returns>
+    /// <returns>ApplicationAdministration.</returns>
     /// <exception cref="InvalidOperationException">The global administrator with email '{domainEvent.Email}' cannot be registered as it already exists in the system.</exception>
-    private GlobalAdministration Apply(GlobalAdministratorRegistered domainEvent)
+    private ApplicationAdministration Apply(GlobalAdministratorRegistered domainEvent)
     {
         Dictionary<string, GlobalAdministrator> administrators = Administrators.ToDictionary(p => p.Email);
         if (administrators.ContainsKey(domainEvent.Email.ToUpperInvariant()))

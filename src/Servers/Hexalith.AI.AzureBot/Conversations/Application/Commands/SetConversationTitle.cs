@@ -13,6 +13,7 @@
 // ***********************************************************************
 namespace Hexalith.AI.AzureBot.Conversations.Application.Commands;
 
+using System.ComponentModel;
 using System.Text.Json.Serialization;
 
 /// <summary>
@@ -20,6 +21,7 @@ using System.Text.Json.Serialization;
 /// Implements the <see cref="BaseCommand" />.
 /// </summary>
 /// <seealso cref="BaseCommand" />
+[Description("Set the conversation title")]
 public class SetConversationTitle : ConversationCommand
 {
     /// <summary>

@@ -14,7 +14,7 @@
 
 namespace Hexalith.AI.AzureBot.Accounts.Domain;
 
-using Hexalith.Domain.Abstractions.Aggregates;
+using Hexalith.Domain.Aggregates;
 
 /// <summary>
 /// Class Domain.

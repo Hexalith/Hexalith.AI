@@ -11,11 +11,11 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Hexalith.AI.AzureBot.GlobalAdministrations.Domain.Entities;
+namespace Hexalith.AI.AzureBot.ApplicationAdministrations.Domain.Entities;
 
 using System.Diagnostics.CodeAnalysis;
 
-using Hexalith.AI.AzureBot.GlobalAdministrations.Domain.Events;
+using Hexalith.AI.AzureBot.ApplicationAdministrations.Domain.Events;
 
 /// <summary>
 /// Class GlobalAdministrator.

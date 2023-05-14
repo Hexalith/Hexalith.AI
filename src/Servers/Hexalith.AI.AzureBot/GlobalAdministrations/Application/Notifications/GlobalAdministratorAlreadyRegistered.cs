@@ -11,11 +11,11 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Hexalith.AI.AzureBot.GlobalAdministrations.Application.Notifications;
+namespace Hexalith.AI.AzureBot.ApplicationAdministrations.Application.Notifications;
 
 using System.Text.Json.Serialization;
 
-using Hexalith.Application.Abstractions.Notifications;
+using Hexalith.Application.Notifications;
 
 /// <summary>
 /// Class GlobalAdministratorAlreadyRegistered.

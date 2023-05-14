@@ -6,23 +6,23 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 04-25-2023
 // ***********************************************************************
-// <copyright file="IGlobalAdministrationActor.cs" company="Fiveforty">
+// <copyright file="IApplicationAdministrationActor.cs" company="Fiveforty">
 //     Copyright (c) Fiveforty S.A.S.. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Hexalith.AI.AzureBot.GlobalAdministrations.Infrastructure.Actors;
+namespace Hexalith.AI.AzureBot.ApplicationAdministrations.Infrastructure.Actors;
 
 using System.Threading.Tasks;
 
 using Dapr.Actors;
 
 /// <summary>
-/// Interface IGlobalAdministrationActor
+/// Interface IApplicationAdministrationActor
 /// Extends the <see cref="IActor" />.
 /// </summary>
 /// <seealso cref="IActor" />
-public interface IGlobalAdministrationActor : IActor
+public interface IApplicationAdministrationActor : IActor
 {
     /// <summary>
     /// Administrators the count asynchronous.

@@ -6,26 +6,26 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 04-29-2023
 // ***********************************************************************
-// <copyright file="GlobalAdministrationHelper.cs" company="Fiveforty">
+// <copyright file="ApplicationAdministrationHelper.cs" company="Fiveforty">
 //     Copyright (c) Fiveforty S.A.S.. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Hexalith.AI.AzureBot.GlobalAdministrations.Infrastructure.Helpers;
+namespace Hexalith.AI.AzureBot.ApplicationAdministrations.Infrastructure.Helpers;
 
 using System.Diagnostics.CodeAnalysis;
 
 using Dapr.Actors.Runtime;
 
-using Hexalith.AI.AzureBot.GlobalAdministrations.Application.Services;
-using Hexalith.AI.AzureBot.GlobalAdministrations.Infrastructure.Actors;
-using Hexalith.AI.AzureBot.GlobalAdministrations.Infrastructure.Services;
+using Hexalith.AI.AzureBot.ApplicationAdministrations.Application.Services;
+using Hexalith.AI.AzureBot.ApplicationAdministrations.Infrastructure.Actors;
+using Hexalith.AI.AzureBot.ApplicationAdministrations.Infrastructure.Services;
 using Hexalith.Extensions.Configuration;
 
 /// <summary>
-/// Class GlobalAdministrationHelper.
+/// Class ApplicationAdministrationHelper.
 /// </summary>
-public static class GlobalAdministrationHelper
+public static class ApplicationAdministrationHelper
 {
     /// <summary>
     /// Adds the global administration.
@@ -33,10 +33,10 @@ public static class GlobalAdministrationHelper
     /// <param name="actors">The actors.</param>
     /// <returns>ActorRegistrationCollection.</returns>
     /// <exception cref="System.ArgumentNullException"></exception>
-    public static ActorRegistrationCollection AddGlobalAdministration([NotNull] this ActorRegistrationCollection actors)
+    public static ActorRegistrationCollection AddApplicationAdministration([NotNull] this ActorRegistrationCollection actors)
     {
         ArgumentNullException.ThrowIfNull(actors);
-        actors.RegisterActor<GlobalAdministrationActor>();
+        actors.RegisterActor<ApplicationAdministrationActor>();
         return actors;
     }
 
@@ -47,13 +47,13 @@ public static class GlobalAdministrationHelper
     /// <param name="configuration">The configuration.</param>
     /// <returns>IServiceCollection.</returns>
     /// <exception cref="System.ArgumentNullException"></exception>
-    public static IServiceCollection AddGlobalAdministration([NotNull] this IServiceCollection services, [NotNull] IConfiguration configuration)
+    public static IServiceCollection AddApplicationAdministration([NotNull] this IServiceCollection services, [NotNull] IConfiguration configuration)
     {
         ArgumentNullException.ThrowIfNull(services);
         ArgumentNullException.ThrowIfNull(configuration);
         return services
-            .AddScoped<IGlobalAdministrationQueryService, GlobalAdministrationQueryService>()
-            .AddScoped<IGlobalAdministrationCommandService, GlobalAdministrationCommandService>()
-            .ConfigureSettings<GlobalAdministrationSettings>(configuration);
+            .AddScoped<IApplicationAdministrationQueryService, ApplicationAdministrationQueryService>()
+            .AddScoped<IApplicationAdministrationCommandService, ApplicationAdministrationCommandService>()
+            .ConfigureSettings<ApplicationAdministrationSettings>(configuration);
     }
 }

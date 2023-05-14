@@ -20,9 +20,9 @@ using System.Linq;
 using System.Runtime.Serialization;
 
 using Hexalith.AI.AzureBot.Accounts.Domain.Events;
-using Hexalith.Domain.Abstractions.Aggregates;
-using Hexalith.Domain.Abstractions.Events;
-using Hexalith.Domain.Abstractions.Exceptions;
+using Hexalith.Domain.Aggregates;
+using Hexalith.Domain.Events;
+using Hexalith.Domain.Exceptions;
 
 /// <summary>
 /// Class Account.

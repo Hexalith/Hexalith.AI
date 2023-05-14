@@ -6,41 +6,41 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 04-25-2023
 // ***********************************************************************
-// <copyright file="GlobalAdministrationActor.cs" company="Fiveforty">
+// <copyright file="ApplicationAdministrationActor.cs" company="Fiveforty">
 //     Copyright (c) Fiveforty S.A.S.. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Hexalith.AI.AzureBot.GlobalAdministrations.Infrastructure.Actors;
+namespace Hexalith.AI.AzureBot.ApplicationAdministrations.Infrastructure.Actors;
 
 using Dapr.Actors.Runtime;
 
-using Hexalith.AI.AzureBot.GlobalAdministrations.Domain;
-using Hexalith.AI.AzureBot.GlobalAdministrations.Domain.Events;
-using Hexalith.Application.Abstractions.Aggregates;
-using Hexalith.Application.Abstractions.Tasks;
+using Hexalith.AI.AzureBot.ApplicationAdministrations.Domain;
+using Hexalith.AI.AzureBot.ApplicationAdministrations.Domain.Events;
+using Hexalith.Application.Aggregates;
+using Hexalith.Application.Tasks;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.Infrastructure.DaprRuntime.States;
 
 using Microsoft.Extensions.Options;
 
 /// <summary>
-/// Class GlobalAdministrationActor.
+/// Class ApplicationAdministrationActor.
 /// Implements the <see cref="Actor" />
-/// Implements the <see cref="IGlobalAdministrationActor" />
+/// Implements the <see cref="IApplicationAdministrationActor" />
 /// Implements the <see cref="ICommandProcessorActor" />
 /// Implements the <see cref="IRemindable" />.
 /// </summary>
 /// <seealso cref="Actor" />
-/// <seealso cref="IGlobalAdministrationActor" />
+/// <seealso cref="IApplicationAdministrationActor" />
 /// <seealso cref="ICommandProcessorActor" />
 /// <seealso cref="IRemindable" />
-public class GlobalAdministrationActor : Actor, IGlobalAdministrationActor, ICommandProcessorActor, IRemindable
+public class ApplicationAdministrationActor : Actor, IApplicationAdministrationActor, ICommandProcessorActor, IRemindable
 {
     /// <summary>
     /// The settings.
     /// </summary>
-    private readonly GlobalAdministrationSettings _settings;
+    private readonly ApplicationAdministrationSettings _settings;
 
     /// <summary>
     /// The state manager.
@@ -52,18 +52,18 @@ public class GlobalAdministrationActor : Actor, IGlobalAdministrationActor, ICom
     /// </summary>
     private readonly ActorStateStoreProvider _stateProvider;
 
-    private GlobalAdministration? _aggregate;
+    private ApplicationAdministration? _aggregate;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="GlobalAdministrationActor"/> class.
+    /// Initializes a new instance of the <see cref="ApplicationAdministrationActor"/> class.
     /// </summary>
     /// <param name="host">The host.</param>
     /// <param name="settings">The settings.</param>
     /// <param name="stateManager">The state manager.</param>
     /// <exception cref="ArgumentNullException"></exception>
-    public GlobalAdministrationActor(
+    public ApplicationAdministrationActor(
      ActorHost host,
-     IOptions<GlobalAdministrationSettings> settings,
+     IOptions<ApplicationAdministrationSettings> settings,
      IAggregateStateManager stateManager)
      : base(host)
     {
@@ -113,20 +113,20 @@ public class GlobalAdministrationActor : Actor, IGlobalAdministrationActor, ICom
                 _stateProvider,
                 _settings.ExecuteCommandResiliencyPolicy ?? ResiliencyPolicy.CreateEternalExponentialRetry(),
                 _aggregate,
-                (e) => new GlobalAdministration((GlobalAdministratorRegistered)e),
+                (e) => new ApplicationAdministration((GlobalAdministratorRegistered)e),
                 RegisterReminderAsync,
                 UnregisterReminderAsync,
                 CancellationToken.None)
             .ConfigureAwait(false);
     }
 
-    private async Task<GlobalAdministration?> GetAggregateAsync(CancellationToken cancellationToken)
+    private async Task<ApplicationAdministration?> GetAggregateAsync(CancellationToken cancellationToken)
     {
         return _aggregate
-            ??= (GlobalAdministration?)await _stateManager
+            ??= (ApplicationAdministration?)await _stateManager
             .GetAggregateAsync(
                 _stateProvider,
-                (e) => new GlobalAdministration((GlobalAdministratorRegistered)e),
+                (e) => new ApplicationAdministration((GlobalAdministratorRegistered)e),
                 cancellationToken)
             .ConfigureAwait(false);
     }

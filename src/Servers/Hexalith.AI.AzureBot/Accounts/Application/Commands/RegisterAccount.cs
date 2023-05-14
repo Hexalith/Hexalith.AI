@@ -14,15 +14,17 @@
 
 namespace Hexalith.AI.AzureBot.Accounts.Application.Commands;
 
+using System.ComponentModel;
 using System.Text.Json.Serialization;
 
-using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Domain.Events;
 
 /// <summary>
 /// Class AccountRegistered.
 /// Implements the <see cref="BaseEvent" />.
 /// </summary>
 /// <seealso cref="BaseEvent" />
+[Description("Register account")]
 public class RegisterAccount : AccountCommand
 {
     /// <summary>

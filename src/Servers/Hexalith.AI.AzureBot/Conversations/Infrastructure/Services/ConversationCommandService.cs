@@ -17,8 +17,8 @@ using System.Threading.Tasks;
 
 using Hexalith.AI.AzureBot.Conversations.Application.Commands;
 using Hexalith.AI.AzureBot.Conversations.Application.Services;
-using Hexalith.Application.Abstractions.Commands;
-using Hexalith.Application.Abstractions.Metadatas;
+using Hexalith.Application.Commands;
+using Hexalith.Application.Metadatas;
 using Hexalith.Extensions.Common;
 
 /// <summary>

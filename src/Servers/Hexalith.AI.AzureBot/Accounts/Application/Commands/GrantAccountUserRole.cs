@@ -14,6 +14,7 @@
 
 namespace Hexalith.AI.AzureBot.Accounts.Application.Commands;
 
+using System.ComponentModel;
 using System.Text.Json.Serialization;
 
 /// <summary>
@@ -21,6 +22,7 @@ using System.Text.Json.Serialization;
 /// Implements the <see cref="BaseEvent" />.
 /// </summary>
 /// <seealso cref="BaseEvent" />
+[Description("Grant account user role")]
 public class GrantAccountUserRole : AccountCommand
 {
     /// <summary>

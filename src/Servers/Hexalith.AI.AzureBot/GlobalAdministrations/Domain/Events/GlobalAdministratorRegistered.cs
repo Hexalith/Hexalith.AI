@@ -11,9 +11,9 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Hexalith.AI.AzureBot.GlobalAdministrations.Domain.Events;
+namespace Hexalith.AI.AzureBot.ApplicationAdministrations.Domain.Events;
 
-using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Domain.Events;
 
 /// <summary>
 /// Class GlobalAdministratorRegistered.

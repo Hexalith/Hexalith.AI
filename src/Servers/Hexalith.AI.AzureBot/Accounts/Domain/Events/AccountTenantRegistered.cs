@@ -16,7 +16,7 @@ namespace Hexalith.AI.AzureBot.Accounts.Domain.Events;
 
 using System.Text.Json.Serialization;
 
-using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Domain.Events;
 
 /// <summary>
 /// Class AccountRegistered.

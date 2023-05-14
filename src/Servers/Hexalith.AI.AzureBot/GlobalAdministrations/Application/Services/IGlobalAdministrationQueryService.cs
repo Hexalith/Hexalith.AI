@@ -6,17 +6,17 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 05-01-2023
 // ***********************************************************************
-// <copyright file="IGlobalAdministrationQueryService.cs" company="Fiveforty">
+// <copyright file="IApplicationAdministrationQueryService.cs" company="Fiveforty">
 //     Copyright (c) Fiveforty S.A.S.. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Hexalith.AI.AzureBot.GlobalAdministrations.Application.Services;
+namespace Hexalith.AI.AzureBot.ApplicationAdministrations.Application.Services;
 
 /// <summary>
-/// Interface IGlobalAdministrationQueryService.
+/// Interface IApplicationAdministrationQueryService.
 /// </summary>
-public interface IGlobalAdministrationQueryService
+public interface IApplicationAdministrationQueryService
 {
     /// <summary>
     /// Determines whether [is administrator asynchronous] [the specified email].

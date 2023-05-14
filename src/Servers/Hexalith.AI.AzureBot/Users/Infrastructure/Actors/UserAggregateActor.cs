@@ -18,8 +18,8 @@ using Dapr.Actors.Runtime;
 using Hexalith.AI.AzureBot.Users.Domain;
 using Hexalith.AI.AzureBot.Users.Domain.Events;
 using Hexalith.AI.AzureBot.Users.Infrastructure.Configuration;
-using Hexalith.Application.Abstractions.Aggregates;
-using Hexalith.Application.Abstractions.Tasks;
+using Hexalith.Application.Aggregates;
+using Hexalith.Application.Tasks;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.Infrastructure.DaprRuntime.States;
 

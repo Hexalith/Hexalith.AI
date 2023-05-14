@@ -6,21 +6,21 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 04-26-2023
 // ***********************************************************************
-// <copyright file="GlobalAdministrationSettings.cs" company="Fiveforty">
+// <copyright file="ApplicationAdministrationSettings.cs" company="Fiveforty">
 //     Copyright (c) Fiveforty S.A.S.. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Hexalith.AI.AzureBot.GlobalAdministrations.Infrastructure.Actors;
+namespace Hexalith.AI.AzureBot.ApplicationAdministrations.Infrastructure.Actors;
 
-using Hexalith.AI.AzureBot.GlobalAdministrations.Domain;
-using Hexalith.Application.Abstractions.Tasks;
+using Hexalith.AI.AzureBot.ApplicationAdministrations.Domain;
+using Hexalith.Application.Tasks;
 using Hexalith.Extensions.Configuration;
 
 /// <summary>
-/// Class GlobalAdministrationSettings.
+/// Class ApplicationAdministrationSettings.
 /// </summary>
-public class GlobalAdministrationSettings : ISettings
+public class ApplicationAdministrationSettings : ISettings
 {
     /// <summary>
     /// Gets the execute command resiliency policy.
@@ -32,5 +32,5 @@ public class GlobalAdministrationSettings : ISettings
     /// Configurations the name.
     /// </summary>
     /// <returns>System.String.</returns>
-    public static string ConfigurationName() => nameof(GlobalAdministration);
+    public static string ConfigurationName() => nameof(ApplicationAdministration);
 }

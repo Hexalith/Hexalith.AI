@@ -14,9 +14,9 @@
 namespace Hexalith.AI.AzureBot.Conversations.Domain;
 
 using Hexalith.AI.AzureBot.Conversations.Domain.Events;
-using Hexalith.Domain.Abstractions.Aggregates;
-using Hexalith.Domain.Abstractions.Events;
-using Hexalith.Domain.Abstractions.Exceptions;
+using Hexalith.Domain.Aggregates;
+using Hexalith.Domain.Events;
+using Hexalith.Domain.Exceptions;
 using Hexalith.Extensions.Helpers;
 
 /// <summary>

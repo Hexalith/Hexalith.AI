@@ -17,7 +17,7 @@ using System.Text.Json.Serialization;
 
 using Hexalith.AI.AzureBot.Users.Domain;
 
-using Hexalith.Application.Abstractions.Commands;
+using Hexalith.Application.Commands;
 
 /// <summary>
 /// Class UserCommand.

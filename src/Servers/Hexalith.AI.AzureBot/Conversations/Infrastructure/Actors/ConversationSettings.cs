@@ -14,7 +14,7 @@
 namespace Hexalith.AI.AzureBot.Conversations.Infrastructure.Actors;
 
 using Hexalith.AI.AzureBot.Conversations.Domain;
-using Hexalith.Application.Abstractions.Tasks;
+using Hexalith.Application.Tasks;
 using Hexalith.Extensions.Configuration;
 
 /// <summary>

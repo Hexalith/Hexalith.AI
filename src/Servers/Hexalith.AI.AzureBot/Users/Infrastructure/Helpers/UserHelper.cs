@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 04-29-2023
 // ***********************************************************************
-// <copyright file="GlobalAdministrationHelper.cs" company="Fiveforty">
+// <copyright file="ApplicationAdministrationHelper.cs" company="Fiveforty">
 //     Copyright (c) Fiveforty S.A.S.. All rights reserved.
 // </copyright>
 // <summary></summary>

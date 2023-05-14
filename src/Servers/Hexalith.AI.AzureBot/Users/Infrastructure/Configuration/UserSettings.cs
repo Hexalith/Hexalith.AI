@@ -15,7 +15,7 @@
 namespace Hexalith.AI.AzureBot.Users.Infrastructure.Configuration;
 
 using Hexalith.AI.AzureBot.Users.Domain;
-using Hexalith.Application.Abstractions.Tasks;
+using Hexalith.Application.Tasks;
 using Hexalith.Extensions.Configuration;
 
 /// <summary>

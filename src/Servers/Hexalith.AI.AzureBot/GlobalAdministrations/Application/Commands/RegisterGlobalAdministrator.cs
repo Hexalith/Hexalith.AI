@@ -12,13 +12,14 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.AI.AzureBot.GlobalAdministrations.Application.Commands;
+namespace Hexalith.AI.AzureBot.ApplicationAdministrations.Application.Commands;
 
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-using Hexalith.Domain.Abstractions.Events;
+using Hexalith.AI.AzureBot.GlobalAdministrations.Application.Commands;
+using Hexalith.Domain.Events;
 
 /// <summary>
 /// Class GlobalAdministratorRegistered.
@@ -27,7 +28,7 @@ using Hexalith.Domain.Abstractions.Events;
 /// <seealso cref="BaseEvent" />
 [DisplayName("Register global administrator")]
 [Description("Register a user as a global administrator")]
-public class RegisterGlobalAdministrator : GlobalAdministrationCommand
+public class RegisterGlobalAdministrator : ApplicationAdministrationCommand
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="RegisterGlobalAdministrator"/> class.

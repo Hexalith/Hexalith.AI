@@ -6,20 +6,20 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 05-11-2023
 // ***********************************************************************
-// <copyright file="IGlobalAdministrationCommandService.cs" company="Fiveforty">
+// <copyright file="IApplicationAdministrationCommandService.cs" company="Fiveforty">
 //     Copyright (c) Fiveforty S.A.S.. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Hexalith.AI.AzureBot.GlobalAdministrations.Application.Services;
+namespace Hexalith.AI.AzureBot.ApplicationAdministrations.Application.Services;
 
-using Hexalith.AI.AzureBot.GlobalAdministrations.Application.Commands;
-using Hexalith.Application.Abstractions.Metadatas;
+using Hexalith.AI.AzureBot.ApplicationAdministrations.Application.Commands;
+using Hexalith.Application.Metadatas;
 
 /// <summary>
-/// Interface IGlobalAdministrationCommandService.
+/// Interface IApplicationAdministrationCommandService.
 /// </summary>
-public interface IGlobalAdministrationCommandService
+public interface IApplicationAdministrationCommandService
 {
     /// <summary>
     /// Does the asynchronous.

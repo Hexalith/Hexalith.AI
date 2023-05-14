@@ -6,26 +6,26 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 05-02-2023
 // ***********************************************************************
-// <copyright file="GlobalAdministrationCommandService.cs" company="Fiveforty">
+// <copyright file="ApplicationAdministrationCommandService.cs" company="Fiveforty">
 //     Copyright (c) Fiveforty S.A.S.. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Hexalith.AI.AzureBot.GlobalAdministrations.Infrastructure.Services;
+namespace Hexalith.AI.AzureBot.ApplicationAdministrations.Infrastructure.Services;
 
-using Hexalith.AI.AzureBot.GlobalAdministrations.Application.Commands;
-using Hexalith.AI.AzureBot.GlobalAdministrations.Application.Services;
-using Hexalith.Application.Abstractions.Commands;
-using Hexalith.Application.Abstractions.Metadatas;
+using Hexalith.AI.AzureBot.ApplicationAdministrations.Application.Commands;
+using Hexalith.AI.AzureBot.ApplicationAdministrations.Application.Services;
+using Hexalith.Application.Commands;
+using Hexalith.Application.Metadatas;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
 
 /// <summary>
-/// Class GlobalAdministrationCommandService.
-/// Implements the <see cref="IGlobalAdministrationCommandService" />.
+/// Class ApplicationAdministrationCommandService.
+/// Implements the <see cref="IApplicationAdministrationCommandService" />.
 /// </summary>
-/// <seealso cref="IGlobalAdministrationCommandService" />
-public class GlobalAdministrationCommandService : IGlobalAdministrationCommandService
+/// <seealso cref="IApplicationAdministrationCommandService" />
+public class ApplicationAdministrationCommandService : IApplicationAdministrationCommandService
 {
     /// <summary>
     /// The command bus.
@@ -38,12 +38,12 @@ public class GlobalAdministrationCommandService : IGlobalAdministrationCommandSe
     private readonly IDateTimeService _dateTimeService;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="GlobalAdministrationCommandService" /> class.
+    /// Initializes a new instance of the <see cref="ApplicationAdministrationCommandService" /> class.
     /// </summary>
     /// <param name="commandBus">The command bus.</param>
     /// <param name="dateTimeService">The date time service.</param>
     /// <exception cref="System.ArgumentNullException"></exception>
-    public GlobalAdministrationCommandService(ICommandBus commandBus, IDateTimeService dateTimeService)
+    public ApplicationAdministrationCommandService(ICommandBus commandBus, IDateTimeService dateTimeService)
     {
         ArgumentNullException.ThrowIfNull(commandBus);
         _commandBus = commandBus;

@@ -13,18 +13,20 @@
 // ***********************************************************************
 namespace Hexalith.AI.AzureBot.Conversations.Application.Commands;
 
+using System.ComponentModel;
 using System.Text.Json.Serialization;
 
 using Hexalith.AI.AzureBot.Conversations.Domain;
 
-using Hexalith.Application.Abstractions.Commands;
+using Hexalith.Application.Commands;
 
 /// <summary>
 /// Class ConversationCommand.
 /// Implements the <see cref="BaseCommand" />.
 /// </summary>
 /// <seealso cref="BaseCommand" />
-public class ConversationCommand : BaseCommand
+[Description("Conversation command")]
+public abstract class ConversationCommand : BaseCommand
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="ConversationCommand" /> class.

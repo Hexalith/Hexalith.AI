@@ -13,7 +13,7 @@
 // ***********************************************************************
 namespace Hexalith.AI.AzureBot.UnitOfWork.Domain.Projects.Events;
 
-using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Domain.Events;
 
 /// <summary>
 /// Class ProjectStarted.

@@ -6,36 +6,36 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 05-09-2023
 // ***********************************************************************
-// <copyright file="GlobalAdministrationSkill.cs" company="Fiveforty">
+// <copyright file="ApplicationAdministrationSkill.cs" company="Fiveforty">
 //     Copyright (c) Fiveforty S.A.S.. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Hexalith.AI.AzureBot.GlobalAdministrations.Application.Skills;
+namespace Hexalith.AI.AzureBot.ApplicationAdministrations.Application.Skills;
 
-using Hexalith.AI.AzureBot.GlobalAdministrations.Application.Commands;
-using Hexalith.AI.AzureBot.GlobalAdministrations.Application.Services;
-using Hexalith.Application.Abstractions.Metadatas;
+using Hexalith.AI.AzureBot.ApplicationAdministrations.Application.Commands;
+using Hexalith.AI.AzureBot.ApplicationAdministrations.Application.Services;
+using Hexalith.Application.Metadatas;
 
 using Microsoft.SemanticKernel.Orchestration;
 using Microsoft.SemanticKernel.SkillDefinition;
 
 /// <summary>
-/// Class GlobalAdministrationSkill.
+/// Class ApplicationAdministrationSkill.
 /// </summary>
-public class GlobalAdministrationSkill
+public class ApplicationAdministrationSkill
 {
     /// <summary>
     /// The service.
     /// </summary>
-    private readonly IGlobalAdministrationCommandService _service;
+    private readonly IApplicationAdministrationCommandService _service;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="GlobalAdministrationSkill" /> class.
+    /// Initializes a new instance of the <see cref="ApplicationAdministrationSkill" /> class.
     /// </summary>
     /// <param name="service">The service.</param>
     /// <exception cref="System.ArgumentNullException"></exception>
-    public GlobalAdministrationSkill(IGlobalAdministrationCommandService service)
+    public ApplicationAdministrationSkill(IApplicationAdministrationCommandService service)
     {
         ArgumentNullException.ThrowIfNull(service);
         _service = service;
