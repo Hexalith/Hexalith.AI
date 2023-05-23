@@ -3,9 +3,9 @@
 		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
 		<ContainerImageName>hexalith-ai-azure-bot</ContainerImageName>
 		<EnableSdkContainerSupport>true</EnableSdkContainerSupport>
-	  <UserSecretsId>c147cbe5-9277-4c00-a412-08aee3eb0879</UserSecretsId>
-  </PropertyGroup>
+		<UserSecretsId>c147cbe5-9277-4c00-a412-08aee3eb0879</UserSecretsId>
+	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Hexalith.Infrastructure.SemanticBot" Version="$(HexalithVersion)" />
+		<PackageReference Include="Hexalith.Infrastructure.TeamsBot" Version="$(HexalithVersion)" />
 	</ItemGroup>
 </Project>

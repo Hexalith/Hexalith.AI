@@ -16,10 +16,6 @@
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Man.Dapr.Sidekick.AspNetCore" Version="$(ManDaprSidekickVersion)" />
-	</ItemGroup>
-	<ItemGroup>
-		<PackageReference Include="Hexalith.Extensions" Version="$(HexalithVersion)" />
-		<PackageReference Include="Hexalith.Infrastructure.Dynamics365FinanceAndOperations" Version="$(HexalithVersion)" />
 		<PackageReference Include="Hexalith.Infrastructure.WebApis" Version="$(HexalithVersion)" />
 	</ItemGroup>
 	<Target Name="ContainerVersionTarget" AfterTargets="MinVer" Condition="'$(MinVerVersion)'!='' AND '$(BuildNumber)' != ''">

@@ -1,8 +1,21 @@
+// ***********************************************************************
+// Assembly         : Hexalith.AI.AzureBot
+// Author           : Jérôme Piquot
+// Created          : 04-19-2023
+//
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 05-22-2023
+// ***********************************************************************
+// <copyright file="Program.cs" company="Fiveforty">
+//     Copyright (c) Fiveforty S.A.S.. All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 using Hexalith.AI.AzureBot.Accounts.Infrastructure.Helpers;
-using Hexalith.AI.AzureBot.Conversations.Infrastructure.Helpers;
 using Hexalith.AI.AzureBot.ApplicationAdministrations.Infrastructure.Helpers;
+using Hexalith.AI.AzureBot.Conversations.Infrastructure.Helpers;
 using Hexalith.AI.AzureBot.Users.Infrastructure.Helpers;
-using Hexalith.Infrastructure.SemanticBot.Helpers;
+using Hexalith.Infrastructure.TeamsBot.Helpers;
 using Hexalith.Infrastructure.WebApis.Helpers;
 
 using Serilog;
