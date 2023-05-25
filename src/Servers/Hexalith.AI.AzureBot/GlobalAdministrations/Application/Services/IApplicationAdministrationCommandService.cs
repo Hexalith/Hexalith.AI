@@ -13,7 +13,7 @@
 // ***********************************************************************
 namespace Hexalith.AI.AzureBot.ApplicationAdministrations.Application.Services;
 
-using Hexalith.AI.AzureBot.ApplicationAdministrations.Application.Commands;
+using Hexalith.AI.AzureBot.GlobalAdministrations.Application.Commands;
 using Hexalith.Application.Metadatas;
 
 /// <summary>

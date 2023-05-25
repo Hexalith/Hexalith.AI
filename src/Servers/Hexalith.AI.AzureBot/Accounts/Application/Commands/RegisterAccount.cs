@@ -38,4 +38,10 @@ public class RegisterAccount : AccountCommand
         : base(name)
     {
     }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="RegisterAccount"/> class.
+    /// </summary>
+    [Obsolete("For serialization only", true)]
+    public RegisterAccount() => Name = string.Empty;
 }

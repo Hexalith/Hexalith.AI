@@ -42,6 +42,12 @@ public class RegisterSecurityTenant : SecurityTenantCommand
     }
 
     /// <summary>
+    /// Initializes a new instance of the <see cref="RegisterSecurityTenant"/> class.
+    /// </summary>
+    [Obsolete("For serialization only", true)]
+    public RegisterSecurityTenant() => Name = Domain = Id = string.Empty;
+
+    /// <summary>
     /// Gets or sets the domain.
     /// </summary>
     /// <value>The domain.</value>

@@ -25,7 +25,7 @@ using Hexalith.Application.Commands;
 /// </summary>
 /// <seealso cref="BaseCommand" />
 [Description("Global administration command")]
-public class ApplicationAdministrationCommand : BaseCommand
+public abstract class ApplicationAdministrationCommand : BaseCommand
 {
     /// <summary>
     /// Defaults the aggregate identifier.

@@ -12,13 +12,12 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.AI.AzureBot.ApplicationAdministrations.Application.Commands;
+namespace Hexalith.AI.AzureBot.GlobalAdministrations.Application.Commands;
 
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-using Hexalith.AI.AzureBot.GlobalAdministrations.Application.Commands;
 using Hexalith.Domain.Events;
 
 /// <summary>
@@ -44,6 +43,12 @@ public class RegisterGlobalAdministrator : ApplicationAdministrationCommand
 
         Email = email;
     }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="RegisterGlobalAdministrator"/> class.
+    /// </summary>
+    [Obsolete("For serialization only", true)]
+    public RegisterGlobalAdministrator() => Email = string.Empty;
 
     /// <summary>
     /// Gets or sets the email.

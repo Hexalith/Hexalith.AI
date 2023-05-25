@@ -24,7 +24,7 @@ using Hexalith.Application.Commands;
 /// Implements the <see cref="BaseCommand" />.
 /// </summary>
 /// <seealso cref="BaseCommand" />
-public class UserCommand : BaseCommand
+public abstract class UserCommand : BaseCommand
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="UserCommand" /> class.
