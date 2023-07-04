@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"dotnet.defaultSolution": "Hexalith.AI.sln",
+		"debug.internalConsoleOptions": "neverOpen"
+	}
+}
