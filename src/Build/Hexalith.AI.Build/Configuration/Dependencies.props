@@ -1,9 +1,4 @@
 <Project>
-	<!-- Detect if the solution is opened in VS to add local repository for packages -->
-	<PropertyGroup Condition="'$(BuildingInsideVisualStudio)' == 'true' or '$(BuildingByReSharper)' == 'true'">
-		<HexalithVersion>1.0.0</HexalithVersion>
-	</PropertyGroup>
-
 	<!-- Default values to use when building and packaging -->
 	<PropertyGroup>
 
@@ -28,7 +23,7 @@
 	<!-- These versions are used for the NuGet packages used by this project -->
 	<PropertyGroup>
 		<MinVerVersion>4.3.0</MinVerVersion>
-		<MicrosoftVisualStudioThreadingAnalyzersVersion>17.5.*</MicrosoftVisualStudioThreadingAnalyzersVersion>
+		<MicrosoftVisualStudioThreadingAnalyzersVersion>17.6.*</MicrosoftVisualStudioThreadingAnalyzersVersion>
 		<StyleCopAnalyzersVersion>1.2.0-beta.435</StyleCopAnalyzersVersion>
 		<MicrosoftBotBuilderVersion>4.19.*</MicrosoftBotBuilderVersion>
 		<ADotNetVersion>2.1.2</ADotNetVersion>
@@ -39,6 +34,6 @@
 		<HexalithVersion>1.0.0-local</HexalithVersion>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(BuildingInsideVisualStudio)' != 'true' and '$(BuildingByReSharper)' != 'true'">
-		<HexalithVersion>0.5.*</HexalithVersion>
+		<HexalithVersion>0.7.*</HexalithVersion>
 	</PropertyGroup>
 </Project>

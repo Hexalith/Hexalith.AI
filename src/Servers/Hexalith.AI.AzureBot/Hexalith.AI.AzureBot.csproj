@@ -127,6 +127,11 @@
 	  <ProjectReference Include="..\..\..\..\SemanticKernel\dotnet\src\Skills\Skills.MsGraph\Skills.MsGraph.csproj" />
 	  <ProjectReference Include="..\..\..\..\SemanticKernel\dotnet\src\Skills\Skills.OpenAPI\Skills.OpenAPI.csproj" />
 	  <ProjectReference Include="..\..\..\..\SemanticKernel\dotnet\src\Skills\Skills.Web\Skills.Web.csproj" />
-	  <ProjectReference Include="..\..\..\Hexalith\src\Core\Infrastructure\Hexalith.Infrastructure.WebApis\Hexalith.Infrastructure.WebApis.csproj" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(BuildingInsideVisualStudio)' == 'true' or '$(BuildingByReSharper)' == 'true'">
+		<ProjectReference Include="$(MSBuildThisFileDirectory)..\..\..\Hexalith\src\Core\Infrastructure\Hexalith.Infrastructure.WebApis\Hexalith.Infrastructure.WebApis.csproj" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(BuildingInsideVisualStudio)' != 'true' and '$(BuildingByReSharper)' != 'true'">
+		<PackageReference Include="Hexalith.Infrastructure.WebApis" Version="$(HexalithVersion)" />
 	</ItemGroup>
 </Project>

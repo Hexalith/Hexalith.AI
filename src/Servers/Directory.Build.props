@@ -17,6 +17,7 @@
 	<ItemGroup>
 		<PackageReference Include="Man.Dapr.Sidekick.AspNetCore" Version="$(ManDaprSidekickVersion)" />
 	</ItemGroup>
+
 	<Target Name="ContainerVersionTarget" AfterTargets="MinVer" Condition="'$(MinVerVersion)'!='' AND '$(BuildNumber)' != ''">
 		<PropertyGroup>
 			<ContainerImageTags>$(MinVerMajor).$(MinVerMinor).$(MinVerPatch);latest</ContainerImageTags>

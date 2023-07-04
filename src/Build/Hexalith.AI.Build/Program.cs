@@ -49,50 +49,46 @@ internal class Program
                 },
             },
 
-            Jobs = new Jobs
+            Jobs = new Dictionary<string, Job>
             {
-                Build = new BuildJob
                 {
-                    EnvironmentVariables = new Dictionary<string, string>
+                    "build",
+                    new Job
                     {
-                        { "ApiKey", "${{ secrets.APIKEY }}" },
-                        { "OrgId", "${{ secrets.ORGID }}" },
-                    },
-
-                    RunsOn = BuildMachines.UbuntuLatest,
-
-                    Steps = new List<GithubTask>
-                    {
-                        new CheckoutTaskV2
+                        EnvironmentVariables = new Dictionary<string, string>
                         {
-                            Name = "Pulling Code",
+                            { "ApiKey", "${{ secrets.APIKEY }}" },
+                            { "OrgId", "${{ secrets.ORGID }}" },
                         },
-
-                        new SetupDotNetTaskV1
+                        RunsOn = BuildMachines.UbuntuLatest,
+                        Steps = new List<GithubTask>
                         {
-                            Name = "Installing .NET",
-
-                            TargetDotNetVersion = new TargetDotNetVersion
+                            new CheckoutTaskV2
                             {
-                                DotNetVersion = "7.0.*",
+                                Name = "Pulling Code",
+                            },
+                            new SetupDotNetTaskV1
+                            {
+                                Name = "Installing .NET",
+                                TargetDotNetVersion = new TargetDotNetVersion
+                                {
+                                    DotNetVersion = "7.0.*",
+                                },
+                            },
+                            new RestoreTask
+                            {
+                                Name = "Restoring Packages",
+                            },
+                            new DotNetBuildTask
+                            {
+                                Name = "Building Solution",
+                            },
+                            new TestTask
+                            {
+                                Name = "Running Tests",
                             },
                         },
-
-                        new RestoreTask
-                        {
-                            Name = "Restoring Packages",
-                        },
-
-                        new DotNetBuildTask
-                        {
-                            Name = "Building Solution",
-                        },
-
-                        new TestTask
-                        {
-                            Name = "Running Tests",
-                        },
-                    },
+                    }
                 },
             },
         };
