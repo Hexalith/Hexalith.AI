@@ -14,8 +14,8 @@
 using Hexalith.AI.AzureBot.Accounts.Infrastructure.Helpers;
 using Hexalith.AI.AzureBot.ApplicationAdministrations.Infrastructure.Helpers;
 using Hexalith.AI.AzureBot.Conversations.Infrastructure.Helpers;
+using Hexalith.AI.AzureBot.Core.Copilot;
 using Hexalith.AI.AzureBot.Users.Infrastructure.Helpers;
-using Hexalith.Infrastructure.TeamsBot.Helpers;
 using Hexalith.Infrastructure.WebApis.Helpers;
 
 using Serilog;
@@ -40,9 +40,7 @@ WebApplicationBuilder builder = HexalithWebApi.CreateApplication(
             .AddAccount(),
     args);
 
-// Add the Hexalith Semantic Bot.
-builder.Services.AddSemanticBot(builder.Configuration);
-
+builder.AddCopilot();
 builder.Services.AddApplicationAdministration(builder.Configuration);
 builder.Services.AddAccount(builder.Configuration);
 builder.Services.AddUser(builder.Configuration);

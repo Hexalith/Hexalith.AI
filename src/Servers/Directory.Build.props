@@ -16,7 +16,6 @@
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Man.Dapr.Sidekick.AspNetCore" Version="$(ManDaprSidekickVersion)" />
-		<PackageReference Include="Hexalith.Infrastructure.WebApis" Version="$(HexalithVersion)" />
 	</ItemGroup>
 	<Target Name="ContainerVersionTarget" AfterTargets="MinVer" Condition="'$(MinVerVersion)'!='' AND '$(BuildNumber)' != ''">
 		<PropertyGroup>

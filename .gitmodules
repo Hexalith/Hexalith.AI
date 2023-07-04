@@ -1,0 +1,6 @@
+[submodule "SemanticKernel"]
+	path = SemanticKernel
+	url = https://github.com/Hexalith/semantic-kernel.git
+[submodule "Hexalith"]
+	path = Hexalith
+	url = https://github.com/Hexalith/Hexalith.git

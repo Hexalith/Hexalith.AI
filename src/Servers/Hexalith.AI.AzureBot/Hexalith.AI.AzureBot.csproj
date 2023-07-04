@@ -6,6 +6,127 @@
 		<UserSecretsId>c147cbe5-9277-4c00-a412-08aee3eb0879</UserSecretsId>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Hexalith.Infrastructure.TeamsBot" Version="$(HexalithVersion)" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\Auth\ApiKeyAuthenticationHandler.cs" Link="Core\Copilot\Auth\ApiKeyAuthenticationHandler.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\Auth\ApiKeyAuthenticationSchemeOptions.cs" Link="Core\Copilot\Auth\ApiKeyAuthenticationSchemeOptions.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\Auth\PassThroughAuthenticationHandler.cs" Link="Core\Copilot\Auth\PassThroughAuthenticationHandler.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\ConfigurationExtensions.cs" Link="Core\Copilot\ConfigurationExtensions.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Controllers\BotController.cs" Link="Core\Copilot\CopilotChat\Controllers\BotController.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Controllers\ChatController.cs" Link="Core\Copilot\CopilotChat\Controllers\ChatController.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Controllers\ChatHistoryController.cs" Link="Core\Copilot\CopilotChat\Controllers\ChatHistoryController.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Controllers\ChatParticipantController.cs" Link="Core\Copilot\CopilotChat\Controllers\ChatParticipantController.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Controllers\DocumentImportController.cs" Link="Core\Copilot\CopilotChat\Controllers\DocumentImportController.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Controllers\SpeechTokenController.cs" Link="Core\Copilot\CopilotChat\Controllers\SpeechTokenController.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Extensions\IAsyncEnumerableExtensions.cs" Link="Core\Copilot\CopilotChat\Extensions\IAsyncEnumerableExtensions.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Extensions\SemanticKernelExtensions.cs" Link="Core\Copilot\CopilotChat\Extensions\SemanticKernelExtensions.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Extensions\ServiceExtensions.cs" Link="Core\Copilot\CopilotChat\Extensions\ServiceExtensions.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Hubs\MessageRelayHub.cs" Link="Core\Copilot\CopilotChat\Hubs\MessageRelayHub.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Models\Bot.cs" Link="Core\Copilot\CopilotChat\Models\Bot.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Models\BotEmbeddingConfig.cs" Link="Core\Copilot\CopilotChat\Models\BotEmbeddingConfig.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Models\ChatMessage.cs" Link="Core\Copilot\CopilotChat\Models\ChatMessage.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Models\ChatParticipant.cs" Link="Core\Copilot\CopilotChat\Models\ChatParticipant.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Models\ChatSession.cs" Link="Core\Copilot\CopilotChat\Models\ChatSession.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Models\CreateChatParameters.cs" Link="Core\Copilot\CopilotChat\Models\CreateChatParameters.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Models\DocumentImportForm.cs" Link="Core\Copilot\CopilotChat\Models\DocumentImportForm.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Models\DocumentMessageContent.cs" Link="Core\Copilot\CopilotChat\Models\DocumentMessageContent.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Models\MemorySource.cs" Link="Core\Copilot\CopilotChat\Models\MemorySource.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Models\OpenApiSkillsAuthHeaders.cs" Link="Core\Copilot\CopilotChat\Models\OpenApiSkillsAuthHeaders.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Models\ProposedPlan.cs" Link="Core\Copilot\CopilotChat\Models\ProposedPlan.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Models\SpeechTokenResponse.cs" Link="Core\Copilot\CopilotChat\Models\SpeechTokenResponse.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Options\AzureSpeechOptions.cs" Link="Core\Copilot\CopilotChat\Options\AzureSpeechOptions.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Options\BotSchemaOptions.cs" Link="Core\Copilot\CopilotChat\Options\BotSchemaOptions.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Options\ChatStoreOptions.cs" Link="Core\Copilot\CopilotChat\Options\ChatStoreOptions.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Options\CosmosOptions.cs" Link="Core\Copilot\CopilotChat\Options\CosmosOptions.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Options\DocumentMemoryOptions.cs" Link="Core\Copilot\CopilotChat\Options\DocumentMemoryOptions.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Options\FileSystemOptions.cs" Link="Core\Copilot\CopilotChat\Options\FileSystemOptions.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Options\PlannerOptions.cs" Link="Core\Copilot\CopilotChat\Options\PlannerOptions.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Options\PromptsOptions.cs" Link="Core\Copilot\CopilotChat\Options\PromptsOptions.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Skills\ChatSkills\ChatSkill.cs" Link="Core\Copilot\CopilotChat\Skills\ChatSkills\ChatSkill.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Skills\ChatSkills\CopilotChatPlanner.cs" Link="Core\Copilot\CopilotChat\Skills\ChatSkills\CopilotChatPlanner.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Skills\ChatSkills\DocumentMemorySkill.cs" Link="Core\Copilot\CopilotChat\Skills\ChatSkills\DocumentMemorySkill.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Skills\ChatSkills\ExternalInformationSkill.cs" Link="Core\Copilot\CopilotChat\Skills\ChatSkills\ExternalInformationSkill.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Skills\ChatSkills\SemanticChatMemory.cs" Link="Core\Copilot\CopilotChat\Skills\ChatSkills\SemanticChatMemory.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Skills\ChatSkills\SemanticChatMemoryExtractor.cs" Link="Core\Copilot\CopilotChat\Skills\ChatSkills\SemanticChatMemoryExtractor.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Skills\ChatSkills\SemanticChatMemoryItem.cs" Link="Core\Copilot\CopilotChat\Skills\ChatSkills\SemanticChatMemoryItem.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Skills\ChatSkills\SemanticChatMemorySkill.cs" Link="Core\Copilot\CopilotChat\Skills\ChatSkills\SemanticChatMemorySkill.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Skills\OpenApiSkills\GitHubSkill\Model\Label.cs" Link="Core\Copilot\CopilotChat\Skills\OpenApiSkills\GitHubSkill\Model\Label.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Skills\OpenApiSkills\GitHubSkill\Model\PullRequest.cs" Link="Core\Copilot\CopilotChat\Skills\OpenApiSkills\GitHubSkill\Model\PullRequest.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Skills\OpenApiSkills\GitHubSkill\Model\Repo.cs" Link="Core\Copilot\CopilotChat\Skills\OpenApiSkills\GitHubSkill\Model\Repo.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Skills\OpenApiSkills\GitHubSkill\Model\User.cs" Link="Core\Copilot\CopilotChat\Skills\OpenApiSkills\GitHubSkill\Model\User.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Skills\OpenApiSkills\JiraSkill\Model\CommentAuthor.cs" Link="Core\Copilot\CopilotChat\Skills\OpenApiSkills\JiraSkill\Model\CommentAuthor.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Skills\OpenApiSkills\JiraSkill\Model\CommentResponse.cs" Link="Core\Copilot\CopilotChat\Skills\OpenApiSkills\JiraSkill\Model\CommentResponse.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Skills\OpenApiSkills\JiraSkill\Model\IndividualComments.cs" Link="Core\Copilot\CopilotChat\Skills\OpenApiSkills\JiraSkill\Model\IndividualComments.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Skills\OpenApiSkills\JiraSkill\Model\IssueResponse.cs" Link="Core\Copilot\CopilotChat\Skills\OpenApiSkills\JiraSkill\Model\IssueResponse.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Skills\OpenApiSkills\JiraSkill\Model\IssueResponseFIeld.cs" Link="Core\Copilot\CopilotChat\Skills\OpenApiSkills\JiraSkill\Model\IssueResponseFIeld.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Skills\Utilities.cs" Link="Core\Copilot\CopilotChat\Skills\Utilities.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Storage\ChatMemorySourceRepository.cs" Link="Core\Copilot\CopilotChat\Storage\ChatMemorySourceRepository.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Storage\ChatMessageRepository.cs" Link="Core\Copilot\CopilotChat\Storage\ChatMessageRepository.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Storage\ChatParticipantRepository.cs" Link="Core\Copilot\CopilotChat\Storage\ChatParticipantRepository.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Storage\ChatSessionRepository.cs" Link="Core\Copilot\CopilotChat\Storage\ChatSessionRepository.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Storage\CosmosDbContext.cs" Link="Core\Copilot\CopilotChat\Storage\CosmosDbContext.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Storage\FileSystemContext.cs" Link="Core\Copilot\CopilotChat\Storage\FileSystemContext.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Storage\IRepository.cs" Link="Core\Copilot\CopilotChat\Storage\IRepository.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Storage\IStorageContext.cs" Link="Core\Copilot\CopilotChat\Storage\IStorageContext.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Storage\IStorageEntity.cs" Link="Core\Copilot\CopilotChat\Storage\IStorageEntity.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Storage\OptionalIMemoryStore.cs" Link="Core\Copilot\CopilotChat\Storage\OptionalIMemoryStore.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Storage\Repository.cs" Link="Core\Copilot\CopilotChat\Storage\Repository.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Storage\VolatileContext.cs" Link="Core\Copilot\CopilotChat\Storage\VolatileContext.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\Diagnostics\ExceptionExtensions.cs" Link="Core\Copilot\Diagnostics\ExceptionExtensions.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\Diagnostics\ITelemetryService.cs" Link="Core\Copilot\Diagnostics\ITelemetryService.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\Models\Ask.cs" Link="Core\Copilot\Models\Ask.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\Models\AskResult.cs" Link="Core\Copilot\Models\AskResult.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\Options\AIServiceOptions.cs" Link="Core\Copilot\Options\AIServiceOptions.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\Options\AuthorizationOptions.cs" Link="Core\Copilot\Options\AuthorizationOptions.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\Options\AzureCognitiveSearchOptions.cs" Link="Core\Copilot\Options\AzureCognitiveSearchOptions.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\Options\MemoriesStoreOptions.cs" Link="Core\Copilot\Options\MemoriesStoreOptions.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\Options\NotEmptyOrWhitespaceAttribute.cs" Link="Core\Copilot\Options\NotEmptyOrWhitespaceAttribute.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\Options\QdrantOptions.cs" Link="Core\Copilot\Options\QdrantOptions.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\Options\RequiredOnPropertyValueAttribute.cs" Link="Core\Copilot\Options\RequiredOnPropertyValueAttribute.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\Options\ServiceOptions.cs" Link="Core\Copilot\Options\ServiceOptions.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\SemanticKernelExtensions.cs" Link="Core\Copilot\SemanticKernelExtensions.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\ServiceExtensions.cs" Link="Core\Copilot\ServiceExtensions.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\Services\AppInsightsTelemetryService.cs" Link="Core\Copilot\Services\AppInsightsTelemetryService.cs" />
+	  <Compile Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\Services\AppInsightsUserTelemetryInitializerService.cs" Link="Core\Copilot\Services\AppInsightsUserTelemetryInitializerService.cs" />
+	  <Content Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Skills\OpenApiSkills\GitHubSkill\openapi.json" Link="Core\Copilot\CopilotChat\Skills\OpenApiSkills\GitHubSkill\openapi.json" />
+	  <Content Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapi\CopilotChat\Skills\OpenApiSkills\JiraSkill\openapi.json" Link="Core\Copilot\CopilotChat\Skills\OpenApiSkills\JiraSkill\openapi.json" />
+	  <Folder Include="Core\Copilot\Auth\" />
+	  <Folder Include="Core\Copilot\CopilotChat\Controllers\" />
+	  <Folder Include="Core\Copilot\CopilotChat\Extensions\" />
+	  <Folder Include="Core\Copilot\CopilotChat\Hubs\" />
+	  <Folder Include="Core\Copilot\CopilotChat\Models\" />
+	  <Folder Include="Core\Copilot\CopilotChat\Skills\ChatSkills\" />
+	  <Folder Include="Core\Copilot\CopilotChat\Skills\OpenApiSkills\GitHubSkill\Model\" />
+	  <Folder Include="Core\Copilot\CopilotChat\Skills\OpenApiSkills\JiraSkill\Model\" />
+	  <Folder Include="Core\Copilot\CopilotChat\Storage\" />
+	  <Folder Include="Core\Copilot\CopilotChat\Options\" />
+	  <Folder Include="Core\Copilot\Diagnostics\" />
+	  <Folder Include="Core\Copilot\Models\" />
+	  <Folder Include="Core\Copilot\Services\" />
+	  <Folder Include="Core\Copilot\Options\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapp\.env" Link="Properties\.env" />
+	  <None Include="..\..\..\SemanticKernel\samples\apps\copilot-chat-app\webapp\.env.example" Link="Properties\.env.example" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Azure.Extensions.AspNetCore.Configuration.Secrets" Version="1.2.2" />
+		<PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.21.0" />
+		<PackageReference Include="Microsoft.Identity.Web" Version="2.12.4" />
+		<PackageReference Include="PdfPig" Version="0.1.8" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\..\SemanticKernel\dotnet\src\Connectors\Connectors.AI.OpenAI\Connectors.AI.OpenAI.csproj" />
+	  <ProjectReference Include="..\..\..\..\SemanticKernel\dotnet\src\Connectors\Connectors.Memory.AzureCognitiveSearch\Connectors.Memory.AzureCognitiveSearch.csproj" />
+	  <ProjectReference Include="..\..\..\..\SemanticKernel\dotnet\src\Connectors\Connectors.Memory.CosmosDB\Connectors.Memory.CosmosDB.csproj" />
+	  <ProjectReference Include="..\..\..\..\SemanticKernel\dotnet\src\Connectors\Connectors.Memory.Qdrant\Connectors.Memory.Qdrant.csproj" />
+	  <ProjectReference Include="..\..\..\..\SemanticKernel\dotnet\src\Connectors\Connectors.Memory.Redis\Connectors.Memory.Redis.csproj" />
+	  <ProjectReference Include="..\..\..\..\SemanticKernel\dotnet\src\Extensions\Planning.ActionPlanner\Planning.ActionPlanner.csproj" />
+	  <ProjectReference Include="..\..\..\..\SemanticKernel\dotnet\src\Extensions\Planning.SequentialPlanner\Planning.SequentialPlanner.csproj" />
+	  <ProjectReference Include="..\..\..\..\SemanticKernel\dotnet\src\Extensions\Planning.StepwisePlanner\Planning.StepwisePlanner.csproj" />
+	  <ProjectReference Include="..\..\..\..\SemanticKernel\dotnet\src\SemanticKernel\SemanticKernel.csproj" />
+	  <ProjectReference Include="..\..\..\..\SemanticKernel\dotnet\src\Skills\Skills.Core\Skills.Core.csproj" />
+	  <ProjectReference Include="..\..\..\..\SemanticKernel\dotnet\src\Skills\Skills.MsGraph\Skills.MsGraph.csproj" />
+	  <ProjectReference Include="..\..\..\..\SemanticKernel\dotnet\src\Skills\Skills.OpenAPI\Skills.OpenAPI.csproj" />
+	  <ProjectReference Include="..\..\..\..\SemanticKernel\dotnet\src\Skills\Skills.Web\Skills.Web.csproj" />
+	  <ProjectReference Include="..\..\..\Hexalith\src\Core\Infrastructure\Hexalith.Infrastructure.WebApis\Hexalith.Infrastructure.WebApis.csproj" />
 	</ItemGroup>
 </Project>
